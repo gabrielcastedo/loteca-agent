@@ -4,6 +4,8 @@ import { exec } from "node:child_process";
 import { Anthropic } from "@anthropic-ai/sdk";
 import { fetchConcursoAtual, fetchConcursoDeArquivo } from "./data/fixtures.js";
 import { fetchOddsTodosCampeonatos } from "./data/odds.js";
+import { fetchOddsShowLoteca } from "./data/oddsShow.js";
+import type { OddsShowJogo } from "./data/oddsShow.js";
 import { fetchNoticiasTime } from "./data/news.js";
 import { matchJogosComOdds } from "./data/matcher.js";
 import { analisarDesfalques } from "./analysis/desfalques.js";
@@ -13,7 +15,7 @@ import { construirRelatorio } from "./report.js";
 import type { JogoRelatorio } from "./report.js";
 import { gerarRelatorioHtml } from "./reportHtml.js";
 import { openDb, salvarConcursoComOdds, salvarDesfalques } from "./db/schema.js";
-import type { DesfalqueAnalise, JogoComOdds } from "./types.js";
+import type { DesfalqueAnalise, JogoComOdds, OddsJogo } from "./types.js";
 
 const LABEL_RESULTADO: Record<Resultado, string> = { casa: "1", empate: "X", visitante: "2" };
 
@@ -37,40 +39,55 @@ async function main() {
   const gradeManualPath = process.env.CONCURSO_MANUAL_PATH;
   console.log(
     gradeManualPath
-      ? `1/5 — Lendo grade manual de "${gradeManualPath}"...`
-      : "1/5 — Buscando grade do concurso atual da Loteca..."
+      ? `1/6 — Lendo grade manual de "${gradeManualPath}"...`
+      : "1/6 — Buscando grade do concurso atual da Loteca..."
   );
   const concurso = gradeManualPath
     ? await fetchConcursoDeArquivo(gradeManualPath)
     : await fetchConcursoAtual();
   console.log(`     Concurso ${concurso.numero}: ${concurso.jogos.length} jogos encontrados.`);
 
-  console.log("2/5 — Buscando odds dos campeonatos relevantes...");
+  console.log("2/6 — Buscando odds no odds.show (widget de Loteca)...");
+  let oddsShowPorSequencial = new Map<number, OddsShowJogo>();
+  try {
+    const oddsShowJogos = await fetchOddsShowLoteca();
+    oddsShowPorSequencial = new Map(oddsShowJogos.map((j) => [j.sequencial, j]));
+    console.log(`     ${oddsShowJogos.length} jogos encontrados no odds.show.`);
+  } catch (err) {
+    console.warn(
+      `     Aviso: falha ao buscar odds.show (${err instanceof Error ? err.message : err}). ` +
+        `Seguindo só com The Odds API.`
+    );
+  }
+
+  console.log("3/6 — Buscando odds dos campeonatos relevantes (The Odds API, fallback)...");
   const odds = await fetchOddsTodosCampeonatos(apiKey, region);
   console.log(`     ${odds.length} linhas de odds coletadas (jogo x bookmaker).`);
 
-  console.log("3/5 — Casando jogos da Loteca com odds de mercado...");
-  const jogosComOdds = matchJogosComOdds(concurso.jogos, odds);
+  console.log("4/6 — Casando jogos da Loteca com odds de mercado...");
+  const jogosComOddsApi = matchJogosComOdds(concurso.jogos, odds);
+  const jogosComOdds = jogosComOddsApi.map((item) =>
+    preferirOddsShow(item, oddsShowPorSequencial.get(item.jogo.sequencial))
+  );
   const semMatch = jogosComOdds.filter((j) => !j.odds).length;
   if (semMatch > 0) {
     console.warn(
-      `     Aviso: ${semMatch} de ${jogosComOdds.length} jogos ficaram sem odds correspondentes. ` +
-        `Provavelmente são times de divisões que a Odds API não cobre, ou nome não bate — ` +
-        `veja src/data/matcher.ts (MANUAL_OVERRIDES).`
+      `     Aviso: ${semMatch} de ${jogosComOdds.length} jogos ficaram sem odds correspondentes ` +
+        `(nem odds.show, nem The Odds API). Veja src/data/matcher.ts (MANUAL_OVERRIDES) pro caso da Odds API.`
     );
   }
 
   let desfalquesPorSequencial = new Map<number, DesfalqueAnalise[]>();
   if (fase2Ativa) {
-    console.log("4/5 — Buscando notícias e analisando desfalques (Fase 2)...");
+    console.log("5/6 — Buscando notícias e analisando desfalques (Fase 2)...");
     desfalquesPorSequencial = await analisarDesfalquesDoConcurso(jogosComOdds, newsApiKey!, anthropicApiKey!);
   } else {
     console.log(
-      "4/5 — Pulando análise de desfalques: configure NEWSAPI_KEY e ANTHROPIC_API_KEY no .env pra ativar a Fase 2."
+      "5/6 — Pulando análise de desfalques: configure NEWSAPI_KEY e ANTHROPIC_API_KEY no .env pra ativar a Fase 2."
     );
   }
 
-  console.log("5/5 — Salvando no banco local...");
+  console.log("6/6 — Salvando no banco local...");
   const db = openDb(dbPath);
   const idsPorSequencial = salvarConcursoComOdds(db, concurso, jogosComOdds);
   for (const [sequencial, analises] of desfalquesPorSequencial) {
@@ -90,6 +107,31 @@ async function main() {
   const caminhoHtml = salvarRelatorioHtml(concurso.numero, relatorio, cartao, orcamentoReais);
   console.log(`\nRelatório visual salvo em: ${caminhoHtml}`);
   abrirNoNavegador(caminhoHtml);
+}
+
+/**
+ * Prioriza a odd do odds.show sobre a do The Odds API pra um jogo,
+ * já que o odds.show casa por número de jogo (não por nome) e cobre times
+ * pequenos/eliminatórias que a Odds API não tem — ver src/data/oddsShow.ts.
+ * Só usa o odds.show se os 3 mercados (1/X/2) estiverem presentes; senão
+ * mantém o resultado da Odds API (que pode ser um match ou `null`).
+ */
+function preferirOddsShow(itemOddsApi: JogoComOdds, oddsShowJogo: OddsShowJogo | undefined): JogoComOdds {
+  if (!oddsShowJogo) return itemOddsApi;
+
+  const { casa, empate, visitante } = oddsShowJogo.mercados;
+  if (!casa || !empate || !visitante) return itemOddsApi;
+
+  const odds: OddsJogo = {
+    timeCasa: itemOddsApi.jogo.equipeCasa,
+    timeVisitante: itemOddsApi.jogo.equipeVisitante,
+    bookmaker: `odds.show (melhor odd: ${casa.bookmaker}/${empate.bookmaker}/${visitante.bookmaker})`,
+    oddCasa: casa.odd,
+    oddEmpate: empate.odd,
+    oddVisitante: visitante.odd,
+  };
+
+  return { jogo: itemOddsApi.jogo, odds, matchConfidence: 1 };
 }
 
 /** Trata placeholders do .env.example como "não configurado". */

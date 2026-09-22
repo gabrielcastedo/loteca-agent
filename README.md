@@ -1,8 +1,9 @@
 # Loteca Agent — Fase 1 + Fase 2 + Fase 3 + Fase 4
 
 Coleta a grade de jogos do concurso aberto da Loteca, busca odds de mercado
-para os jogos, casa as duas fontes e calcula a probabilidade implícita
-(sem overround) de cada resultado (1 / X / 2). Opcionalmente, busca
+já casadas pelo widget do odds.show (com fallback pro The Odds API +
+matching de nomes) e calcula a probabilidade implícita (sem overround) de
+cada resultado (1 / X / 2). Opcionalmente, busca
 notícias recentes de cada time, usa Claude pra classificar desfalques
 relevantes (lesões, suspensões) e ajusta a probabilidade implícita com
 base nisso. Estima também a popularidade de cada resultado entre
@@ -50,10 +51,14 @@ Faz:
   Caixa usa (`src/data/fixtures.ts`) — detecta corretamente quando não há
   concurso aberto no momento (comum entre o fechamento de um concurso e a
   publicação do próximo)
-- Busca odds h2h (1x2) de vários campeonatos via The Odds API
-  (`src/data/odds.ts`)
-- Casa os nomes de time entre as duas fontes (`src/data/matcher.ts`) —
-  esta é a parte mais frágil, ver abaixo
+- **Fonte principal de odds:** widget público do odds.show
+  (`src/data/oddsShow.ts`), que já casa os jogos com o nome oficial da
+  Caixa e mostra a melhor odd de cada mercado (1/X/2) — resolve o
+  problema de cobertura e de matching de nomes de uma vez, ver ponto #2
+  abaixo
+- **Fallback:** odds h2h (1x2) de vários campeonatos via The Odds API
+  (`src/data/odds.ts`), casadas por nome de time (`src/data/matcher.ts`)
+  — usado só nos jogos que o odds.show não cobrir
 - Calcula probabilidade implícita de mercado por jogo (`src/probability.ts`)
 - **Fase 2 (opcional):** busca notícias recentes de cada time via
   NewsAPI.org (`src/data/news.ts`), usa Claude Haiku pra classificar o
@@ -102,20 +107,48 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    federal — não fiz, e não recomendo fazer. Na prática, espere alguns
    dias após a abertura do concurso pra essa API sincronizar.
 
-2. **Matching de nomes de time é o gargalo real do projeto.** A Caixa e a
-   Odds API não usam a mesma convenção de nomes (ex: Caixa manda
-   `"BRAGANTINO"` puro, Odds API usa `"Bragantino-SP"`; Caixa manda
+2. **odds.show (`src/data/oddsShow.ts`) é a fonte principal de odds desde
+   2026-09-21, e resolveu cobertura + matching de uma vez.** É um widget
+   público (`https://odds.show/br/widget_lotteries/?lottery=loteca`) feito
+   especificamente pra loterias/bolões brasileiros — mostra a melhor odd
+   de cada mercado (1/X/2) entre várias casas, já casada com o nome oficial
+   da Caixa. Testado ao vivo com o concurso 1272: **os 14 jogos tiveram
+   odds** (incluindo eliminatórias europeias e Série B/C, que o The Odds
+   API não cobre). Casamos por número de jogo (sequencial), não por nome —
+   muito mais confiável que o matcher de nomes.
+
+   Não é uma API formal: é HTML server-renderizado (Next.js) de uma página
+   pensada pra embutir via iframe. `robots.txt` permite (`Allow: /`), os
+   dados vêm prontos numa requisição `GET` comum (sem precisar de
+   navegador/JS), e o uso é o mesmo do widget público — mas a estrutura
+   pode mudar sem aviso em qualquer redeploy. O parser evita depender de
+   classes CSS geradas (mudam a cada build) e se apoia em `aria-label` e no
+   texto "Oficial: ..." (mais estáveis, mas não imunes a mudança). Se
+   quebrar, o app cai pro fallback (Odds API + matcher) automaticamente.
+
+   Detalhe técnico: `cheerio` (parser de HTML) depende de `undici`, que
+   exige Node 20+. Como só usamos o parsing (não a parte de rede do
+   cheerio), fixei `cheerio` em `1.1.0` e adicionei um polyfill do global
+   `File` (via `node:buffer`) em `oddsShow.ts` pra rodar no Node 18 sem
+   precisar trocar de versão.
+
+3. **Matching de nomes de time (The Odds API, fallback) ainda é frágil.**
+   A Caixa e a Odds API não usam a mesma convenção de nomes (ex: Caixa
+   manda `"BRAGANTINO"` puro, Odds API usa `"Bragantino-SP"`; Caixa manda
    `"ATLETICO"` sem distinguir MG/PR/GO, só dá pra desambiguar usando a UF).
    O matcher faz normalização + match exato + overrides manuais (alguns
    fixos por UF) — espere popular `MANUAL_OVERRIDES`/`MANUAL_OVERRIDES_POR_UF`
-   aos poucos, concurso a concurso. Use `npm run test-matcher <numero>` pra
-   testar contra dados reais sem esperar um concurso estar aberto.
+   aos poucos, concurso a concurso, **se o odds.show ficar fora do ar**
+   (com ele funcionando, esse matching quase não entra em ação). Use
+   `npm run test-matcher <numero>` pra testar contra dados reais sem
+   esperar um concurso estar aberto.
 
-3. **Cobertura de campeonatos.** Times de Série B/C brasileira ou
-   competições regionais podem não ter odds na Odds API (ou em qualquer
-   provedor gratuito). Esses jogos ficam sem odds no relatório — não tem
-   solução mágica além de aceitar a lacuna ou pagar por um provedor com
-   cobertura maior.
+4. **Cobertura de campeonatos (relevante só quando o odds.show falha e
+   cai pro The Odds API).** Times de Série B/C brasileira ou competições
+   regionais podem não ter odds na Odds API (ou em qualquer provedor
+   gratuito). Esses jogos ficam sem odds no relatório — não tem solução
+   mágica além de aceitar a lacuna ou pagar por um provedor com cobertura
+   maior.
 
    **Atualização (2026-09-21, concurso 1272):** as eliminatórias de Copa do
    Mundo **existem** como sport key na Odds API
@@ -140,18 +173,18 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    apostas; planos pagos começam em £49/mês. Nenhum dos dois compensa pro
    ganho marginal em cobertura de um projeto pessoal.
 
-4. **Rate limit do tier gratuito da Odds API** é ~500 requisições/mês.
+5. **Rate limit do tier gratuito da Odds API** é ~500 requisições/mês.
    Como a Loteca é semanal e o código busca 1x por campeonato por execução,
    isso dá margem, mas evite rodar em loop de teste sem necessidade.
 
-5. **Fase 2 já foi validada ponta a ponta com chaves reais** (NewsAPI +
+6. **Fase 2 já foi validada ponta a ponta com chaves reais** (NewsAPI +
    Claude Haiku, casos Flamengo/Palmeiras). O tier gratuito da NewsAPI é
    restrito a uso não-comercial/dev — releia os termos antes de rodar isso
    com frequência. Os fatores de ajuste em `src/analysis/ajuste.ts`
    (`FATOR_REDUCAO`) são um chute inicial, não uma calibração — ajuste
    conforme validar resultados reais.
 
-6. **A popularidade da Fase 3 é uma heurística sem dado real por trás —
+7. **A popularidade da Fase 3 é uma heurística sem dado real por trás —
    isso é uma limitação estrutural, não um TODO.** Pesquisei e não existe
    fonte pública de quantos apostadores marcam cada resultado por jogo na
    Loteca (só existe número de acertadores por faixa no cartão inteiro).
@@ -162,7 +195,7 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    "melhor valor" do relatório como um sinal qualitativo, não uma
    probabilidade validada.
 
-7. **O otimizador da Fase 4 não impõe teto de duplos/triplos.** Pesquisei
+8. **O otimizador da Fase 4 não impõe teto de duplos/triplos.** Pesquisei
    a fórmula de preço da Loteca (`2^duplos × 3^triplos × R$2,00`, aposta
    mínima R$4,00) e as fontes concordam nisso, mas divergem sobre o limite
    máximo de duplos/triplos por cartão — uma fonte diz 5 duplos + 3
