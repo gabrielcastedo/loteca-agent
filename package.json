@@ -1,0 +1,22 @@
+{
+  "name": "loteca-agent",
+  "version": "0.1.0",
+  "description": "Fase 1: coleta da grade da Loteca + odds das casas de apostas",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node --esm src/index.ts",
+    "test-matcher": "ts-node --esm scripts/test-matcher.ts"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
