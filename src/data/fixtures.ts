@@ -43,6 +43,15 @@ interface CaixaLotecaRawResponse {
  * os jogos do "próximo" já têm placar; se tiverem, ou se a grade seguinte
  * ainda nem existe, propagamos um erro claro em vez de devolver
  * silenciosamente um concurso que não está mais aberto.
+ *
+ * IMPORTANTE: essa API fica atrasada em relação ao site de apostas
+ * (loteriasonline.caixa.gov.br), que publica a grade alguns dias antes da
+ * apuração. Cheguei a investigar um fallback via navegador headless pra
+ * ler a grade de lá, mas o site tem um WAF anti-bot (Radware/ShieldSquare)
+ * que bloqueia explicitamente `HeadlessChrome` — contornar isso seria
+ * burlar uma proteção de segurança de um site do governo federal, então
+ * não implementei. Espere alguns dias após a abertura do concurso pra essa
+ * API sincronizar.
  */
 export async function fetchConcursoAtual(): Promise<LotecaConcurso> {
   const ultimoApurado = await fetchRaw();

@@ -71,6 +71,18 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    próximo). Se a Caixa mudar o formato de novo, o erro de parsing aparece
    rápido (a grade vem com menos de 14 jogos).
 
+   Essa API fica atrasada em relação ao site de apostas
+   (loteriasonline.caixa.gov.br), que publica a grade alguns dias antes da
+   apuração — confirmado ao vivo em 2026-09-21 (concurso 1272 já visível
+   lá, mas ainda 500 nessa API). Cheguei a implementar um fallback via
+   navegador headless (Playwright) lendo `localStorage['ngStorage-partidasLoteca']`
+   daquele site, mas revertido: o site tem um WAF anti-bot
+   (Radware/ShieldSquare) que detecta e bloqueia explicitamente
+   `HeadlessChrome` ("comportamento malicioso"). Contornar isso seria
+   burlar uma proteção de segurança deliberada de um site do governo
+   federal — não fiz, e não recomendo fazer. Na prática, espere alguns
+   dias após a abertura do concurso pra essa API sincronizar.
+
 2. **Matching de nomes de time é o gargalo real do projeto.** A Caixa e a
    Odds API não usam a mesma convenção de nomes (ex: Caixa manda
    `"BRAGANTINO"` puro, Odds API usa `"Bragantino-SP"`; Caixa manda
