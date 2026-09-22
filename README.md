@@ -1,11 +1,15 @@
-# Loteca Agent — Fase 1 + Fase 2
+# Loteca Agent — Fase 1 + Fase 2 + Fase 3 + Fase 4
 
 Coleta a grade de jogos do concurso aberto da Loteca, busca odds de mercado
 para os jogos, casa as duas fontes e calcula a probabilidade implícita
 (sem overround) de cada resultado (1 / X / 2). Opcionalmente, busca
 notícias recentes de cada time, usa Claude pra classificar desfalques
 relevantes (lesões, suspensões) e ajusta a probabilidade implícita com
-base nisso. Salva tudo em SQLite local.
+base nisso. Estima também a popularidade de cada resultado entre
+apostadores casuais (heurística) pra sinalizar onde a probabilidade real
+diverge do que a maioria provavelmente vai marcar. Por fim, monta um
+cartão sugerido (simples/duplo/triplo por jogo) dentro de um orçamento em
+reais. Salva tudo em SQLite local.
 
 ## Setup
 
@@ -36,14 +40,25 @@ Faz:
   NewsAPI.org (`src/data/news.ts`), usa Claude Haiku pra classificar o
   nível de impacto de desfalques (`src/analysis/desfalques.ts`) e ajusta a
   probabilidade implícita proporcionalmente (`src/analysis/ajuste.ts`)
+- **Fase 3:** estima a popularidade de cada resultado entre apostadores
+  casuais via heurística (`src/analysis/popularidade.ts`) e sinaliza no
+  relatório qual resultado tem o melhor "valor relativo" (probabilidade
+  real ÷ popularidade estimada) — ver aviso importante sobre essa
+  heurística abaixo
+- **Fase 4:** monta um cartão sugerido (simples/duplo/triplo por jogo)
+  dentro de um orçamento em reais (`ORCAMENTO_REAIS` no `.env`), usando um
+  algoritmo guloso que prioriza duplos/triplos nos jogos mais equilibrados
+  (`src/analysis/otimizador.ts`) — ver aviso sobre limites de duplos/triplos
+  abaixo
 - Persiste tudo em SQLite (`src/db/schema.ts`), incluindo as análises de
   desfalque na tabela `desfalques`
 
-Não faz ainda (próximas fases, conforme conversamos):
+Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
 
-- Não estima popularidade da aposta (quantas pessoas provavelmente vão
-  marcar o mesmo resultado) — isso é a Fase 3
-- Não decide onde alocar duplos/triplos — isso é a Fase 4 (otimizador)
+- Não há testes automatizados (unit tests) — a validação até aqui foi
+  manual, com scripts descartáveis e dados reais/sintéticos
+- Não há agendamento automático (rodar toda semana sozinho) — é preciso
+  rodar `npm run dev` manualmente
 
 ## Pontos de atenção conhecidos
 
@@ -75,11 +90,34 @@ Não faz ainda (próximas fases, conforme conversamos):
    Como a Loteca é semanal e o código busca 1x por campeonato por execução,
    isso dá margem, mas evite rodar em loop de teste sem necessidade.
 
-5. **Fase 2 ainda não foi validada ponta a ponta com chaves reais.** A
-   lógica compila e os testes sintéticos do ajuste de probabilidade batem,
-   mas a busca de notícias (NewsAPI) e a classificação (Claude) dependem de
-   chaves que ainda não foram configuradas neste ambiente. O tier gratuito
-   da NewsAPI é restrito a uso não-comercial/dev — releia os termos antes
-   de rodar isso com frequência. Os fatores de ajuste em
-   `src/analysis/ajuste.ts` (`FATOR_REDUCAO`) são um chute inicial, não uma
-   calibração — ajuste conforme validar resultados reais.
+5. **Fase 2 já foi validada ponta a ponta com chaves reais** (NewsAPI +
+   Claude Haiku, casos Flamengo/Palmeiras). O tier gratuito da NewsAPI é
+   restrito a uso não-comercial/dev — releia os termos antes de rodar isso
+   com frequência. Os fatores de ajuste em `src/analysis/ajuste.ts`
+   (`FATOR_REDUCAO`) são um chute inicial, não uma calibração — ajuste
+   conforme validar resultados reais.
+
+6. **A popularidade da Fase 3 é uma heurística sem dado real por trás —
+   isso é uma limitação estrutural, não um TODO.** Pesquisei e não existe
+   fonte pública de quantos apostadores marcam cada resultado por jogo na
+   Loteca (só existe número de acertadores por faixa no cartão inteiro).
+   Os fatores em `src/analysis/popularidade.ts`
+   (`FATOR_SUBAPOSTA_EMPATE`, `BONUS_TORCIDA_GRANDE`, lista
+   `TORCIDAS_GRANDES`) refletem padrões gerais conhecidos de bolões
+   esportivos, não uma calibração pra Loteca especificamente. Trate o
+   "melhor valor" do relatório como um sinal qualitativo, não uma
+   probabilidade validada.
+
+7. **O otimizador da Fase 4 não impõe teto de duplos/triplos.** Pesquisei
+   a fórmula de preço da Loteca (`2^duplos × 3^triplos × R$2,00`, aposta
+   mínima R$4,00) e as fontes concordam nisso, mas divergem sobre o limite
+   máximo de duplos/triplos por cartão — uma fonte diz 5 duplos + 3
+   triplos fixo, outra diz uma tabela escalonada que vai até 6 triplos. Em
+   vez de codificar um número que pode estar errado, o otimizador só
+   respeita o orçamento em reais. **Confira o limite real no site/app da
+   Caixa antes de fechar uma aposta de verdade** — o cartão sugerido pode,
+   em teoria, propor mais duplos/triplos do que a Caixa aceita num único
+   volante. Além disso, é um algoritmo guloso (não uma otimização exata:
+   o custo é multiplicativo, então o problema é uma mochila não-linear) —
+   funciona bem na prática (testado com dados sintéticos e reais), mas não
+   garante a alocação matematicamente ótima.

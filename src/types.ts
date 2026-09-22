@@ -62,3 +62,11 @@ export interface ProbabilidadePura {
   empate: number;
   visitante: number;
 }
+
+/**
+ * Fase 3: estimativa heurística de quanto cada resultado (1/X/2) tende a
+ * ser marcado por apostadores casuais (soma = 1). Não é uma medição real —
+ * não existe dado público de popularidade por jogo na Loteca. Ver
+ * `src/analysis/popularidade.ts`.
+ */
+export type PopularidadeEstimada = ProbabilidadePura;
