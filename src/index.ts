@@ -1,17 +1,19 @@
 import "dotenv/config";
+import { mkdirSync, writeFileSync } from "node:fs";
+import { exec } from "node:child_process";
 import { Anthropic } from "@anthropic-ai/sdk";
 import { fetchConcursoAtual, fetchConcursoDeArquivo } from "./data/fixtures.js";
 import { fetchOddsTodosCampeonatos } from "./data/odds.js";
 import { fetchNoticiasTime } from "./data/news.js";
 import { matchJogosComOdds } from "./data/matcher.js";
 import { analisarDesfalques } from "./analysis/desfalques.js";
-import { ajustarProbabilidade } from "./analysis/ajuste.js";
-import { estimarPopularidade } from "./analysis/popularidade.js";
 import { otimizarCartao } from "./analysis/otimizador.js";
-import type { JogoParaOtimizar, Resultado } from "./analysis/otimizador.js";
-import { probabilidadesImplicitas } from "./probability.js";
+import type { JogoParaOtimizar, Resultado, ResultadoOtimizacao } from "./analysis/otimizador.js";
+import { construirRelatorio } from "./report.js";
+import type { JogoRelatorio } from "./report.js";
+import { gerarRelatorioHtml } from "./reportHtml.js";
 import { openDb, salvarConcursoComOdds, salvarDesfalques } from "./db/schema.js";
-import type { DesfalqueAnalise, JogoComOdds, ProbabilidadePura } from "./types.js";
+import type { DesfalqueAnalise, JogoComOdds } from "./types.js";
 
 const LABEL_RESULTADO: Record<Resultado, string> = { casa: "1", empate: "X", visitante: "2" };
 
@@ -79,8 +81,15 @@ async function main() {
   }
   db.close();
 
-  imprimirRelatorio(concurso.numero, jogosComOdds, desfalquesPorSequencial);
-  imprimirCartaoSugerido(jogosComOdds, desfalquesPorSequencial, orcamentoReais);
+  const relatorio = construirRelatorio(jogosComOdds, desfalquesPorSequencial);
+  const cartao = montarCartaoSugerido(relatorio, orcamentoReais);
+
+  imprimirRelatorioConsole(concurso.numero, relatorio);
+  imprimirCartaoSugeridoConsole(relatorio, cartao, orcamentoReais);
+
+  const caminhoHtml = salvarRelatorioHtml(concurso.numero, relatorio, cartao, orcamentoReais);
+  console.log(`\nRelatório visual salvo em: ${caminhoHtml}`);
+  abrirNoNavegador(caminhoHtml);
 }
 
 /** Trata placeholders do .env.example como "não configurado". */
@@ -129,145 +138,132 @@ async function analisarDesfalquesDoConcurso(
 }
 
 /**
- * Calcula a probabilidade implícita pura e, se houver análise de
- * desfalques relevante pro jogo, a probabilidade ajustada (Fase 2). Se não
- * houver ajuste, `probabilidadeFinal` é igual a `probs`.
+ * Fase 4: monta o cartão sugerido (simples/duplo/triplo por jogo) dentro
+ * do orçamento configurado em ORCAMENTO_REAIS, usando a probabilidade
+ * final (ajustada pela Fase 2 quando disponível) de cada jogo com odds.
+ * Retorna null se não houver jogos com odds ou o orçamento for insuficiente.
  */
-function calcularProbabilidades(
-  item: JogoComOdds,
-  desfalquesPorSequencial: Map<number, DesfalqueAnalise[]>
-): { probs: ProbabilidadePura; probabilidadeFinal: ProbabilidadePura; analises: [DesfalqueAnalise, DesfalqueAnalise] | null } {
-  const odds = item.odds!;
-  const probs = probabilidadesImplicitas(odds.oddCasa, odds.oddEmpate, odds.oddVisitante);
+function montarCartaoSugerido(relatorio: JogoRelatorio[], orcamentoReais: number): ResultadoOtimizacao | null {
+  const jogosParaOtimizar: JogoParaOtimizar[] = relatorio
+    .filter((j): j is JogoRelatorio & { probabilidadeFinal: NonNullable<JogoRelatorio["probabilidadeFinal"]> } =>
+      Boolean(j.probabilidadeFinal)
+    )
+    .map((j) => ({
+      sequencial: j.sequencial,
+      equipeCasa: j.equipeCasa,
+      equipeVisitante: j.equipeVisitante,
+      probabilidade: j.probabilidadeFinal,
+    }));
 
-  const analises = desfalquesPorSequencial.get(item.jogo.sequencial);
-  if (analises && analises.length === 2 && (analises[0].impacto !== "nenhum" || analises[1].impacto !== "nenhum")) {
-    const probabilidadeFinal = ajustarProbabilidade(probs, analises[0].impacto, analises[1].impacto);
-    return { probs, probabilidadeFinal, analises: [analises[0], analises[1]] };
+  if (jogosParaOtimizar.length === 0) return null;
+
+  try {
+    return otimizarCartao(jogosParaOtimizar, orcamentoReais);
+  } catch (err) {
+    console.error(`Não foi possível montar o cartão: ${err instanceof Error ? err.message : err}`);
+    return null;
   }
-
-  return { probs, probabilidadeFinal: probs, analises: null };
 }
 
-function imprimirRelatorio(
-  concursoNumero: number,
-  jogos: JogoComOdds[],
-  desfalquesPorSequencial: Map<number, DesfalqueAnalise[]>
-): void {
+function imprimirRelatorioConsole(concursoNumero: number, relatorio: JogoRelatorio[]): void {
   console.log(`\n=== Concurso ${concursoNumero} — Grade x Odds ===\n`);
 
-  for (const item of jogos) {
-    const { jogo, odds, matchConfidence } = item;
-    const label = `${String(jogo.sequencial).padStart(2, "0")}. ${jogo.equipeCasa} x ${jogo.equipeVisitante}`;
+  for (const j of relatorio) {
+    const label = `${String(j.sequencial).padStart(2, "0")}. ${j.equipeCasa} x ${j.equipeVisitante}`;
 
-    if (!odds) {
+    if (!j.odds || !j.probabilidadePura || !j.probabilidadeFinal || !j.popularidade || !j.melhorValor) {
       console.log(`${label}\n    (sem odds)\n`);
       continue;
     }
 
-    const { probs, probabilidadeFinal, analises } = calcularProbabilidades(item, desfalquesPorSequencial);
-    const confAviso = matchConfidence < 1 ? "  [match incerto]" : "";
+    const confAviso = j.matchConfidence < 1 ? "  [match incerto]" : "";
 
     let linhaAjuste = "";
-    if (analises) {
-      const [casaAn, visitanteAn] = analises;
+    if (j.desfalques) {
+      const [casaAn, visitanteAn] = j.desfalques;
       linhaAjuste =
-        `    desfalques: ${jogo.equipeCasa}=${casaAn.impacto} (${casaAn.motivo})\n` +
-        `                ${jogo.equipeVisitante}=${visitanteAn.impacto} (${visitanteAn.motivo})\n` +
-        `    prob. ajustada:           1=${(probabilidadeFinal.casa * 100).toFixed(1)}%  X=${(probabilidadeFinal.empate * 100).toFixed(1)}%  2=${(probabilidadeFinal.visitante * 100).toFixed(1)}%\n`;
+        `    desfalques: ${j.equipeCasa}=${casaAn.impacto} (${casaAn.motivo})\n` +
+        `                ${j.equipeVisitante}=${visitanteAn.impacto} (${visitanteAn.motivo})\n` +
+        `    prob. ajustada:           1=${(j.probabilidadeFinal.casa * 100).toFixed(1)}%  X=${(j.probabilidadeFinal.empate * 100).toFixed(1)}%  2=${(j.probabilidadeFinal.visitante * 100).toFixed(1)}%\n`;
     }
 
-    const popularidade = estimarPopularidade(probabilidadeFinal, jogo);
     const linhaPopularidade =
-      `    popularidade estimada:   1=${(popularidade.casa * 100).toFixed(1)}%  X=${(popularidade.empate * 100).toFixed(1)}%  2=${(popularidade.visitante * 100).toFixed(1)}%\n` +
-      `    ${melhorValor(probabilidadeFinal, popularidade)}\n`;
+      `    popularidade estimada:   1=${(j.popularidade.casa * 100).toFixed(1)}%  X=${(j.popularidade.empate * 100).toFixed(1)}%  2=${(j.popularidade.visitante * 100).toFixed(1)}%\n` +
+      `    melhor valor: ${LABEL_RESULTADO[j.melhorValor.resultado]} (${j.melhorValor.valor.toFixed(2)}x mais provável do que popular)\n`;
 
     console.log(
       `${label}${confAviso}\n` +
-        `    odds  (${odds.bookmaker}): 1=${odds.oddCasa.toFixed(2)}  X=${odds.oddEmpate.toFixed(2)}  2=${odds.oddVisitante.toFixed(2)}\n` +
-        `    prob. implícita:         1=${(probs.casa * 100).toFixed(1)}%  X=${(probs.empate * 100).toFixed(1)}%  2=${(probs.visitante * 100).toFixed(1)}%\n` +
+        `    odds  (${j.odds.bookmaker}): 1=${j.odds.oddCasa.toFixed(2)}  X=${j.odds.oddEmpate.toFixed(2)}  2=${j.odds.oddVisitante.toFixed(2)}\n` +
+        `    prob. implícita:         1=${(j.probabilidadePura.casa * 100).toFixed(1)}%  X=${(j.probabilidadePura.empate * 100).toFixed(1)}%  2=${(j.probabilidadePura.visitante * 100).toFixed(1)}%\n` +
         linhaAjuste +
         linhaPopularidade
     );
   }
 }
 
-/**
- * Fase 3: identifica qual resultado tem o maior "valor relativo"
- * (probabilidade real dividida pela popularidade estimada) — ou seja,
- * onde a chance real de acertar é maior do que a fração de apostadores
- * que provavelmente vai marcar esse resultado. É só um sinal informativo
- * por jogo — a escolha principal de cada jogo no cartão sugerido (Fase 4)
- * usa sempre a maior probabilidade real, não este sinal (ver otimizador.ts).
- */
-function melhorValor(probabilidade: ProbabilidadePura, popularidade: ProbabilidadePura): string {
-  const opcoes: Array<{ label: string; valor: number }> = [
-    { label: "1", valor: probabilidade.casa / popularidade.casa },
-    { label: "X", valor: probabilidade.empate / popularidade.empate },
-    { label: "2", valor: probabilidade.visitante / popularidade.visitante },
-  ];
-
-  const melhor = opcoes.reduce((a, b) => (b.valor > a.valor ? b : a));
-
-  return `melhor valor: ${melhor.label} (${melhor.valor.toFixed(2)}x mais provável do que popular)`;
-}
-
-/**
- * Fase 4: monta o cartão sugerido (simples/duplo/triplo por jogo) dentro
- * do orçamento configurado em ORCAMENTO_REAIS, usando a probabilidade
- * final (ajustada pela Fase 2 quando disponível) de cada jogo com odds.
- */
-function imprimirCartaoSugerido(
-  jogosComOdds: JogoComOdds[],
-  desfalquesPorSequencial: Map<number, DesfalqueAnalise[]>,
+function imprimirCartaoSugeridoConsole(
+  relatorio: JogoRelatorio[],
+  cartao: ResultadoOtimizacao | null,
   orcamentoReais: number
 ): void {
-  const jogosParaOtimizar: JogoParaOtimizar[] = jogosComOdds
-    .filter((item) => item.odds)
-    .map((item) => {
-      const { probabilidadeFinal } = calcularProbabilidades(item, desfalquesPorSequencial);
-      return {
-        sequencial: item.jogo.sequencial,
-        equipeCasa: item.jogo.equipeCasa,
-        equipeVisitante: item.jogo.equipeVisitante,
-        probabilidade: probabilidadeFinal,
-      };
-    });
-
-  const semOdds = jogosComOdds.filter((item) => !item.odds);
-
   console.log(`\n=== Cartão sugerido (orçamento R$${orcamentoReais.toFixed(2)}) ===\n`);
 
-  if (jogosParaOtimizar.length === 0) {
+  if (!cartao) {
     console.log("Nenhum jogo com odds disponível — não há como sugerir um cartão.\n");
     return;
   }
 
-  let resultado;
-  try {
-    resultado = otimizarCartao(jogosParaOtimizar, orcamentoReais);
-  } catch (err) {
-    console.error(`Não foi possível montar o cartão: ${err instanceof Error ? err.message : err}\n`);
-    return;
-  }
-
-  for (const alocacao of resultado.alocacoes) {
+  for (const alocacao of cartao.alocacoes) {
     const label = `${String(alocacao.sequencial).padStart(2, "0")}. ${alocacao.equipeCasa} x ${alocacao.equipeVisitante}`;
     const marcacoes = alocacao.marcacoes.map((r) => LABEL_RESULTADO[r]).join(", ");
     console.log(`${label}\n    ${alocacao.tipo.padEnd(7)} → ${marcacoes}\n`);
   }
 
   console.log(
-    `Total: ${resultado.totalCombinacoes} combinações, custo estimado R$${resultado.custoReais.toFixed(2)}.\n` +
+    `Total: ${cartao.totalCombinacoes} combinações, custo estimado R$${cartao.custoReais.toFixed(2)}.\n` +
       `(fórmula 2^duplos × 3^triplos × R$2,00 — confira o teto de duplos/triplos e o preço atual no site/app da Caixa antes de apostar de verdade)`
   );
 
+  const semOdds = relatorio.filter((j) => !j.odds);
   if (semOdds.length > 0) {
     console.log(
       `\nAviso: ${semOdds.length} jogo(s) sem odds ficaram de fora do cartão sugerido — escolha manual: ` +
-        semOdds.map((i) => `${i.jogo.sequencial}. ${i.jogo.equipeCasa} x ${i.jogo.equipeVisitante}`).join("; ")
+        semOdds.map((j) => `${j.sequencial}. ${j.equipeCasa} x ${j.equipeVisitante}`).join("; ")
     );
   }
+}
+
+/** Gera o relatório visual (HTML) e salva em relatorios/concurso-<numero>.html. */
+function salvarRelatorioHtml(
+  concursoNumero: number,
+  relatorio: JogoRelatorio[],
+  cartao: ResultadoOtimizacao | null,
+  orcamentoReais: number
+): string {
+  const html = gerarRelatorioHtml(concursoNumero, relatorio, cartao, orcamentoReais);
+  const pasta = "./relatorios";
+  const caminho = `${pasta}/concurso-${concursoNumero}.html`;
+
+  mkdirSync(pasta, { recursive: true });
+  writeFileSync(caminho, html, "utf-8");
+
+  return caminho;
+}
+
+/** Abre o relatório no navegador padrão. Falha silenciosamente se não for possível (ex: ambiente sem GUI). */
+function abrirNoNavegador(caminho: string): void {
+  const comando =
+    process.platform === "win32"
+      ? `start "" "${caminho}"`
+      : process.platform === "darwin"
+        ? `open "${caminho}"`
+        : `xdg-open "${caminho}"`;
+
+  exec(comando, (err) => {
+    if (err) {
+      console.warn(`     Aviso: não consegui abrir o navegador automaticamente. Abra o arquivo manualmente.`);
+    }
+  });
 }
 
 main().catch((err) => {
