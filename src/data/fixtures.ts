@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import type { LotecaConcurso, LotecaJogo } from "../types.js";
 
 /**
@@ -135,6 +136,59 @@ function parseConcurso(raw: CaixaLotecaRawResponse): LotecaConcurso {
     dataApuracao: raw.dataApuracao,
     dataProximoConcurso: raw.dataProximoConcurso,
     valorEstimadoProximoConcurso: raw.valorEstimadoProximoConcurso,
+    jogos,
+  };
+}
+
+interface GradeManual {
+  numero: number;
+  aberturaApostas?: string;
+  encerramentoApostas?: string;
+  premioEstimado?: number;
+  consultadoEm?: string;
+  fonte?: string;
+  jogos: Array<{
+    sequencial: number;
+    equipeCasa: string;
+    ufCasa?: string;
+    equipeVisitante: string;
+    ufVisitante?: string;
+  }>;
+}
+
+/**
+ * Lê a grade de um concurso a partir de um arquivo JSON salvo manualmente
+ * (pasta `manual-grades/`), em vez de chamar a API. Existe porque a API de
+ * resultados (`fetchConcursoAtual`) fica atrasada em relação ao site de
+ * apostas, e automatizar a leitura de lá esbarra no WAF anti-bot (ver
+ * comentário em `fetchConcursoAtual`). O fluxo pretendido: peça pro
+ * assistente consultar a grade manualmente (via navegador assistido, não
+ * script automatizado) e salvar em `manual-grades/concurso-<numero>.json`;
+ * configure `CONCURSO_MANUAL_PATH` no `.env` apontando pra esse arquivo.
+ */
+export async function fetchConcursoDeArquivo(caminho: string): Promise<LotecaConcurso> {
+  const conteudo = await readFile(caminho, "utf-8");
+  const grade = JSON.parse(conteudo) as GradeManual;
+
+  if (grade.jogos.length !== 14) {
+    console.warn(
+      `Aviso: grade manual "${caminho}" tem ${grade.jogos.length} jogos (esperado 14).`
+    );
+  }
+
+  const jogos: LotecaJogo[] = grade.jogos.map((j) => ({
+    concursoNumero: grade.numero,
+    sequencial: j.sequencial,
+    equipeCasa: normalizeTeamName(j.equipeCasa),
+    equipeVisitante: normalizeTeamName(j.equipeVisitante),
+    ufCasa: j.ufCasa,
+    ufVisitante: j.ufVisitante,
+  }));
+
+  return {
+    numero: grade.numero,
+    dataProximoConcurso: grade.encerramentoApostas,
+    valorEstimadoProximoConcurso: grade.premioEstimado,
     jogos,
   };
 }

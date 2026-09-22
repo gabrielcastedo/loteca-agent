@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { Anthropic } from "@anthropic-ai/sdk";
-import { fetchConcursoAtual } from "./data/fixtures.js";
+import { fetchConcursoAtual, fetchConcursoDeArquivo } from "./data/fixtures.js";
 import { fetchOddsTodosCampeonatos } from "./data/odds.js";
 import { fetchNoticiasTime } from "./data/news.js";
 import { matchJogosComOdds } from "./data/matcher.js";
@@ -32,8 +32,15 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("1/5 — Buscando grade do concurso atual da Loteca...");
-  const concurso = await fetchConcursoAtual();
+  const gradeManualPath = process.env.CONCURSO_MANUAL_PATH;
+  console.log(
+    gradeManualPath
+      ? `1/5 — Lendo grade manual de "${gradeManualPath}"...`
+      : "1/5 — Buscando grade do concurso atual da Loteca..."
+  );
+  const concurso = gradeManualPath
+    ? await fetchConcursoDeArquivo(gradeManualPath)
+    : await fetchConcursoAtual();
   console.log(`     Concurso ${concurso.numero}: ${concurso.jogos.length} jogos encontrados.`);
 
   console.log("2/5 — Buscando odds dos campeonatos relevantes...");

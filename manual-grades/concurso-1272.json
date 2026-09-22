@@ -1,0 +1,24 @@
+{
+  "numero": 1272,
+  "aberturaApostas": "2026-09-23T06:00:00",
+  "encerramentoApostas": "2026-09-26T15:00:00",
+  "premioEstimado": 1500000,
+  "consultadoEm": "2026-09-22T02:44:00Z",
+  "fonte": "loteriasonline.caixa.gov.br (consulta manual assistida, servicebus2 ainda não tinha a grade)",
+  "jogos": [
+    { "sequencial": 1, "equipeCasa": "INGLATERRA", "equipeVisitante": "ESPANHA" },
+    { "sequencial": 2, "equipeCasa": "OPERARIO", "ufCasa": "PR", "equipeVisitante": "CEARA", "ufVisitante": "CE" },
+    { "sequencial": 3, "equipeCasa": "NAUTICO", "ufCasa": "PE", "equipeVisitante": "SPORT", "ufVisitante": "PE" },
+    { "sequencial": 4, "equipeCasa": "BOTAFOGO", "ufCasa": "PB", "equipeVisitante": "MARINGA", "ufVisitante": "PR" },
+    { "sequencial": 5, "equipeCasa": "GOIAS", "ufCasa": "GO", "equipeVisitante": "ATLETICO", "ufVisitante": "GO" },
+    { "sequencial": 6, "equipeCasa": "CRICIUMA", "ufCasa": "SC", "equipeVisitante": "AVAI", "ufVisitante": "SC" },
+    { "sequencial": 7, "equipeCasa": "CRB", "ufCasa": "AL", "equipeVisitante": "CUIABA", "ufVisitante": "MT" },
+    { "sequencial": 8, "equipeCasa": "DINAMARCA", "equipeVisitante": "PAIS DE GALES" },
+    { "sequencial": 9, "equipeCasa": "SERVIA", "equipeVisitante": "HOLANDA" },
+    { "sequencial": 10, "equipeCasa": "GIBRALTAR", "equipeVisitante": "ANDORRA" },
+    { "sequencial": 11, "equipeCasa": "FORTALEZA", "ufCasa": "CE", "equipeVisitante": "ATHLETIC CLUB", "ufVisitante": "MG" },
+    { "sequencial": 12, "equipeCasa": "NORUEGA", "equipeVisitante": "PORTUGAL" },
+    { "sequencial": 13, "equipeCasa": "ISRAEL", "equipeVisitante": "IRLANDA" },
+    { "sequencial": 14, "equipeCasa": "ALEMANHA", "equipeVisitante": "GRECIA" }
+  ]
+}

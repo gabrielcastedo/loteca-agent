@@ -23,6 +23,25 @@ npm run dev
 A Fase 2 (desfalques) é opcional: sem `NEWSAPI_KEY` e `ANTHROPIC_API_KEY`
 configuradas no `.env`, o app funciona normalmente só com a Fase 1.
 
+## Grade manual (quando a API de resultados está atrasada)
+
+A API de resultados (`fetchConcursoAtual` em `src/data/fixtures.ts`) costuma
+ficar alguns dias atrasada em relação ao site de apostas da Caixa, que
+publica a grade mais cedo. Não automatizamos a leitura de lá (ver "Pontos
+de atenção" #1 — o site tem proteção anti-bot). Em vez disso, o fluxo é:
+
+1. Peça pro assistente (Claude) consultar a grade manualmente, usando o
+   navegador de forma assistida — é uma consulta pontual como um humano
+   faria, não um script rodando sozinho.
+2. Salve o resultado em `manual-grades/concurso-<numero>.json` (ver
+   `manual-grades/concurso-1272.json` como exemplo de formato).
+3. Configure `CONCURSO_MANUAL_PATH` no `.env` apontando pra esse arquivo —
+   o app usa a grade salva em vez de chamar a API.
+
+Validado ao vivo com o concurso 1272: pipeline completo (Fases 1 a 4)
+rodou ponta a ponta, incluindo matching de odds, análise de desfalques,
+popularidade estimada e cartão sugerido.
+
 ## O que este código faz (e o que não faz ainda)
 
 Faz:
@@ -97,6 +116,13 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    provedor gratuito). Esses jogos ficam sem odds no relatório — não tem
    solução mágica além de aceitar a lacuna ou pagar por um provedor com
    cobertura maior.
+
+   Confirmado ao vivo com o concurso 1272: **eliminatórias da Copa do
+   Mundo não existem como categoria na Odds API** (conferi a lista
+   completa via `GET /v4/sports` — não tem `soccer_fifa_world_cup_qualifiers`
+   nem equivalente). Dos 14 jogos do concurso, 8 eram eliminatórias
+   europeias e nenhum teve odds. Isso não é bug de matching, é ausência
+   real de dado na fonte gratuita.
 
 4. **Rate limit do tier gratuito da Odds API** é ~500 requisições/mês.
    Como a Loteca é semanal e o código busca 1x por campeonato por execução,
