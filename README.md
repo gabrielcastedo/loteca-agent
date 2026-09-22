@@ -117,12 +117,28 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    solução mágica além de aceitar a lacuna ou pagar por um provedor com
    cobertura maior.
 
-   Confirmado ao vivo com o concurso 1272: **eliminatórias da Copa do
-   Mundo não existem como categoria na Odds API** (conferi a lista
-   completa via `GET /v4/sports` — não tem `soccer_fifa_world_cup_qualifiers`
-   nem equivalente). Dos 14 jogos do concurso, 8 eram eliminatórias
-   europeias e nenhum teve odds. Isso não é bug de matching, é ausência
-   real de dado na fonte gratuita.
+   **Atualização (2026-09-21, concurso 1272):** as eliminatórias de Copa do
+   Mundo **existem** como sport key na Odds API
+   (`soccer_fifa_world_cup_qualifiers_europe` e `..._south_america`) — só
+   não aparecem em `GET /v4/sports` sem o parâmetro `?all=true`, porque
+   ficam marcadas como `active: false` quando não há evento populado no
+   momento. Já adicionei as duas em `CAMPEONATOS_RELEVANTES`
+   (`src/data/odds.ts`) — é de graça, mesmo plano, sem custo extra. Testei
+   ao vivo e retornaram 0 eventos pro concurso 1272 (nenhum bookmaker tinha
+   posto linha ainda pra jogos como Gibraltar x Andorra) — pode ser que
+   populem mais perto da data do jogo, vale reconferir.
+
+   **Série C brasileira não existe na Odds API, nem oculta** — conferi a
+   lista completa via `?all=true` e não há chave equivalente. Essa parte da
+   lacuna é definitiva com esse provedor.
+
+   Também avaliei dois provedores alternativos e não valeram a pena pro
+   nosso caso: **API-Football/api-sports.io** tem tier gratuito, mas ele só
+   dá acesso a temporadas de 2022–2024 (não à atual) — inútil pra dados em
+   tempo real; o plano pago que desbloqueia a temporada atual custa
+   US$19/mês. **Odds-API.io** tem tier gratuito, mas limitado a 2 casas de
+   apostas; planos pagos começam em £49/mês. Nenhum dos dois compensa pro
+   ganho marginal em cobertura de um projeto pessoal.
 
 4. **Rate limit do tier gratuito da Odds API** é ~500 requisições/mês.
    Como a Loteca é semanal e o código busca 1x por campeonato por execução,

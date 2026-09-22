@@ -23,6 +23,13 @@ export const CAMPEONATOS_RELEVANTES = [
   "soccer_spain_la_liga",
   "soccer_epl",
   "soccer_uefa_champs_league",
+  // Eliminatórias de Copa do Mundo: existem como sport key mas aparecem como
+  // "active: false" em GET /v4/sports (só via ?all=true) — testado ao vivo
+  // em 2026-09-21 e retornou 0 eventos pro concurso 1272 (nenhum bookmaker
+  // tinha posto linha ainda pra jogos como Gibraltar x Andorra). Gratuito,
+  // sem custo extra — deixe aqui pra pegar caso populem mais perto do jogo.
+  "soccer_fifa_world_cup_qualifiers_europe",
+  "soccer_fifa_world_cup_qualifiers_south_america",
 ] as const;
 
 interface OddsApiEvent {
