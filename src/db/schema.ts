@@ -1,7 +1,7 @@
 import Database from "better-sqlite3";
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
-import type { JogoComOdds, LotecaConcurso } from "../types.js";
+import type { DesfalqueAnalise, JogoComOdds, LotecaConcurso } from "../types.js";
 
 export function openDb(path: string): Database.Database {
   mkdirSync(dirname(path), { recursive: true });
@@ -45,16 +45,31 @@ function migrate(db: Database.Database): void {
       coletado_em TEXT NOT NULL,
       FOREIGN KEY (jogo_id) REFERENCES jogos(id)
     );
+
+    CREATE TABLE IF NOT EXISTS desfalques (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      jogo_id INTEGER NOT NULL,
+      time TEXT NOT NULL,
+      impacto TEXT NOT NULL,
+      motivo TEXT NOT NULL,
+      coletado_em TEXT NOT NULL,
+      FOREIGN KEY (jogo_id) REFERENCES jogos(id)
+    );
   `);
 }
 
-/** Persiste um concurso completo (grade) + as odds já casadas por jogo. */
+/**
+ * Persiste um concurso completo (grade) + as odds já casadas por jogo.
+ * Retorna o id de cada jogo salvo, indexado pelo `sequencial` (1 a 14),
+ * pra permitir persistir dados adicionais (ex: desfalques) em seguida.
+ */
 export function salvarConcursoComOdds(
   db: Database.Database,
   concurso: LotecaConcurso,
   jogosComOdds: JogoComOdds[]
-): void {
+): Map<number, number> {
   const agora = new Date().toISOString();
+  const idsPorSequencial = new Map<number, number>();
 
   const upsertConcurso = db.prepare(`
     INSERT INTO concursos (numero, data_apuracao, data_proximo_concurso, valor_estimado_proximo, coletado_em)
@@ -100,6 +115,8 @@ export function salvarConcursoComOdds(
         dataHora: item.jogo.dataHora ?? null,
       }) as { id: number };
 
+      idsPorSequencial.set(item.jogo.sequencial, row.id);
+
       if (item.odds) {
         insertOdds.run({
           jogoId: row.id,
@@ -111,6 +128,36 @@ export function salvarConcursoComOdds(
           coletadoEm: agora,
         });
       }
+    }
+  });
+
+  transacao();
+
+  return idsPorSequencial;
+}
+
+/** Persiste as análises de desfalque (Fase 2) de um jogo específico. */
+export function salvarDesfalques(
+  db: Database.Database,
+  jogoId: number,
+  analises: DesfalqueAnalise[]
+): void {
+  const agora = new Date().toISOString();
+
+  const insertDesfalque = db.prepare(`
+    INSERT INTO desfalques (jogo_id, time, impacto, motivo, coletado_em)
+    VALUES (@jogoId, @time, @impacto, @motivo, @coletadoEm)
+  `);
+
+  const transacao = db.transaction(() => {
+    for (const analise of analises) {
+      insertDesfalque.run({
+        jogoId,
+        time: analise.time,
+        impacto: analise.impacto,
+        motivo: analise.motivo,
+        coletadoEm: agora,
+      });
     }
   });
 

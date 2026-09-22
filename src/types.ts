@@ -41,3 +41,24 @@ export interface JogoComOdds {
   odds: OddsJogo | null; // null = não foi possível casar com nenhuma fonte de odds
   matchConfidence: number; // 0 a 1 — quão confiável foi o casamento de nomes
 }
+
+/**
+ * Fase 2: nível de impacto de desfalques (lesões, suspensões etc.) que um
+ * time pode ter no próximo jogo, conforme avaliado a partir de notícias
+ * recentes.
+ */
+export type NivelImpacto = "nenhum" | "baixo" | "medio" | "alto";
+
+/** Análise de desfalque de um time específico pra um jogo específico. */
+export interface DesfalqueAnalise {
+  time: string;
+  impacto: NivelImpacto;
+  motivo: string;
+}
+
+/** Probabilidade implícita de mercado, sem overround (soma = 1). */
+export interface ProbabilidadePura {
+  casa: number;
+  empate: number;
+  visitante: number;
+}
