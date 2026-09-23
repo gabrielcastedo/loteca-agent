@@ -83,6 +83,11 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
   manual, com scripts descartáveis e dados reais/sintéticos
 - Não há agendamento automático (rodar toda semana sozinho) — é preciso
   rodar `npm run dev` manualmente
+- **Não há loop de validação** (comparar sugestão vs. resultado real depois
+  do concurso apurado) — é o maior limitador de qualidade hoje, já que
+  todos os fatores de ajuste/popularidade/otimização são chutes com bom
+  senso, não calibração. Plano detalhado em
+  [`docs/plano-melhorias.md`](docs/plano-melhorias.md).
 
 ## Pontos de atenção conhecidos
 
