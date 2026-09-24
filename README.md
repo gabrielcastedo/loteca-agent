@@ -96,8 +96,10 @@ Faz:
 
 Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
 
-- Não há testes automatizados (unit tests) — a validação até aqui foi
-  manual, com scripts descartáveis e dados reais/sintéticos
+- Testes automatizados (`npm test`, `node:test`) cobrem os módulos de
+  cálculo puro (`probability.ts`, `historico.ts`, `popularidade.ts`,
+  `otimizador.ts`, `fechamento.ts` — 26 casos, ver pasta `tests/`) —
+  `ajuste.ts` (Fase 2) ainda depende de validação manual
 - Não há agendamento automático (rodar toda semana sozinho) — é preciso
   rodar `npm run dev` manualmente
 - **Não há loop de validação** (comparar sugestão vs. resultado real depois

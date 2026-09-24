@@ -115,10 +115,19 @@ README, itens 8-9 dos "Pontos de atenção".
 
 ## P6 — Testes automatizados
 
-Ainda não existem. Prioridade: os módulos de cálculo puro e determinístico
-(`ajuste.ts`, `popularidade.ts`, `otimizador.ts`, `probability.ts`) —
-são os que vão ser mexidos ao calibrar fatores (P0/P4), e testes evitam
-regressão silenciosa nessa calibração.
+**Começado em 2026-09-23.** `npm test` roda o test runner nativo do Node
+(`node:test`, zero dependência nova) sobre `probability.ts`, `historico.ts`,
+`popularidade.ts`, `otimizador.ts` e `fechamento.ts` (26 casos, ver pasta
+`tests/`) — cobre a de-vigagem de odds, a âncora histórica nova, a
+classificação de prioridade por posição relativa (inclusive um teste que
+prova que é por ranking e não por limiar fixo, comparando rodada
+equilibrada vs. cheia de favoritos óbvios), o teto oficial de
+duplos/triplos (inclusive com orçamento artificialmente alto, confirmando
+que quem limita é a tabela oficial e não o dinheiro) e a construção do
+fechamento (cobertura de pares sem repetir nem faltar nenhuma combinação).
+`tests/helpers.ts` tem um gerador de jogos sintéticos com ganho marginal
+controlado, reutilizável pelos dois arquivos. Ainda falta `ajuste.ts`
+(Fase 2, ajuste por desfalque) — próximo candidato.
 
 ## Modelo quantitativo de terceiros (avaliado em 2026-09-23)
 
