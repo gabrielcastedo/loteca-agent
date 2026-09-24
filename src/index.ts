@@ -146,6 +146,7 @@ function preferirOddsShow(itemOddsApi: JogoComOdds, oddsShowJogo: OddsShowJogo |
     oddCasa: casa.odd,
     oddEmpate: empate.odd,
     oddVisitante: visitante.odd,
+    porCasa: oddsShowJogo.porCasa.length > 0 ? oddsShowJogo.porCasa : undefined,
   };
 
   return { jogo: itemOddsApi.jogo, odds, matchConfidence: 1 };
@@ -222,6 +223,8 @@ function imprimirRelatorioConsole(concursoNumero: number, relatorio: JogoRelator
     }
 
     const confAviso = j.matchConfidence < 1 ? "  [match incerto]" : "";
+    const numCasas = j.odds.porCasa?.length;
+    const labelProbImplicita = numCasas ? `prob. implícita (média de ${numCasas} casas):` : "prob. implícita:";
 
     let linhaAjuste = "";
     if (j.desfalques) {
@@ -240,7 +243,7 @@ function imprimirRelatorioConsole(concursoNumero: number, relatorio: JogoRelator
     console.log(
       `${label}${confAviso}\n` +
         `    odds  (${j.odds.bookmaker}): 1=${j.odds.oddCasa.toFixed(2)}  X=${j.odds.oddEmpate.toFixed(2)}  2=${j.odds.oddVisitante.toFixed(2)}\n` +
-        `    prob. implícita:         1=${(j.probabilidadePura.casa * 100).toFixed(1)}%  X=${(j.probabilidadePura.empate * 100).toFixed(1)}%  2=${(j.probabilidadePura.visitante * 100).toFixed(1)}%\n` +
+        `    ${labelProbImplicita} 1=${(j.probabilidadePura.casa * 100).toFixed(1)}%  X=${(j.probabilidadePura.empate * 100).toFixed(1)}%  2=${(j.probabilidadePura.visitante * 100).toFixed(1)}%\n` +
         linhaAjuste +
         linhaPopularidade
     );

@@ -23,16 +23,33 @@ export interface LotecaConcurso {
   jogos: LotecaJogo[];
 }
 
+/** Odds completas (1/X/2) de uma única casa de apostas pra um jogo. */
+export interface OddsPorCasa {
+  bookmaker: string;
+  oddCasa: number;
+  oddEmpate: number;
+  oddVisitante: number;
+}
+
 /** Probabilidades implícitas de mercado para um jogo, já sem overround. */
 export interface OddsJogo {
   // nomes dos times exatamente como vieram da odds API (podem diferir da Loteca)
   timeCasa: string;
   timeVisitante: string;
   comeceEm?: string; // kickoff ISO
-  bookmaker: string;
+  bookmaker: string; // legenda de qual casa deu a "melhor odd" de cada mercado (ver oddCasa/oddEmpate/oddVisitante) — só referência de preço
   oddCasa: number;
   oddEmpate: number;
   oddVisitante: number;
+  /**
+   * Odds individuais por casa, quando a fonte expõe isso (hoje só o
+   * odds.show — ver `src/data/oddsShow.ts`). Quando presente, a
+   * probabilidade implícita (`src/probability.ts`) usa a média entre casas
+   * em vez de misturar a melhor odd de cada mercado (que pode vir de casas
+   * diferentes e "some" o viés/overround de cada uma) — ver P2 em
+   * `docs/plano-melhorias.md`.
+   */
+  porCasa?: OddsPorCasa[];
 }
 
 /** Resultado do casamento entre um jogo da Loteca e suas odds de mercado. */

@@ -1,4 +1,5 @@
 import type { Resultado } from "../analysis/otimizador.js";
+import type { OddsPorCasa } from "../types.js";
 
 /**
  * cheerio depende de `undici`, que exige Node 20+ (referencia o global
@@ -45,6 +46,14 @@ export interface OddsShowJogo {
   equipeCasaOficial: string;
   equipeVisitanteOficial: string;
   mercados: Partial<Record<Resultado, OddShowMercado>>;
+  /**
+   * Odds completas (1/X/2) por casa individual — o widget também renderiza
+   * uma tabela detalhada por casa (além do trio "destacado" acima), só que
+   * com o formato de `aria-label` invertido ("Bet365, 1, odd 2.90" em vez de
+   * "1, Bet365, odd 2.90"). Só entra aqui a casa que tiver os 3 mercados
+   * completos — ver `probabilidadesImplicitasMedia` em `probability.ts`.
+   */
+  porCasa: OddsPorCasa[];
 }
 
 const MERCADO_POR_SIMBOLO: Record<string, Resultado> = { "1": "casa", X: "empate", "2": "visitante" };
@@ -79,26 +88,59 @@ export function parseOddsShowHtml(html: string): OddsShowJogo[] {
     if (!equipeCasaOficial || !equipeVisitanteOficial) return;
 
     const mercados: Partial<Record<Resultado, OddShowMercado>> = {};
+    const oddsPorBookmaker = new Map<string, Partial<Record<Resultado, number>>>();
+
     bloco.find("a[aria-label]").each((_, tile) => {
       const label = $(tile).attr("aria-label") ?? "";
-      const match = label.match(/^(1|X|2),\s*([^,]+),\s*odd\s*([\d.]+)/i);
-      if (!match) return;
 
-      const mercado = MERCADO_POR_SIMBOLO[match[1]];
-      const odd = Number(match[3]);
-      if (!mercado || Number.isNaN(odd)) return;
+      // Trio "destacado": "1, Bet365, odd 2.90" — a melhor odd de cada mercado
+      // (pode vir de casas diferentes), usada só como referência de preço.
+      const matchDestacado = label.match(/^(1|X|2),\s*([^,]+),\s*odd\s*([\d.]+)/i);
+      if (matchDestacado) {
+        const mercado = MERCADO_POR_SIMBOLO[matchDestacado[1]];
+        const odd = Number(matchDestacado[3]);
+        if (mercado && !Number.isNaN(odd)) {
+          // Mantém a melhor (maior) odd caso o mesmo mercado apareça mais de uma vez.
+          if (!mercados[mercado] || odd > mercados[mercado]!.odd) {
+            mercados[mercado] = { odd, bookmaker: matchDestacado[2].trim() };
+          }
+        }
+        return;
+      }
 
-      // Mantém a melhor (maior) odd caso o mesmo mercado apareça mais de uma vez.
-      if (!mercados[mercado] || odd > mercados[mercado]!.odd) {
-        mercados[mercado] = { odd, bookmaker: match[2].trim() };
+      // Tabela detalhada por casa: "Bet365, 1, odd 2.90" (ordem invertida) —
+      // essa é a fonte da probabilidade implícita (ver probability.ts).
+      const matchPorCasa = label.match(/^([^,]+),\s*(1|X|2),\s*odd\s*([\d.]+)/i);
+      if (matchPorCasa) {
+        const mercado = MERCADO_POR_SIMBOLO[matchPorCasa[2]];
+        const odd = Number(matchPorCasa[3]);
+        if (!mercado || Number.isNaN(odd)) return;
+
+        const bookmaker = matchPorCasa[1].trim();
+        const odds = oddsPorBookmaker.get(bookmaker) ?? {};
+        odds[mercado] = odd;
+        oddsPorBookmaker.set(bookmaker, odds);
       }
     });
+
+    const porCasa: OddsPorCasa[] = [...oddsPorBookmaker.entries()]
+      .filter((entrada): entrada is [string, Required<Partial<Record<Resultado, number>>>] => {
+        const [, odds] = entrada;
+        return odds.casa !== undefined && odds.empate !== undefined && odds.visitante !== undefined;
+      })
+      .map(([bookmaker, odds]) => ({
+        bookmaker,
+        oddCasa: odds.casa,
+        oddEmpate: odds.empate,
+        oddVisitante: odds.visitante,
+      }));
 
     jogos.push({
       sequencial: indice + 1,
       equipeCasaOficial,
       equipeVisitanteOficial,
       mercados,
+      porCasa,
     });
   });
 

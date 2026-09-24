@@ -188,6 +188,7 @@ function renderJogo(j: JogoRelatorio): string {
     </div>
 
     <div class="linha-label">Odds (${escapeHtml(j.odds.bookmaker)}): 1=${j.odds.oddCasa.toFixed(2)} · X=${j.odds.oddEmpate.toFixed(2)} · 2=${j.odds.oddVisitante.toFixed(2)}</div>
+    <div class="linha-label">${j.odds.porCasa?.length ? `Probabilidade implícita (média de ${j.odds.porCasa.length} casas — não é o de-vig direto da odd acima, ver README P2)` : "Probabilidade implícita"}</div>
     ${renderBarra(j.probabilidadePura)}
 
     ${

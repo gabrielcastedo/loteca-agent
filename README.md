@@ -3,7 +3,9 @@
 Coleta a grade de jogos do concurso aberto da Loteca, busca odds de mercado
 já casadas pelo widget do odds.show (com fallback pro The Odds API +
 matching de nomes) e calcula a probabilidade implícita (sem overround) de
-cada resultado (1 / X / 2). Opcionalmente, busca
+cada resultado (1 / X / 2) — de cada casa de apostas individualmente
+quando disponível (odds.show), tirando a média entre elas em vez de
+misturar a melhor odd de cada mercado. Opcionalmente, busca
 notícias recentes de cada time, usa Claude pra classificar desfalques
 relevantes (lesões, suspensões) e ajusta a probabilidade implícita com
 base nisso. Estima também a popularidade de cada resultado entre
@@ -64,6 +66,10 @@ Faz:
   (`src/data/odds.ts`), casadas por nome de time (`src/data/matcher.ts`)
   — usado só nos jogos que o odds.show não cobrir
 - Calcula probabilidade implícita de mercado por jogo (`src/probability.ts`)
+  — quando o odds.show expõe odds por casa individualmente (a maioria dos
+  jogos), de-viga cada casa e tira a média entre elas
+  (`probabilidadesImplicitasMedia`) em vez de misturar a melhor odd de
+  cada mercado (que pode vir de casas diferentes) — ver item 12 abaixo
 - **Fase 2 (opcional):** busca notícias recentes de cada time via
   NewsAPI.org (`src/data/news.ts`), usa Claude Haiku pra classificar o
   nível de impacto de desfalques (`src/analysis/desfalques.ts`) e ajusta a
@@ -136,10 +142,12 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    público (`https://odds.show/br/widget_lotteries/?lottery=loteca`) feito
    especificamente pra loterias/bolões brasileiros — mostra a melhor odd
    de cada mercado (1/X/2) entre várias casas, já casada com o nome oficial
-   da Caixa. Testado ao vivo com o concurso 1272: **os 14 jogos tiveram
-   odds** (incluindo eliminatórias europeias e Série B/C, que o The Odds
-   API não cobre). Casamos por número de jogo (sequencial), não por nome —
-   muito mais confiável que o matcher de nomes.
+   da Caixa, e (desde 2026-09-23, ver item 12) também uma tabela completa
+   por casa, usada pra calcular a probabilidade implícita. Testado ao vivo
+   com o concurso 1272: **os 14 jogos tiveram odds** (incluindo
+   eliminatórias europeias e Série B/C, que o The Odds API não cobre).
+   Casamos por número de jogo (sequencial), não por nome — muito mais
+   confiável que o matcher de nomes.
 
    Não é uma API formal: é HTML server-renderizado (Next.js) de uma página
    pensada pra embutir via iframe. `robots.txt` permite (`Allow: /`), os
@@ -299,3 +307,22 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
     bem menor que "100%" (< 1%), mesmo cobrindo mais cenários que a versão
     inicial de 1 desvio por vez. Isso não é um bug, é a heurística sendo
     honesta sobre o que ela de fato garante.
+
+12. **Probabilidade implícita agora usa a média entre casas quando possível
+    (P2, resolvido em 2026-09-23).** O widget do odds.show sempre teve uma
+    tabela por casa escondida no HTML (`aria-label` em formato invertido,
+    ex: `"Bet365, 1, odd 2.90"`, diferente do trio "destacado" que já
+    líamos) — descoberta ao investigar o P2 do plano de melhorias. Antes,
+    a probabilidade de cada jogo vinha de um trio "Frankenstein" (a melhor
+    odd de 1, a melhor de X, a melhor de 2 — possivelmente 3 casas
+    diferentes), o que mistura o overround/viés de cada casa de forma
+    estatisticamente suja. Agora `probabilidadesImplicitasMedia`
+    (`src/probability.ts`) de-viga cada casa (tipicamente 5-7 por jogo)
+    individualmente e tira a média aritmética simples — sem dado de
+    confiabilidade/liquidez por casa pra ponderar, média simples é a opção
+    mais defensável. O trio "melhor odd" continua no relatório, mas só como
+    referência de preço — o rótulo "prob. implícita (média de N casas)"
+    deixa claro que os dois números não são a mesma conta. Cai pro trio
+    único de sempre nos jogos sem tabela por casa completa, e também nos
+    resolvidos via The Odds API (fallback), que fica de fora desse escopo
+    por ora (ver P2 em `docs/plano-melhorias.md`).

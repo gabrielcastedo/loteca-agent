@@ -2,7 +2,7 @@ import { ajustarProbabilidade } from "./analysis/ajuste.js";
 import { estimarPopularidade } from "./analysis/popularidade.js";
 import { classificarPrioridade } from "./analysis/otimizador.js";
 import type { PrioridadeUpgrade, Resultado } from "./analysis/otimizador.js";
-import { probabilidadesImplicitas } from "./probability.js";
+import { probabilidadesImplicitas, probabilidadesImplicitasMedia } from "./probability.js";
 import type {
   DesfalqueAnalise,
   JogoComOdds,
@@ -52,11 +52,14 @@ export function construirRelatorio(
 
     if (!item.odds) return base;
 
-    const probabilidadePura = probabilidadesImplicitas(
-      item.odds.oddCasa,
-      item.odds.oddEmpate,
-      item.odds.oddVisitante
-    );
+    // Quando a fonte expõe odds por casa (hoje só o odds.show), de-viga cada
+    // casa individualmente e tira a média — mais limpo estatisticamente que
+    // misturar a melhor odd de cada mercado (P2, ver probability.ts). Sem
+    // isso (ex: fallback via The Odds API), cai pro trio único de sempre.
+    const probabilidadePura =
+      item.odds.porCasa && item.odds.porCasa.length > 0
+        ? probabilidadesImplicitasMedia(item.odds.porCasa)
+        : probabilidadesImplicitas(item.odds.oddCasa, item.odds.oddEmpate, item.odds.oddVisitante);
     let probabilidadeFinal = probabilidadePura;
     let desfalques: [DesfalqueAnalise, DesfalqueAnalise] | null = null;
 

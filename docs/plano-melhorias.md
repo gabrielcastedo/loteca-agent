@@ -57,17 +57,32 @@ ganho de valor for maior que Y". Os valores de X/Y são outro chute inicial
 — por isso esse item deveria vir depois que P0 já tiver alguns concursos de
 histórico pra calibrar com dado real, não only vibes.
 
-## P2 — Odds por casa de apostas, não só "melhor de cada mercado"
+## P2 — Odds por casa de apostas, não só "melhor de cada mercado" ✅ feito em 2026-09-23
 
 **O quê:** hoje pegamos a melhor odd de 1, a melhor de X e a melhor de 2 do
 odds.show — possivelmente de três casas diferentes. Ótimo pra saber o
 melhor preço, mas estatisticamente menos limpo que pegar as três odds de
 uma mesma casa (o "viés" de cada casa de apostas se mistura).
 
-**O quê fazer:** se o odds.show expuser odds por casa individualmente (não
-só a melhor), calcular probabilidade implícita a partir de uma média
-ponderada entre casas, ou pelo menos guardar os dados brutos por casa pra
-permitir isso depois.
+**Resolvido:** o widget do odds.show já expõe uma tabela detalhada por
+casa (`aria-label="Bet365, 1, odd 2.90"`, formato invertido do trio
+"destacado" que já usávamos) — só não estávamos capturando. Agora
+`src/data/oddsShow.ts` extrai as duas coisas: o trio "melhor odd" (mantido
+só como referência de preço no relatório) e a tabela completa por casa
+(`OddsShowJogo.porCasa`, só entram casas com os 3 mercados presentes — na
+prática 5 a 7 casas por jogo). `probabilidadesImplicitasMedia`
+(`src/probability.ts`) de-viga cada casa individualmente e tira a média
+aritmética simples entre elas (sem dado de confiabilidade/liquidez por
+casa pra ponderar, média simples é a escolha mais defensável — decisão
+confirmada com o usuário). `report.ts` usa isso automaticamente quando
+disponível, caindo pro trio único de sempre nos jogos sem essa tabela (ou
+nos jogos resolvidos via The Odds API, fallback, que já entrega uma linha
+por bookmaker mas o matcher pega só a primeira — ficou de fora do escopo
+desse P2, é uma oportunidade parecida pra revisitar depois). O relatório
+(console e HTML) agora rotula "prob. implícita (média de N casas)" quando
+esse caminho é usado, pra não parecer que é o de-vig direto da odd
+"melhor" mostrada ao lado. Testes em `tests/oddsShow.test.ts` (parsing) e
+`tests/probability.test.ts` (a média em si).
 
 ## P3 — Mais sinais na Fase 2 (além de desfalque por notícia)
 
