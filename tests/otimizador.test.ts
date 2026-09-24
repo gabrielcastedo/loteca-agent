@@ -1,7 +1,18 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { classificarPrioridade, otimizarCartao } from "../src/analysis/otimizador.js";
+import { classificarPrioridade, otimizarCartao, pickFavorito } from "../src/analysis/otimizador.js";
 import { jogosComPrioridadePrevisivel } from "./helpers.js";
+
+test("pickFavorito: escolhe o resultado de maior probabilidade", () => {
+  assert.equal(pickFavorito({ casa: 0.5, empate: 0.3, visitante: 0.2 }), "casa");
+  assert.equal(pickFavorito({ casa: 0.2, empate: 0.5, visitante: 0.3 }), "empate");
+  assert.equal(pickFavorito({ casa: 0.2, empate: 0.3, visitante: 0.5 }), "visitante");
+});
+
+test("pickFavorito: em empate técnico, desempata na ordem casa > empate > visitante", () => {
+  assert.equal(pickFavorito({ casa: 1 / 3, empate: 1 / 3, visitante: 1 / 3 }), "casa");
+  assert.equal(pickFavorito({ casa: 0.2, empate: 0.4, visitante: 0.4 }), "empate");
+});
 
 test("classificarPrioridade: 4 primeiros = alta, próximos 4 = média, resto = nenhuma", () => {
   const jogos = jogosComPrioridadePrevisivel(14, 0.5, 0.46, 0.27);

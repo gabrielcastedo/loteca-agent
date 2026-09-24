@@ -49,6 +49,24 @@ Validado ao vivo com o concurso 1272: pipeline completo (Fases 1 a 4)
 rodou ponta a ponta, incluindo matching de odds, análise de desfalques,
 popularidade estimada e fechamento.
 
+## Conferir sugestões passadas (P0 — fechar o loop de validação)
+
+Depois que um concurso coletado com `npm run dev` for apurado (a Caixa
+publica o placar de cada jogo), rode:
+
+```bash
+npm run conferir -- <numero>
+```
+
+Isso busca o resultado real, compara contra a sugestão que o app deu **na
+época** (salva no banco, não recalculada agora — ver item 13 dos "Pontos
+de atenção"), e imprime: acerto do pick principal, acerto do "melhor
+valor", quantos jogos o fechamento reconstruído teria acertado, e um
+histórico acumulado de todos os concursos já conferidos. Sem isso, não dá
+pra saber se os fatores de `ajuste.ts`/`popularidade.ts`/`otimizador.ts`
+estão calibrados — é só chute em cima de chute (ver P0 em
+`docs/plano-melhorias.md`).
+
 ## O que este código faz (e o que não faz ainda)
 
 Faz:
@@ -98,20 +116,26 @@ Faz:
   ver aviso importante sobre garantia combinatória vs. probabilidade real
   abaixo. É a única estratégia de aposta que aparece no relatório hoje
 - Persiste tudo em SQLite (`src/db/schema.ts`), incluindo as análises de
-  desfalque na tabela `desfalques`
+  desfalque na tabela `desfalques` e um snapshot fixo da sugestão exibida
+  (tabela `sugestoes`) pra permitir conferência posterior (ver seção
+  "Conferir sugestões passadas" acima)
+- **P0 (loop de validação):** `npm run conferir -- <numero>` compara a
+  sugestão salva contra o resultado real depois que o concurso é apurado
 
 Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
 
 - Testes automatizados (`npm test`, `node:test`) cobrem os módulos de
   cálculo puro (`probability.ts`, `historico.ts`, `popularidade.ts`,
-  `otimizador.ts`, `fechamento.ts` — 26 casos, ver pasta `tests/`) —
-  `ajuste.ts` (Fase 2) ainda depende de validação manual
+  `otimizador.ts`, `fechamento.ts`, `numerosMegaSena.ts`, e as funções
+  puras usadas pelo P0 em `fixtures.ts`/`otimizador.ts` — 43 casos, ver
+  pasta `tests/`) — `ajuste.ts` (Fase 2) ainda depende de validação manual
 - Não há agendamento automático (rodar toda semana sozinho) — é preciso
   rodar `npm run dev` manualmente
-- **Não há loop de validação** (comparar sugestão vs. resultado real depois
-  do concurso apurado) — é o maior limitador de qualidade hoje, já que
-  todos os fatores de ajuste/popularidade/otimização são chutes com bom
-  senso, não calibração. Plano detalhado em
+- **O loop de validação (P0) existe (`npm run conferir`) mas ainda sem
+  dado real acumulado** — nenhum concurso coletado depois que a tabela
+  `sugestoes` passou a existir foi apurado ainda. Até acumular alguns
+  concursos conferidos, todos os fatores de ajuste/popularidade/otimização
+  continuam sendo chutes com bom senso, não calibração. Plano detalhado em
   [`docs/plano-melhorias.md`](docs/plano-melhorias.md).
 
 ## Pontos de atenção conhecidos
@@ -326,3 +350,40 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
     único de sempre nos jogos sem tabela por casa completa, e também nos
     resolvidos via The Odds API (fallback), que fica de fora desse escopo
     por ora (ver P2 em `docs/plano-melhorias.md`).
+
+13. **Loop de validação (P0, implementado em 2026-09-24) guarda um
+    SNAPSHOT da sugestão, não recalcula depois.** A tabela `sugestoes`
+    (`src/db/schema.ts`) salva a probabilidade pura/final, popularidade,
+    melhor valor e prioridade exatamente como foram exibidas no momento em
+    que `npm run dev` rodou. Isso é proposital: se `ajuste.ts` ou
+    `popularidade.ts` forem recalibrados no futuro (o próprio objetivo do
+    P0), recalcular a sugestão "antiga" com a fórmula nova mudaria
+    retroativamente o que a gente teria sugerido, invalidando a
+    comparação contra o resultado real. A única exceção é o **fechamento**:
+    `npm run conferir` reconstrói os bilhetes a partir da probabilidade
+    salva, mas usando a versão ATUAL de `gerarFechamento` — se esse
+    algoritmo mudar (ex: a ideia discutida de proteger os jogos "secos"
+    mais fracos em vez de cobrir só pares de risco), a reconstrução deixa
+    de refletir exatamente os bilhetes que apareceram no relatório daquela
+    semana. Isso é uma limitação conhecida, não um bug — persistir os
+    bilhetes literais exigiria duas tabelas extras (bilhetes + marcações)
+    pra um ganho que não parecia valer a complexidade agora.
+
+14. **Resultado apurado (P0) usa numerosmegasena.com.br como fonte
+    principal, com o endpoint da Caixa como fallback.** O usuário trouxe
+    essa fonte alternativa — página Next.js server-renderizada
+    (`https://numerosmegasena.com.br/loteca/<numero>/`, `robots.txt`
+    permite, `Allow: /`) com os dados prontos no script `__NEXT_DATA__`
+    (`result.jogos`: sequencial, placar, resultado). Preferida sobre o
+    endpoint `servicebus2` da Caixa (usado em `fetchConcursoAtual`/
+    `fetchConcursoPorNumero` pra grade, mantido como fallback em
+    `fetchResultadoApuradoCaixa`) por dois motivos: os dados já vêm
+    prontos (não precisa filtrar jogo por jogo), e o sinal de "ainda não
+    apurado" é um HTTP 404 prático — testado ao vivo com o concurso 1272
+    (ainda não decidido): a Caixa devolveu HTTP 500 (ambíguo, podia ser
+    erro real), numerosmegasena.com.br devolveu 404 (claro). Mesmo padrão
+    de fallback já usado pras odds (`preferirOddsShow` em `index.ts`).
+    `scripts/conferir.ts` tenta a fonte principal primeiro, cai pro
+    fallback se falhar por qualquer motivo, e reporta os dois erros se as
+    duas falharem. Validado ao vivo com o concurso 1271 (já apurado): os
+    14 placares bateram exatamente com o que a Caixa publicou.

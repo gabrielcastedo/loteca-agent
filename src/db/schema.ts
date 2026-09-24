@@ -2,6 +2,8 @@ import Database from "better-sqlite3";
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import type { DesfalqueAnalise, JogoComOdds, LotecaConcurso } from "../types.js";
+import type { Resultado } from "../analysis/otimizador.js";
+import type { JogoRelatorio } from "../report.js";
 
 export function openDb(path: string): Database.Database {
   mkdirSync(dirname(path), { recursive: true });
@@ -53,6 +55,41 @@ function migrate(db: Database.Database): void {
       impacto TEXT NOT NULL,
       motivo TEXT NOT NULL,
       coletado_em TEXT NOT NULL,
+      FOREIGN KEY (jogo_id) REFERENCES jogos(id)
+    );
+
+    -- P0: snapshot da sugestão exibida ao usuário no momento da geração do
+    -- relatório (não recalculada depois — senão uma futura recalibração dos
+    -- fatores de ajuste.ts/popularidade.ts mudaria retroativamente o que a
+    -- gente "teria sugerido", invalidando a comparação com o resultado real).
+    CREATE TABLE IF NOT EXISTS sugestoes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      jogo_id INTEGER NOT NULL UNIQUE,
+      prob_pura_casa REAL NOT NULL,
+      prob_pura_empate REAL NOT NULL,
+      prob_pura_visitante REAL NOT NULL,
+      prob_final_casa REAL NOT NULL,
+      prob_final_empate REAL NOT NULL,
+      prob_final_visitante REAL NOT NULL,
+      popularidade_casa REAL NOT NULL,
+      popularidade_empate REAL NOT NULL,
+      popularidade_visitante REAL NOT NULL,
+      melhor_valor_resultado TEXT NOT NULL,
+      melhor_valor_numero REAL NOT NULL,
+      prioridade TEXT NOT NULL,
+      coletado_em TEXT NOT NULL,
+      FOREIGN KEY (jogo_id) REFERENCES jogos(id)
+    );
+
+    -- P0: resultado real de cada jogo, depois de apurado (vem da mesma API
+    -- de fixtures.ts, mas só chamada explicitamente via "npm run conferir").
+    CREATE TABLE IF NOT EXISTS resultados_reais (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      jogo_id INTEGER NOT NULL UNIQUE,
+      gols_casa INTEGER NOT NULL,
+      gols_visitante INTEGER NOT NULL,
+      resultado TEXT NOT NULL,
+      apurado_em TEXT NOT NULL,
       FOREIGN KEY (jogo_id) REFERENCES jogos(id)
     );
   `);
@@ -162,4 +199,180 @@ export function salvarDesfalques(
   });
 
   transacao();
+}
+
+/**
+ * P0: persiste a sugestão exibida (probabilidade pura/final, popularidade,
+ * melhor valor, prioridade) pra cada jogo do relatório — snapshot fixo no
+ * tempo, ver comentário na criação da tabela `sugestoes`. Só salva jogos
+ * com probabilidade calculada (com odds); jogos sem odds não têm sugestão.
+ */
+export function salvarSugestoes(
+  db: Database.Database,
+  idsPorSequencial: Map<number, number>,
+  relatorio: JogoRelatorio[]
+): void {
+  const agora = new Date().toISOString();
+
+  const upsertSugestao = db.prepare(`
+    INSERT INTO sugestoes (
+      jogo_id, prob_pura_casa, prob_pura_empate, prob_pura_visitante,
+      prob_final_casa, prob_final_empate, prob_final_visitante,
+      popularidade_casa, popularidade_empate, popularidade_visitante,
+      melhor_valor_resultado, melhor_valor_numero, prioridade, coletado_em
+    )
+    VALUES (
+      @jogoId, @probPuraCasa, @probPuraEmpate, @probPuraVisitante,
+      @probFinalCasa, @probFinalEmpate, @probFinalVisitante,
+      @popularidadeCasa, @popularidadeEmpate, @popularidadeVisitante,
+      @melhorValorResultado, @melhorValorNumero, @prioridade, @coletadoEm
+    )
+    ON CONFLICT(jogo_id) DO UPDATE SET
+      prob_pura_casa = excluded.prob_pura_casa,
+      prob_pura_empate = excluded.prob_pura_empate,
+      prob_pura_visitante = excluded.prob_pura_visitante,
+      prob_final_casa = excluded.prob_final_casa,
+      prob_final_empate = excluded.prob_final_empate,
+      prob_final_visitante = excluded.prob_final_visitante,
+      popularidade_casa = excluded.popularidade_casa,
+      popularidade_empate = excluded.popularidade_empate,
+      popularidade_visitante = excluded.popularidade_visitante,
+      melhor_valor_resultado = excluded.melhor_valor_resultado,
+      melhor_valor_numero = excluded.melhor_valor_numero,
+      prioridade = excluded.prioridade,
+      coletado_em = excluded.coletado_em
+  `);
+
+  const transacao = db.transaction(() => {
+    for (const j of relatorio) {
+      if (!j.probabilidadePura || !j.probabilidadeFinal || !j.popularidade || !j.melhorValor) continue;
+      const jogoId = idsPorSequencial.get(j.sequencial);
+      if (!jogoId) continue;
+
+      upsertSugestao.run({
+        jogoId,
+        probPuraCasa: j.probabilidadePura.casa,
+        probPuraEmpate: j.probabilidadePura.empate,
+        probPuraVisitante: j.probabilidadePura.visitante,
+        probFinalCasa: j.probabilidadeFinal.casa,
+        probFinalEmpate: j.probabilidadeFinal.empate,
+        probFinalVisitante: j.probabilidadeFinal.visitante,
+        popularidadeCasa: j.popularidade.casa,
+        popularidadeEmpate: j.popularidade.empate,
+        popularidadeVisitante: j.popularidade.visitante,
+        melhorValorResultado: j.melhorValor.resultado,
+        melhorValorNumero: j.melhorValor.valor,
+        prioridade: j.prioridade ?? "nenhuma",
+        coletadoEm: agora,
+      });
+    }
+  });
+
+  transacao();
+}
+
+/** P0: persiste o resultado real (apurado) de cada jogo de um concurso. */
+export function salvarResultadosReais(
+  db: Database.Database,
+  idsPorSequencial: Map<number, number>,
+  resultados: Array<{ sequencial: number; golsCasa: number; golsVisitante: number; resultado: Resultado }>
+): void {
+  const agora = new Date().toISOString();
+
+  const upsertResultado = db.prepare(`
+    INSERT INTO resultados_reais (jogo_id, gols_casa, gols_visitante, resultado, apurado_em)
+    VALUES (@jogoId, @golsCasa, @golsVisitante, @resultado, @apuradoEm)
+    ON CONFLICT(jogo_id) DO UPDATE SET
+      gols_casa = excluded.gols_casa,
+      gols_visitante = excluded.gols_visitante,
+      resultado = excluded.resultado,
+      apurado_em = excluded.apurado_em
+  `);
+
+  const transacao = db.transaction(() => {
+    for (const r of resultados) {
+      const jogoId = idsPorSequencial.get(r.sequencial);
+      if (!jogoId) continue;
+      upsertResultado.run({
+        jogoId,
+        golsCasa: r.golsCasa,
+        golsVisitante: r.golsVisitante,
+        resultado: r.resultado,
+        apuradoEm: agora,
+      });
+    }
+  });
+
+  transacao();
+}
+
+/** Ids dos jogos de um concurso já salvo, indexados por sequencial (1 a 14). */
+export function buscarIdsDosJogos(db: Database.Database, concursoNumero: number): Map<number, number> {
+  const linhas = db
+    .prepare(`SELECT id, sequencial FROM jogos WHERE concurso_numero = ?`)
+    .all(concursoNumero) as Array<{ id: number; sequencial: number }>;
+  return new Map(linhas.map((l) => [l.sequencial, l.id]));
+}
+
+/** Linha combinada de jogo + sugestão salva + resultado real (quando existirem), pra conferência (P0). */
+export interface LinhaConferencia {
+  sequencial: number;
+  equipeCasa: string;
+  equipeVisitante: string;
+  probFinal: { casa: number; empate: number; visitante: number } | null;
+  melhorValorResultado: Resultado | null;
+  melhorValorNumero: number | null;
+  prioridade: string | null;
+  resultadoReal: Resultado | null;
+  golsCasa: number | null;
+  golsVisitante: number | null;
+}
+
+/** Busca tudo que `npm run conferir` precisa pra um concurso, já casado por jogo. */
+export function buscarDadosParaConferencia(db: Database.Database, concursoNumero: number): LinhaConferencia[] {
+  const linhas = db
+    .prepare(
+      `
+      SELECT
+        j.sequencial, j.equipe_casa, j.equipe_visitante,
+        s.prob_final_casa, s.prob_final_empate, s.prob_final_visitante,
+        s.melhor_valor_resultado, s.melhor_valor_numero, s.prioridade,
+        r.resultado, r.gols_casa, r.gols_visitante
+      FROM jogos j
+      LEFT JOIN sugestoes s ON s.jogo_id = j.id
+      LEFT JOIN resultados_reais r ON r.jogo_id = j.id
+      WHERE j.concurso_numero = ?
+      ORDER BY j.sequencial
+      `
+    )
+    .all(concursoNumero) as Array<{
+    sequencial: number;
+    equipe_casa: string;
+    equipe_visitante: string;
+    prob_final_casa: number | null;
+    prob_final_empate: number | null;
+    prob_final_visitante: number | null;
+    melhor_valor_resultado: Resultado | null;
+    melhor_valor_numero: number | null;
+    prioridade: string | null;
+    resultado: Resultado | null;
+    gols_casa: number | null;
+    gols_visitante: number | null;
+  }>;
+
+  return linhas.map((l) => ({
+    sequencial: l.sequencial,
+    equipeCasa: l.equipe_casa,
+    equipeVisitante: l.equipe_visitante,
+    probFinal:
+      l.prob_final_casa != null && l.prob_final_empate != null && l.prob_final_visitante != null
+        ? { casa: l.prob_final_casa, empate: l.prob_final_empate, visitante: l.prob_final_visitante }
+        : null,
+    melhorValorResultado: l.melhor_valor_resultado,
+    melhorValorNumero: l.melhor_valor_numero,
+    prioridade: l.prioridade,
+    resultadoReal: l.resultado,
+    golsCasa: l.gols_casa,
+    golsVisitante: l.gols_visitante,
+  }));
 }

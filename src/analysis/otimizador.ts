@@ -83,6 +83,13 @@ function combinacoesValidas(duplos: number, triplos: number): boolean {
   return duplos <= MAX_DUPLOS_POR_TRIPLOS[triplos];
 }
 
+/** O resultado de maior probabilidade — o "pick principal" de um jogo, usado tanto pelo otimizador quanto pela conferência (P0). */
+export function pickFavorito(probabilidade: ProbabilidadePura): Resultado {
+  if (probabilidade.casa >= probabilidade.empate && probabilidade.casa >= probabilidade.visitante) return "casa";
+  if (probabilidade.empate >= probabilidade.visitante) return "empate";
+  return "visitante";
+}
+
 /**
  * Classifica cada jogo por prioridade de upgrade (duplo/triplo), ordenando
  * pelo "ganho marginal" de virar duplo (a probabilidade do 2º colocado —

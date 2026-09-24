@@ -18,14 +18,14 @@ calibração:
 Sem comparar sugestão vs. resultado real, toda melhoria nesses fatores é
 só outro chute — por isso o item P0 abaixo vem antes de tudo.
 
-## P0 — Fechar o loop de validação (base pra tudo mais)
+## P0 — Fechar o loop de validação (base pra tudo mais) ✅ implementado em 2026-09-24
 
 **O quê:** depois que um concurso é apurado (a própria API `servicebus2`
 já tem isso, com os placares em `nuGolEquipeUm`/`nuGolEquipeDois`), buscar
 o resultado real de cada jogo e comparar contra o que o app sugeriu:
 - O pick principal (maior probabilidade) acertou?
 - O "melhor valor" (Fase 3) teria sido uma escolha melhor?
-- O cartão sugerido (Fase 4) teria acertado quantos jogos?
+- O fechamento (Fase 4b) teria acertado quantos jogos?
 
 **Por quê primeiro:** sem isso, qualquer ajuste nos fatores das Fases 2-4
 é só um segundo chute em cima do primeiro. Com histórico acumulado
@@ -33,9 +33,46 @@ o resultado real de cada jogo e comparar contra o que o app sugeriu:
 = 0.6` está muito forte/fraco, se o otimizador está priorizando os jogos
 certos pra duplo/triplo, etc.
 
-**Como:** uma tabela nova (`resultados`) + um comando separado
-(`npm run conferir <numero>`) que busca o concurso já apurado, compara com
-o que foi salvo no banco na época, e imprime/persiste as métricas de acerto.
+**Como foi implementado:**
+- Tabela nova `sugestoes` (`src/db/schema.ts`) guarda um SNAPSHOT fixo no
+  tempo do que foi exibido (probabilidade pura/final, popularidade, melhor
+  valor, prioridade) no momento em que o relatório rodou — não é
+  recalculado depois, senão uma recalibração futura de `ajuste.ts`/
+  `popularidade.ts` mudaria retroativamente "o que a gente teria sugerido",
+  invalidando a comparação. `salvarSugestoes` é chamada em `index.ts` logo
+  depois de `construirRelatorio`.
+- Tabela nova `resultados_reais` guarda o placar/resultado real de cada
+  jogo, uma vez apurado.
+- `fetchResultadoApurado` (`src/data/fixtures.ts`) busca o placar na mesma
+  API já usada pra grade (`nuGolEquipeUm`/`nuGolEquipeDois`), lança erro
+  claro se o concurso ainda não foi totalmente apurado.
+- Comando novo `npm run conferir -- <numero>` (`scripts/conferir.ts`):
+  busca o resultado real, salva, e imprime três coisas — comparação jogo a
+  jogo (pick principal vs. melhor valor vs. resultado real, com resumo de
+  acerto), o fechamento RECONSTRUÍDO a partir da probabilidade salva
+  (distribuição de acertos entre os 28 bilhetes — limitação conhecida: usa
+  a versão ATUAL de `fechamento.ts`, não necessariamente a que rodou na
+  época, já que só a probabilidade fica fixa, não o algoritmo), e um
+  histórico acumulado (soma de todos os concursos já conferidos até agora).
+- Não persiste métricas derivadas separadamente — `sugestoes` +
+  `resultados_reais` já são a fonte da verdade; qualquer métrica é
+  recalculada on-the-fly a partir delas, então nunca fica dessincronizada.
+- **Ainda sem dado real pra validar**: essa sessão não tinha nenhum
+  concurso com sugestão salva E já apurado ao mesmo tempo (o pipeline
+  ganhou a tabela `sugestoes` só agora; concursos anteriores — 1270, 1271
+  — já estão decididos mas foram coletados antes dessa tabela existir).
+  Testado com dados fabricados (script descartável, removido) pra validar
+  a lógica; o primeiro uso real só vai acontecer quando o concurso 1272
+  (ou o próximo coletado com `npm run dev`) for apurado.
+- **Atualização 2026-09-24:** o usuário trouxe uma fonte melhor pro
+  resultado apurado — `numerosmegasena.com.br/loteca/<numero>/`, página
+  Next.js com os dados prontos em `__NEXT_DATA__` (`result.jogos`). Virou
+  a fonte principal (`src/data/numerosMegaSena.ts`), com o endpoint
+  `servicebus2` da Caixa como fallback (`fetchResultadoApuradoCaixa`, ex-
+  `fetchResultadoApurado` em `fixtures.ts`) — mesmo padrão de fallback já
+  usado pras odds. Testado ao vivo: concurso 1272 (não decidido) deu HTTP
+  404 na nova fonte vs. HTTP 500 ambíguo na Caixa; concurso 1271 (decidido)
+  bateu os 14 placares certinho nas duas fontes. Ver README item 14.
 
 ## P1 — Usar o "melhor valor" de verdade na escolha do pick
 
@@ -180,8 +217,9 @@ código TypeScript incluído. Avaliação (detalhada no README, item 10):
 
 ## Por onde eu começaria
 
-**P0 continua a prioridade.** Todo o resto (P1, P4) depende de ter dado
-real pra calibrar em vez de mais um chute. P2 e P3 são incrementais e
-podem vir em paralelo, sem depender de P0. P5 e a simulação de Monte
-Carlo já estão feitos. P6 vale ir fazendo conforme mexer em cada módulo,
-não como um projeto à parte.
+**P0 está implementado, falta só dado real acumular.** Rode
+`npm run conferir -- <numero>` toda vez que um concurso coletado com
+`npm run dev` for apurado — cada execução acumula mais uma linha de
+histórico real pra eventualmente calibrar P1/P4 com dado de verdade em
+vez de mais um chute. P2, P5, P6 e a simulação de Monte Carlo já estão
+feitos. P3 é incremental e pode vir em paralelo.

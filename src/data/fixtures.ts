@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import type { LotecaConcurso, LotecaJogo } from "../types.js";
+import type { Resultado } from "../analysis/otimizador.js";
 
 /**
  * Endpoint público usado pelo próprio site da Caixa (loterias.caixa.gov.br)
@@ -90,6 +91,51 @@ export async function fetchConcursoPorNumero(
 ): Promise<LotecaConcurso> {
   const raw = await fetchRaw(numero);
   return parseConcurso(raw);
+}
+
+/** Resultado real (placar) de um jogo já apurado, pra conferência (P0, `npm run conferir`). */
+export interface ResultadoApurado {
+  sequencial: number;
+  golsCasa: number;
+  golsVisitante: number;
+  resultado: Resultado;
+}
+
+/**
+ * Busca os placares de um concurso já apurado, pra comparar contra as
+ * sugestões salvas na época (P0 — ver `scripts/conferir.ts`). Mesma API de
+ * `fetchConcursoPorNumero`, mas extrai `nuGolEquipeUm`/`nuGolEquipeDois` em
+ * vez de descartá-los. Lança erro claro se o concurso ainda não foi
+ * apurado (algum jogo sem placar) — nesse caso não há o que conferir ainda.
+ *
+ * Usada como FALLBACK por `scripts/conferir.ts` — a fonte principal é
+ * `src/data/numerosMegaSena.ts` (dado já vem com o resultado pronto, sem
+ * precisar derivar de placar, e a resposta é mais previsível que esse
+ * endpoint não documentado da Caixa).
+ */
+export async function fetchResultadoApuradoCaixa(numero: number): Promise<ResultadoApurado[]> {
+  const raw = await fetchRaw(numero);
+  const lista = raw.listaResultadoEquipeEsportiva ?? [];
+
+  const semPlacar = lista.filter((j) => j.nuGolEquipeUm == null || j.nuGolEquipeDois == null);
+  if (semPlacar.length > 0) {
+    throw new Error(
+      `Concurso ${numero} ainda não foi totalmente apurado — ${semPlacar.length} de ${lista.length} jogo(s) sem placar.`
+    );
+  }
+
+  return lista.map((j) => {
+    const golsCasa = j.nuGolEquipeUm!;
+    const golsVisitante = j.nuGolEquipeDois!;
+    return { sequencial: j.nuSequencial, golsCasa, golsVisitante, resultado: resultadoDoPlacar(golsCasa, golsVisitante) };
+  });
+}
+
+/** Deriva o resultado (1/X/2) a partir do placar — pura, sem depender da API, pra ser testável isoladamente. */
+export function resultadoDoPlacar(golsCasa: number, golsVisitante: number): Resultado {
+  if (golsCasa > golsVisitante) return "casa";
+  if (golsCasa < golsVisitante) return "visitante";
+  return "empate";
 }
 
 async function fetchRaw(numero?: number): Promise<CaixaLotecaRawResponse> {

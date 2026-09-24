@@ -17,7 +17,7 @@ import type { ResultadoFechamento } from "./analysis/fechamento.js";
 import { construirRelatorio } from "./report.js";
 import type { JogoRelatorio } from "./report.js";
 import { gerarRelatorioHtml } from "./reportHtml.js";
-import { openDb, salvarConcursoComOdds, salvarDesfalques } from "./db/schema.js";
+import { openDb, salvarConcursoComOdds, salvarDesfalques, salvarSugestoes } from "./db/schema.js";
 import type { DesfalqueAnalise, JogoComOdds, OddsJogo } from "./types.js";
 
 const LABEL_RESULTADO: Record<Resultado, string> = { casa: "1", empate: "X", visitante: "2" };
@@ -94,6 +94,8 @@ async function main() {
     );
   }
 
+  const relatorio = construirRelatorio(jogosComOdds, desfalquesPorSequencial);
+
   console.log("6/6 — Salvando no banco local...");
   const db = openDb(dbPath);
   const idsPorSequencial = salvarConcursoComOdds(db, concurso, jogosComOdds);
@@ -103,9 +105,11 @@ async function main() {
       salvarDesfalques(db, jogoId, analises);
     }
   }
+  // P0: snapshot da sugestão exibida agora, pra "npm run conferir" comparar
+  // contra o resultado real depois que o concurso for apurado.
+  salvarSugestoes(db, idsPorSequencial, relatorio);
   db.close();
 
-  const relatorio = construirRelatorio(jogosComOdds, desfalquesPorSequencial);
   const probabilidadesPorSequencial = new Map(
     relatorio
       .filter((j): j is JogoRelatorio & { probabilidadeFinal: NonNullable<JogoRelatorio["probabilidadeFinal"]> } =>
