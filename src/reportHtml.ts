@@ -1,17 +1,28 @@
-import type { ResultadoOtimizacao, Resultado } from "./analysis/otimizador.js";
+import type { PrioridadeUpgrade, Resultado } from "./analysis/otimizador.js";
+import type { ResultadoMonteCarlo } from "./analysis/monteCarlo.js";
+import type { ResultadoFechamento } from "./analysis/fechamento.js";
 import type { JogoRelatorio } from "./report.js";
 
 const LABEL_RESULTADO: Record<Resultado, string> = { casa: "1", empate: "X", visitante: "2" };
+const LABEL_PRIORIDADE: Record<PrioridadeUpgrade, string> = {
+  alta: "Prioridade Alta",
+  media: "Prioridade Média",
+  nenhuma: "Não vale upgrade",
+};
+const COR_PRIORIDADE: Record<PrioridadeUpgrade, string> = {
+  alta: "#dc2626",
+  media: "#d97706",
+  nenhuma: "#6b6b76",
+};
 
 export function gerarRelatorioHtml(
   concursoNumero: number,
   relatorio: JogoRelatorio[],
-  cartao: ResultadoOtimizacao | null,
-  orcamentoReais: number
+  fechamento: ResultadoFechamento,
+  fechamentoMonteCarlo: ResultadoMonteCarlo | null
 ): string {
   const geradoEm = new Date().toLocaleString("pt-BR");
   const semOdds = relatorio.filter((j) => !j.odds);
-  const cartaoPorSequencial = new Map(cartao?.alocacoes.map((a) => [a.sequencial, a]) ?? []);
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -66,11 +77,15 @@ export function gerarRelatorioHtml(
   }
   .jogo-titulo {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
+    gap: 6px;
     font-weight: 600;
     margin-bottom: 10px;
   }
+  .jogo-titulo-nome { flex: 1; min-width: 0; }
+  .jogo-titulo-badges { display: flex; gap: 6px; flex-wrap: wrap; }
   .seq { color: var(--text-muted); font-weight: 400; margin-right: 8px; }
   .badge {
     font-size: 0.75rem;
@@ -105,15 +120,24 @@ export function gerarRelatorioHtml(
     font-size: 0.82rem;
     margin-top: 8px;
   }
-  table { width: 100%; border-collapse: collapse; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 8px; }
   th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
   th { color: var(--text-muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; }
   tr:last-child td { border-bottom: none; }
-  .tipo-triplo { color: var(--visitante); font-weight: 600; }
-  .tipo-duplo { color: var(--casa); font-weight: 600; }
-  .tipo-simples { color: var(--text-muted); }
-  .resumo-cartao { color: var(--text-muted); font-size: 0.85rem; margin-top: 10px; }
+  .resumo-cartao { color: var(--text-muted); font-size: 0.85rem; margin-top: 10px; margin-bottom: 24px; }
   .lista-sem-odds { font-size: 0.85rem; color: var(--text-muted); }
+  .fechamento-tabela-wrap { overflow-x: auto; margin-bottom: 8px; }
+  .fechamento-tabela { font-size: 0.78rem; white-space: nowrap; }
+  .fechamento-tabela th, .fechamento-tabela td { padding: 6px 8px; }
+  .cel-hedge { background: var(--warn-bg); color: var(--visitante); font-weight: 700; }
+  .aviso-fechamento {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    margin: 12px 0 20px;
+  }
   footer { margin-top: 40px; font-size: 0.75rem; color: var(--text-muted); }
 </style>
 </head>
@@ -125,8 +149,7 @@ export function gerarRelatorioHtml(
   <h2>Grade × Odds</h2>
   ${relatorio.map(renderJogo).join("\n")}
 
-  <h2>Cartão sugerido (orçamento R$${orcamentoReais.toFixed(2)})</h2>
-  ${cartao ? renderCartao(cartao, relatorio) : `<p class="sem-odds">Nenhum cartão sugerido (sem jogos com odds).</p>`}
+  ${renderFechamento(fechamento, fechamentoMonteCarlo)}
 
   ${semOdds.length > 0 ? renderSemOdds(semOdds) : ""}
 
@@ -141,12 +164,15 @@ function renderJogo(j: JogoRelatorio): string {
 
   if (!j.odds || !j.probabilidadePura || !j.probabilidadeFinal || !j.popularidade || !j.melhorValor) {
     return `<div class="jogo">
-      <div class="jogo-titulo">${titulo}</div>
+      <div class="jogo-titulo"><span class="jogo-titulo-nome">${titulo}</span></div>
       <div class="sem-odds">Sem odds disponíveis — escolha manual.</div>
     </div>`;
   }
 
   const confAviso = j.matchConfidence < 1 ? `<span class="badge" style="background:#d97706">match incerto</span>` : "";
+  const prioridadeBadge = j.prioridade
+    ? `<span class="badge" style="background:${COR_PRIORIDADE[j.prioridade]}">${LABEL_PRIORIDADE[j.prioridade]}</span>`
+    : "";
 
   const desfalquesHtml = j.desfalques
     ? `<div class="desfalque">
@@ -156,7 +182,10 @@ function renderJogo(j: JogoRelatorio): string {
     : "";
 
   return `<div class="jogo">
-    <div class="jogo-titulo">${titulo} ${confAviso}<span class="badge">melhor valor: ${LABEL_RESULTADO[j.melhorValor.resultado]} (${j.melhorValor.valor.toFixed(2)}x)</span></div>
+    <div class="jogo-titulo">
+      <span class="jogo-titulo-nome">${titulo}</span>
+      <span class="jogo-titulo-badges">${confAviso}${prioridadeBadge}<span class="badge">melhor valor: ${LABEL_RESULTADO[j.melhorValor.resultado]} (${j.melhorValor.valor.toFixed(2)}x)</span></span>
+    </div>
 
     <div class="linha-label">Odds (${escapeHtml(j.odds.bookmaker)}): 1=${j.odds.oddCasa.toFixed(2)} · X=${j.odds.oddEmpate.toFixed(2)} · 2=${j.odds.oddVisitante.toFixed(2)}</div>
     ${renderBarra(j.probabilidadePura)}
@@ -183,29 +212,49 @@ function renderBarra(p: { casa: number; empate: number; visitante: number }): st
   </div>`;
 }
 
-function renderCartao(cartao: ResultadoOtimizacao, relatorio: JogoRelatorio[]): string {
-  const porSequencial = new Map(relatorio.map((j) => [j.sequencial, j]));
+function renderFechamento(fechamento: ResultadoFechamento, monteCarlo: ResultadoMonteCarlo | null): string {
+  if (fechamento.bilhetes.length === 0) {
+    return "";
+  }
 
-  const linhas = cartao.alocacoes
-    .map((a) => {
-      const jogo = porSequencial.get(a.sequencial);
-      const tipoClasse = `tipo-${a.tipo}`;
-      const marcacoes = a.marcacoes.map((r) => LABEL_RESULTADO[r]).join(", ");
-      return `<tr>
-        <td>${String(a.sequencial).padStart(2, "0")}</td>
-        <td>${escapeHtml(jogo?.equipeCasa ?? a.equipeCasa)} × ${escapeHtml(jogo?.equipeVisitante ?? a.equipeVisitante)}</td>
-        <td class="${tipoClasse}">${a.tipo}</td>
-        <td>${marcacoes}</td>
-      </tr>`;
+  const jogosOrdenados = fechamento.bilhetes[0].marcacoes;
+  const cabecalho = jogosOrdenados.map((m) => `<th>J${String(m.sequencial).padStart(2, "0")}</th>`).join("");
+
+  const linhas = fechamento.bilhetes
+    .map((b) => {
+      const celulas = b.marcacoes
+        .map((m) => {
+          const ehCobertura = b.jogosDeCoberturaSequenciais.includes(m.sequencial);
+          const texto = m.marcacoes.map((r) => LABEL_RESULTADO[r]).join("/");
+          return `<td class="${ehCobertura ? "cel-hedge" : ""}">${texto}</td>`;
+        })
+        .join("");
+      return `<tr><td><strong>Bilhete ${b.numero}</strong></td>${celulas}</tr>`;
     })
     .join("\n");
 
-  return `<table>
-    <thead><tr><th>Jogo</th><th>Confronto</th><th>Tipo</th><th>Marcações</th></tr></thead>
-    <tbody>${linhas}</tbody>
-  </table>
-  <div class="resumo-cartao">Total: ${cartao.totalCombinacoes} combinações — custo estimado R$${cartao.custoReais.toFixed(2)}.
-  Fórmula 2<sup>duplos</sup> × 3<sup>triplos</sup> × R$2,00 — confira o teto de duplos/triplos e o preço atual no site/app da Caixa antes de apostar de verdade.</div>`;
+  const monteCarloHtml = monteCarlo
+    ? `<strong>${monteCarlo.pctTodosOsJogos.toFixed(1)}%</strong> de chance real de algum bilhete acertar todos os ${monteCarlo.totalJogosSimulados} jogos simulados, ` +
+      `<strong>${monteCarlo.pctNoMaximoUmErro.toFixed(1)}%</strong> de algum bilhete errar no máximo 1` +
+      (monteCarlo.totalJogosSimulados < 14 ? " (não reflete oficialmente 13/14, faltam jogos sem odds)." : ".")
+    : "não foi possível simular.";
+
+  return `<h2>Fechamento (cobertura de até 2 desvios simultâneos)</h2>
+  <div class="aviso-fechamento">
+    <strong>Isso não é 100% de garantia.</strong> Cada bilhete marca o favorito em todos os jogos, exceto 2
+    "jogos de risco" (Prioridade Alta ou Média), que recebem duplo (favorito + segundo colocado) cada. Cada bilhete
+    cobre um par diferente de jogos de risco — juntos, os bilhetes cobrem <em>até 2</em> desses jogos desviando do
+    favorito ao mesmo tempo. NÃO cobre: 3 ou mais jogos de risco desviando juntos, o terceiro colocado em qualquer
+    jogo, nem qualquer desvio nos jogos "secos" (fixos em todos os bilhetes). Se um jogo seco falhar,
+    <strong>todos os bilhetes erram esse jogo ao mesmo tempo</strong>. A chance real, calculada por simulação: ${monteCarloHtml}
+  </div>
+  <div class="fechamento-tabela-wrap">
+    <table class="fechamento-tabela">
+      <thead><tr><th>Bilhete</th>${cabecalho}</tr></thead>
+      <tbody>${linhas}</tbody>
+    </table>
+  </div>
+  <div class="resumo-cartao">Total: ${fechamento.bilhetes.length} bilhetes (2 duplos cada) — custo R$${fechamento.custoTotalReais.toFixed(2)}.</div>`;
 }
 
 function renderSemOdds(semOdds: JogoRelatorio[]): string {

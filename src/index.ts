@@ -9,8 +9,11 @@ import type { OddsShowJogo } from "./data/oddsShow.js";
 import { fetchNoticiasTime } from "./data/news.js";
 import { matchJogosComOdds } from "./data/matcher.js";
 import { analisarDesfalques } from "./analysis/desfalques.js";
-import { otimizarCartao } from "./analysis/otimizador.js";
-import type { JogoParaOtimizar, Resultado, ResultadoOtimizacao } from "./analysis/otimizador.js";
+import type { JogoParaOtimizar, PrioridadeUpgrade, Resultado } from "./analysis/otimizador.js";
+import { simularFechamento } from "./analysis/monteCarlo.js";
+import type { ResultadoMonteCarlo } from "./analysis/monteCarlo.js";
+import { gerarFechamento } from "./analysis/fechamento.js";
+import type { ResultadoFechamento } from "./analysis/fechamento.js";
 import { construirRelatorio } from "./report.js";
 import type { JogoRelatorio } from "./report.js";
 import { gerarRelatorioHtml } from "./reportHtml.js";
@@ -18,6 +21,11 @@ import { openDb, salvarConcursoComOdds, salvarDesfalques } from "./db/schema.js"
 import type { DesfalqueAnalise, JogoComOdds, OddsJogo } from "./types.js";
 
 const LABEL_RESULTADO: Record<Resultado, string> = { casa: "1", empate: "X", visitante: "2" };
+const LABEL_PRIORIDADE: Record<PrioridadeUpgrade, string> = {
+  alta: "Prioridade Alta",
+  media: "Prioridade Média",
+  nenhuma: "Não vale upgrade",
+};
 
 async function main() {
   const apiKey = process.env.ODDS_API_KEY;
@@ -26,7 +34,6 @@ async function main() {
   const newsApiKey = configurado(process.env.NEWSAPI_KEY);
   const anthropicApiKey = configurado(process.env.ANTHROPIC_API_KEY);
   const fase2Ativa = Boolean(newsApiKey && anthropicApiKey);
-  const orcamentoReais = Number(process.env.ORCAMENTO_REAIS ?? "20");
 
   if (!apiKey || apiKey === "coloque_sua_chave_aqui") {
     console.error(
@@ -99,12 +106,22 @@ async function main() {
   db.close();
 
   const relatorio = construirRelatorio(jogosComOdds, desfalquesPorSequencial);
-  const cartao = montarCartaoSugerido(relatorio, orcamentoReais);
+  const probabilidadesPorSequencial = new Map(
+    relatorio
+      .filter((j): j is JogoRelatorio & { probabilidadeFinal: NonNullable<JogoRelatorio["probabilidadeFinal"]> } =>
+        Boolean(j.probabilidadeFinal)
+      )
+      .map((j) => [j.sequencial, j.probabilidadeFinal])
+  );
+  const jogosParaOtimizar = construirJogosParaOtimizar(relatorio);
+  const fechamento = gerarFechamento(jogosParaOtimizar);
+  const fechamentoMonteCarlo =
+    fechamento.bilhetes.length > 0 ? simularFechamento(fechamento.bilhetes, probabilidadesPorSequencial) : null;
 
   imprimirRelatorioConsole(concurso.numero, relatorio);
-  imprimirCartaoSugeridoConsole(relatorio, cartao, orcamentoReais);
+  imprimirFechamentoConsole(relatorio, fechamento, fechamentoMonteCarlo);
 
-  const caminhoHtml = salvarRelatorioHtml(concurso.numero, relatorio, cartao, orcamentoReais);
+  const caminhoHtml = salvarRelatorioHtml(concurso.numero, relatorio, fechamento, fechamentoMonteCarlo);
   console.log(`\nRelatório visual salvo em: ${caminhoHtml}`);
   abrirNoNavegador(caminhoHtml);
 }
@@ -179,14 +196,9 @@ async function analisarDesfalquesDoConcurso(
   return resultado;
 }
 
-/**
- * Fase 4: monta o cartão sugerido (simples/duplo/triplo por jogo) dentro
- * do orçamento configurado em ORCAMENTO_REAIS, usando a probabilidade
- * final (ajustada pela Fase 2 quando disponível) de cada jogo com odds.
- * Retorna null se não houver jogos com odds ou o orçamento for insuficiente.
- */
-function montarCartaoSugerido(relatorio: JogoRelatorio[], orcamentoReais: number): ResultadoOtimizacao | null {
-  const jogosParaOtimizar: JogoParaOtimizar[] = relatorio
+/** Filtra os jogos com probabilidade calculada (com odds) no formato que otimizador/fechamento esperam. */
+function construirJogosParaOtimizar(relatorio: JogoRelatorio[]): JogoParaOtimizar[] {
+  return relatorio
     .filter((j): j is JogoRelatorio & { probabilidadeFinal: NonNullable<JogoRelatorio["probabilidadeFinal"]> } =>
       Boolean(j.probabilidadeFinal)
     )
@@ -196,15 +208,6 @@ function montarCartaoSugerido(relatorio: JogoRelatorio[], orcamentoReais: number
       equipeVisitante: j.equipeVisitante,
       probabilidade: j.probabilidadeFinal,
     }));
-
-  if (jogosParaOtimizar.length === 0) return null;
-
-  try {
-    return otimizarCartao(jogosParaOtimizar, orcamentoReais);
-  } catch (err) {
-    console.error(`Não foi possível montar o cartão: ${err instanceof Error ? err.message : err}`);
-    return null;
-  }
 }
 
 function imprimirRelatorioConsole(concursoNumero: number, relatorio: JogoRelatorio[]): void {
@@ -231,7 +234,8 @@ function imprimirRelatorioConsole(concursoNumero: number, relatorio: JogoRelator
 
     const linhaPopularidade =
       `    popularidade estimada:   1=${(j.popularidade.casa * 100).toFixed(1)}%  X=${(j.popularidade.empate * 100).toFixed(1)}%  2=${(j.popularidade.visitante * 100).toFixed(1)}%\n` +
-      `    melhor valor: ${LABEL_RESULTADO[j.melhorValor.resultado]} (${j.melhorValor.valor.toFixed(2)}x mais provável do que popular)\n`;
+      `    melhor valor: ${LABEL_RESULTADO[j.melhorValor.resultado]} (${j.melhorValor.valor.toFixed(2)}x mais provável do que popular)\n` +
+      `    upgrade: ${j.prioridade ? LABEL_PRIORIDADE[j.prioridade] : "?"}\n`;
 
     console.log(
       `${label}${confAviso}\n` +
@@ -243,33 +247,51 @@ function imprimirRelatorioConsole(concursoNumero: number, relatorio: JogoRelator
   }
 }
 
-function imprimirCartaoSugeridoConsole(
+/**
+ * Fechamento (Fase 4b): bilhetes separados cobrindo até 2 desvios
+ * simultâneos entre os jogos de "Prioridade Alta"/"Prioridade Média", com
+ * a chance real (Monte Carlo) em vez de uma "garantia" combinatória
+ * maquiada de probabilidade — ver aviso em `gerarFechamento`.
+ */
+function imprimirFechamentoConsole(
   relatorio: JogoRelatorio[],
-  cartao: ResultadoOtimizacao | null,
-  orcamentoReais: number
+  fechamento: ResultadoFechamento,
+  monteCarlo: ResultadoMonteCarlo | null
 ): void {
-  console.log(`\n=== Cartão sugerido (orçamento R$${orcamentoReais.toFixed(2)}) ===\n`);
+  console.log(`\n=== Fechamento (cobertura de até 2 desvios simultâneos) ===\n`);
 
-  if (!cartao) {
-    console.log("Nenhum jogo com odds disponível — não há como sugerir um cartão.\n");
+  if (fechamento.bilhetes.length === 0) {
+    console.log("Jogos de risco insuficientes — sem fechamento sugerido.\n");
     return;
   }
 
-  for (const alocacao of cartao.alocacoes) {
-    const label = `${String(alocacao.sequencial).padStart(2, "0")}. ${alocacao.equipeCasa} x ${alocacao.equipeVisitante}`;
-    const marcacoes = alocacao.marcacoes.map((r) => LABEL_RESULTADO[r]).join(", ");
-    console.log(`${label}\n    ${alocacao.tipo.padEnd(7)} → ${marcacoes}\n`);
+  for (const bilhete of fechamento.bilhetes) {
+    const marcacoesTexto = bilhete.marcacoes
+      .map((m) => `${String(m.sequencial).padStart(2, "0")}:${m.marcacoes.map((r) => LABEL_RESULTADO[r]).join("/")}`)
+      .join("  ");
+    console.log(
+      `Bilhete ${bilhete.numero} (cobre jogos ${bilhete.jogosDeCoberturaSequenciais.join(" e ")}): ${marcacoesTexto}`
+    );
   }
 
   console.log(
-    `Total: ${cartao.totalCombinacoes} combinações, custo estimado R$${cartao.custoReais.toFixed(2)}.\n` +
-      `(fórmula 2^duplos × 3^triplos × R$2,00 — confira o teto de duplos/triplos e o preço atual no site/app da Caixa antes de apostar de verdade)`
+    `\nTotal: ${fechamento.bilhetes.length} bilhetes, custo R$${fechamento.custoTotalReais.toFixed(2)}.`
   );
+
+  if (monteCarlo) {
+    console.log(
+      `Chance REAL estimada (Monte Carlo, ${monteCarlo.numSimulacoes.toLocaleString("pt-BR")} rodadas): ` +
+        `${monteCarlo.pctTodosOsJogos.toFixed(1)}% de algum bilhete acertar todos, ` +
+        `${monteCarlo.pctNoMaximoUmErro.toFixed(1)}% de algum bilhete errar no máximo 1.\n` +
+        `Isso NÃO é 100% — só cobre até 2 jogos de risco desviando ao mesmo tempo (Prioridade Alta+Média); ` +
+        `se algum jogo "seco" (fixo em todos os bilhetes) falhar, ou 3+ jogos de risco desviarem juntos, todos os bilhetes erram.`
+    );
+  }
 
   const semOdds = relatorio.filter((j) => !j.odds);
   if (semOdds.length > 0) {
     console.log(
-      `\nAviso: ${semOdds.length} jogo(s) sem odds ficaram de fora do cartão sugerido — escolha manual: ` +
+      `\nAviso: ${semOdds.length} jogo(s) sem odds ficaram de fora — escolha manual: ` +
         semOdds.map((j) => `${j.sequencial}. ${j.equipeCasa} x ${j.equipeVisitante}`).join("; ")
     );
   }
@@ -279,10 +301,10 @@ function imprimirCartaoSugeridoConsole(
 function salvarRelatorioHtml(
   concursoNumero: number,
   relatorio: JogoRelatorio[],
-  cartao: ResultadoOtimizacao | null,
-  orcamentoReais: number
+  fechamento: ResultadoFechamento,
+  fechamentoMonteCarlo: ResultadoMonteCarlo | null
 ): string {
-  const html = gerarRelatorioHtml(concursoNumero, relatorio, cartao, orcamentoReais);
+  const html = gerarRelatorioHtml(concursoNumero, relatorio, fechamento, fechamentoMonteCarlo);
   const pasta = "./relatorios";
   const caminho = `${pasta}/concurso-${concursoNumero}.html`;
 

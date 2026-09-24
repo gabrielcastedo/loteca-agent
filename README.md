@@ -8,9 +8,13 @@ notícias recentes de cada time, usa Claude pra classificar desfalques
 relevantes (lesões, suspensões) e ajusta a probabilidade implícita com
 base nisso. Estima também a popularidade de cada resultado entre
 apostadores casuais (heurística) pra sinalizar onde a probabilidade real
-diverge do que a maioria provavelmente vai marcar. Por fim, monta um
-cartão sugerido (simples/duplo/triplo por jogo) dentro de um orçamento em
-reais. Salva tudo em SQLite local.
+diverge do que a maioria provavelmente vai marcar. Classifica cada jogo
+com um rótulo de prioridade de upgrade (Alta/Média/Não vale upgrade —
+ranking relativo por posição entre os 14 jogos da semana) e monta um
+fechamento (bilhetes separados cobrindo pares dos jogos mais incertos)
+com a chance **real** de 13/14 acertos, calculada por simulação — não
+uma garantia combinatória maquiada de probabilidade. Salva tudo em
+SQLite local.
 
 ## Setup
 
@@ -41,7 +45,7 @@ de atenção" #1 — o site tem proteção anti-bot). Em vez disso, o fluxo é:
 
 Validado ao vivo com o concurso 1272: pipeline completo (Fases 1 a 4)
 rodou ponta a ponta, incluindo matching de odds, análise de desfalques,
-popularidade estimada e cartão sugerido.
+popularidade estimada e fechamento.
 
 ## O que este código faz (e o que não faz ainda)
 
@@ -65,15 +69,28 @@ Faz:
   nível de impacto de desfalques (`src/analysis/desfalques.ts`) e ajusta a
   probabilidade implícita proporcionalmente (`src/analysis/ajuste.ts`)
 - **Fase 3:** estima a popularidade de cada resultado entre apostadores
-  casuais via heurística (`src/analysis/popularidade.ts`) e sinaliza no
-  relatório qual resultado tem o melhor "valor relativo" (probabilidade
-  real ÷ popularidade estimada) — ver aviso importante sobre essa
-  heurística abaixo
-- **Fase 4:** monta um cartão sugerido (simples/duplo/triplo por jogo)
-  dentro de um orçamento em reais (`ORCAMENTO_REAIS` no `.env`), usando um
-  algoritmo guloso que prioriza duplos/triplos nos jogos mais equilibrados
-  (`src/analysis/otimizador.ts`) — ver aviso sobre limites de duplos/triplos
-  abaixo
+  casuais via heurística (`src/analysis/popularidade.ts`), incluindo uma
+  âncora fraca na taxa histórica real de mandante/empate/visitante desde
+  2002 (`src/analysis/historico.ts`, dado em `src/data/historico-loteca.json`)
+  — e sinaliza no relatório qual resultado tem o melhor "valor relativo"
+  (probabilidade real ÷ popularidade estimada) — ver aviso importante sobre
+  essa heurística abaixo
+- **Fase 4:** classifica cada jogo com um rótulo de
+  "Prioridade Alta/Média/Não vale upgrade" (`src/analysis/otimizador.ts`,
+  função `classificarPrioridade`) — ranking relativo por posição entre os
+  14 jogos daquela semana, não um limiar fixo, então funciona igual numa
+  rodada equilibrada ou numa cheia de favoritos óbvios. Esse rótulo
+  alimenta o Fechamento abaixo. O `otimizador.ts` também tem um algoritmo
+  guloso de cartão único (`otimizarCartao`) que respeita o teto oficial de
+  duplos/triplos da tabela de preços real da Loteca
+  (`MAX_DUPLOS_POR_TRIPLOS`) — a capacidade continua no código, mas não é
+  mais chamada pelo relatório padrão (ver item 8 abaixo)
+- **Fechamento:** bilhetes separados cobrindo pares de jogos de
+  "Prioridade Alta/Média" desviando ao mesmo tempo
+  (`src/analysis/fechamento.ts`), com a chance real de 13/14 acertos
+  calculada por simulação de Monte Carlo (`src/analysis/monteCarlo.ts`) —
+  ver aviso importante sobre garantia combinatória vs. probabilidade real
+  abaixo. É a única estratégia de aposta que aparece no relatório hoje
 - Persiste tudo em SQLite (`src/db/schema.ts`), incluindo as análises de
   desfalque na tabela `desfalques`
 
@@ -195,21 +212,88 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
    Loteca (só existe número de acertadores por faixa no cartão inteiro).
    Os fatores em `src/analysis/popularidade.ts`
    (`FATOR_SUBAPOSTA_EMPATE`, `BONUS_TORCIDA_GRANDE`, lista
-   `TORCIDAS_GRANDES`) refletem padrões gerais conhecidos de bolões
-   esportivos, não uma calibração pra Loteca especificamente. Trate o
-   "melhor valor" do relatório como um sinal qualitativo, não uma
-   probabilidade validada.
+   `TORCIDAS_GRANDES`, `INFLUENCIA_HISTORICO`) refletem padrões gerais
+   conhecidos de bolões esportivos, não uma calibração pra Loteca
+   especificamente. Trate o "melhor valor" do relatório como um sinal
+   qualitativo, não uma probabilidade validada.
 
-8. **O otimizador da Fase 4 não impõe teto de duplos/triplos.** Pesquisei
-   a fórmula de preço da Loteca (`2^duplos × 3^triplos × R$2,00`, aposta
-   mínima R$4,00) e as fontes concordam nisso, mas divergem sobre o limite
-   máximo de duplos/triplos por cartão — uma fonte diz 5 duplos + 3
-   triplos fixo, outra diz uma tabela escalonada que vai até 6 triplos. Em
-   vez de codificar um número que pode estar errado, o otimizador só
-   respeita o orçamento em reais. **Confira o limite real no site/app da
-   Caixa antes de fechar uma aposta de verdade** — o cartão sugerido pode,
-   em teoria, propor mais duplos/triplos do que a Caixa aceita num único
-   volante. Além disso, é um algoritmo guloso (não uma otimização exata:
-   o custo é multiplicativo, então o problema é uma mochila não-linear) —
-   funciona bem na prática (testado com dados sintéticos e reais), mas não
-   garante a alocação matematicamente ótima.
+   **Adicionado em 2026-09-23: âncora na taxa histórica real (não é
+   popularidade de aposta, é frequência de resultado).** O usuário trouxe
+   o histórico completo da Loteca (2002 até hoje, 1.261 concursos, 17.654
+   jogos — `src/data/historico-loteca.json`), que dá a taxa real de
+   1=47.25% / X=26.20% / 2=26.55%. Isso NÃO é dado de popularidade (não
+   sabemos o que os apostadores marcam), é a frequência real dos
+   resultados — mas serve de âncora fraca pra "senso comum de bolão" tipo
+   "mandante costuma ganhar", que um apostador casual carrega mesmo sem
+   saber a odd do jogo específico. `carregarTaxaHistorica()` em
+   `src/analysis/historico.ts` computa isso a partir do JSON; `popularidade.ts`
+   usa `fatorHistorico(resultado) = (taxaHistorica / (1/3)) ^ INFLUENCIA_HISTORICO`
+   como multiplicador extra no peso de cada resultado, com
+   `INFLUENCIA_HISTORICO = 0.5` (mais um chute documentado — a
+   probabilidade real do jogo continua sendo o sinal dominante). O usuário
+   também pediu que outra IA calculasse a mesma taxa a partir da mesma
+   base — bateu com o nosso número, o que confirma a aritmética mas não é
+   uma segunda fonte de dados independente.
+
+8. **O otimizador de cartão único da Fase 4 (`otimizarCartao`) já respeita
+   o teto oficial de duplos/triplos** — resolvido em 2026-09-23 com a
+   tabela de preços real que o usuário forneceu (confirma a fórmula
+   `2^duplos × 3^triplos × R$2,00`, aposta mínima R$4,00, e o teto exato:
+   9 duplos com 0 triplos, 8 com 1, 6 com 2, 5 com 3, 3 com 4, 1 com 5, 0
+   com 6 — ver `MAX_DUPLOS_POR_TRIPLOS` em `src/analysis/otimizador.ts`).
+   As fontes pesquisadas antes divergiam nisso; a tabela real bateu
+   exatamente com uma delas (kotasplus.com.br). Ainda é um algoritmo
+   guloso (não uma otimização exata: o custo é multiplicativo, então o
+   problema é uma mochila não-linear) — funciona bem na prática (testado
+   com dados sintéticos e reais, inclusive confirmando que o teto é
+   respeitado mesmo com orçamento artificialmente alto), mas não garante
+   a alocação matematicamente ótima. **Desde 2026-09-23 essa função não é
+   mais chamada pelo relatório** — decisão do usuário de simplificar o
+   relatório em torno só do Fechamento, que cobre mais cenários. O código
+   (e a tabela de preços validada) ficou no repositório de propósito, caso
+   valha reativar um cartão único simples no futuro.
+
+9. **Simulação de Monte Carlo (`src/analysis/monteCarlo.ts`) não é
+   validação externa.** Ela sorteia rodadas usando a própria probabilidade
+   que o modelo calculou — se a probabilidade estiver errada, a simulação
+   herda o mesmo erro. Responde "dado o que o modelo acha, qual a chance
+   desse cartão/fechamento bater 13/14?", não "o modelo está certo?" (isso
+   segue sendo o P0 do plano de melhorias). Também só simula os jogos que
+   entraram no cartão/fechamento (com odds) — se algum jogo ficou de fora,
+   os percentuais não correspondem literalmente aos acertos oficiais de
+   13/14, e o relatório avisa isso quando acontece. `simularCartao`
+   (voltada pro cartão único) ficou sem chamador junto com `otimizarCartao`
+   (item 8); `simularFechamento` continua ativa e é a usada no relatório.
+
+10. **Um "modelo quantitativo" gerado por outra IA foi avaliado e
+    parcialmente aproveitado em 2026-09-23.** O código colado (pilares como
+    Poisson+Elo, Kelly Criterion, classificação por entropia com limiar
+    fixo) tinha um bug real e verificado (`self.rawOdds = ...` — `self` não
+    existe no Node.js, não compila) e várias ideias que já fazíamos
+    (de-vigging, EV vs. popularidade) ou que já tínhamos decidido evitar
+    por bom motivo (limiar fixo em vez do ranking relativo por posição, que
+    já resolvia o mesmo problema melhor). O que sobreviveu: a simulação de
+    Monte Carlo (item 9) e uma versão corrigida do fechamento combinatório
+    (item 11). Poisson+Elo e Kelly ficaram de fora — o primeiro exige fonte
+    de dados históricos que não temos, o segundo exige confiança no EV que
+    ainda não temos (depende do P0).
+
+11. **Fechamento (`src/analysis/fechamento.ts`) corrige uma alegação falsa
+    de "100% de garantia" que o modelo de outra IA fazia.** O exemplo
+    original (29 bilhetes, "100% de 13 acertos") confundia duas coisas
+    diferentes: cobertura combinatória condicional (se os jogos "secos"
+    acertarem E o desvio for de no máximo 1 jogo entre os cobertos, algum
+    bilhete acerta tudo) com probabilidade real de ganhar. Não é a mesma
+    coisa — se qualquer jogo "seco" falhar, todos os bilhetes erram juntos,
+    e a chance real de todos os secos acertarem raramente chega perto de
+    100%. Nossa versão gera 1 bilhete por PAR de jogos de "Prioridade
+    Alta/Média" (2 duplos por bilhete, cobrindo favorito + segundo
+    colocado em cada um dos 2), cobrindo até 2 desvios simultâneos — no
+    concurso 1272 isso deu 28 bilhetes (C(8,2)) por R$224, próximo da
+    escala do exemplo original (29 bilhetes, R$116), mas com cobertura
+    real de pares em vez de uma construção mais opaca. Mostra a chance
+    **real**, calculada por simulação de Monte Carlo (`simularFechamento`),
+    em vez de uma garantia maquiada de probabilidade — nos testes ficou
+    bem menor que "100%" (< 1%), mesmo cobrindo mais cenários que a versão
+    inicial de 1 desvio por vez. Isso não é um bug, é a heurística sendo
+    honesta sobre o que ela de fato garante.

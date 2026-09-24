@@ -2,6 +2,7 @@ import type { ProbabilidadePura } from "../types.js";
 
 export type TipoAposta = "simples" | "duplo" | "triplo";
 export type Resultado = "casa" | "empate" | "visitante";
+export type PrioridadeUpgrade = "alta" | "media" | "nenhuma";
 
 export interface JogoParaOtimizar {
   sequencial: number;
@@ -24,15 +25,36 @@ export interface ResultadoOtimizacao {
   custoReais: number;
 }
 
-/**
- * R$2,00 por combinação, confirmado em múltiplas fontes ao pesquisar (ver
- * README). O teto de duplos/triplos por cartão NÃO está confirmado (fontes
- * divergem) — este otimizador só respeita o orçamento em reais, não impõe
- * limite de quantidade. Confira o limite atual no site/app da Caixa antes
- * de finalizar uma aposta real.
- */
+/** Um cartão sugerido calculado pra um orçamento específico (ver `index.ts`, múltiplos cenários). */
+export interface CenarioCartao {
+  orcamentoReais: number;
+  cartao: ResultadoOtimizacao | null;
+}
+
 const PRECO_POR_COMBINACAO = 2;
 const APOSTA_MINIMA_REAIS = 4;
+
+/**
+ * Teto oficial de duplos por quantidade de triplos, direto da tabela de
+ * preços real da Loteca (o usuário mandou a tabela completa em
+ * 2026-09-23). Fórmula de combinações (`2^duplos × 3^triplos`) já estava
+ * certa; o que faltava era esse teto — antes o otimizador não impunha
+ * nenhum limite de quantidade, só de orçamento.
+ */
+const MAX_DUPLOS_POR_TRIPLOS: Record<number, number> = {
+  0: 9,
+  1: 8,
+  2: 6,
+  3: 5,
+  4: 3,
+  5: 1,
+  6: 0,
+};
+const MAX_TRIPLOS = 6;
+
+/** Quantos jogos entram em cada faixa de prioridade de upgrade (ver `classificarPrioridade`). */
+const QTD_PRIORIDADE_ALTA = 4;
+const QTD_PRIORIDADE_MEDIA = 4;
 
 const QTD_MARCACOES: Record<TipoAposta, number> = { simples: 1, duplo: 2, triplo: 3 };
 
@@ -47,16 +69,66 @@ interface CandidatoUpgrade {
   fatorIncremento: number; // quanto o total de combinações multiplica (2 ou 1.5)
 }
 
+function construirRanking(jogos: JogoParaOtimizar[]): RankingJogo[] {
+  return jogos.map((jogo) => ({
+    jogo,
+    ordenado: (["casa", "empate", "visitante"] as Resultado[])
+      .map((resultado) => ({ resultado, prob: jogo.probabilidade[resultado] }))
+      .sort((a, b) => b.prob - a.prob),
+  }));
+}
+
+function combinacoesValidas(duplos: number, triplos: number): boolean {
+  if (triplos > MAX_TRIPLOS || triplos < 0 || duplos < 0) return false;
+  return duplos <= MAX_DUPLOS_POR_TRIPLOS[triplos];
+}
+
+/**
+ * Classifica cada jogo por prioridade de upgrade (duplo/triplo), ordenando
+ * pelo "ganho marginal" de virar duplo (a probabilidade do 2º colocado —
+ * é a mesma pontuação que `otimizarCartao` usa internamente pra decidir
+ * onde gastar) e rotulando por posição relativa, não por um limiar fixo:
+ * os `QTD_PRIORIDADE_ALTA` primeiros da fila = "alta", os próximos
+ * `QTD_PRIORIDADE_MEDIA` = "media", o resto = "nenhuma".
+ *
+ * Isso é independente de orçamento — funciona igual numa semana em que
+ * a rodada inteira está equilibrada ou numa em que está cheia de
+ * favoritos óbvios, porque é sempre relativo aos outros jogos daquela
+ * semana. Serve como explicação do que `otimizarCartao` provavelmente vai
+ * priorizar, não uma garantia — o resultado final ainda depende do
+ * orçamento e do teto oficial de duplos/triplos.
+ */
+export function classificarPrioridade(jogos: JogoParaOtimizar[]): Map<number, PrioridadeUpgrade> {
+  const ranking = construirRanking(jogos)
+    .map((r) => ({ sequencial: r.jogo.sequencial, ganhoMarginal: r.ordenado[1].prob }))
+    .sort((a, b) => b.ganhoMarginal - a.ganhoMarginal);
+
+  const resultado = new Map<number, PrioridadeUpgrade>();
+  ranking.forEach((item, indice) => {
+    const prioridade: PrioridadeUpgrade =
+      indice < QTD_PRIORIDADE_ALTA
+        ? "alta"
+        : indice < QTD_PRIORIDADE_ALTA + QTD_PRIORIDADE_MEDIA
+          ? "media"
+          : "nenhuma";
+    resultado.set(item.sequencial, prioridade);
+  });
+
+  return resultado;
+}
+
 /**
  * Aloca duplos/triplos entre os jogos disponíveis (com probabilidade já
  * calculada) pra maximizar a cobertura de probabilidade dentro de um
- * orçamento em reais.
+ * orçamento em reais, respeitando o teto oficial de duplos/triplos da
+ * Loteca.
  *
  * Algoritmo guloso: a cada passo, escolhe o upgrade (simples→duplo ou
  * duplo→triplo, em qualquer jogo) com maior "ganho de probabilidade por
  * unidade de orçamento combinatório gasto" (log2 do fator de multiplicação),
- * entre os que ainda cabem no orçamento, e aplica. Repete até não caber
- * mais nenhum upgrade.
+ * entre os que ainda cabem no orçamento E no teto oficial, e aplica.
+ * Repete até não caber mais nenhum upgrade. É a mesma pontuação exposta
+ * de forma legível por `classificarPrioridade`.
  *
  * Isso NÃO é uma otimização exata — o custo é multiplicativo (2^duplos ×
  * 3^triplos), então o problema é uma mochila não-linear sem solução
@@ -78,13 +150,7 @@ export function otimizarCartao(jogos: JogoParaOtimizar[], orcamentoReais: number
   }
 
   const maxCombinacoes = Math.floor(orcamentoReais / PRECO_POR_COMBINACAO);
-
-  const rankings: RankingJogo[] = jogos.map((jogo) => ({
-    jogo,
-    ordenado: (["casa", "empate", "visitante"] as Resultado[])
-      .map((resultado) => ({ resultado, prob: jogo.probabilidade[resultado] }))
-      .sort((a, b) => b.prob - a.prob),
-  }));
+  const rankings = construirRanking(jogos);
 
   const tipos: TipoAposta[] = rankings.map(() => "simples");
   let duplos = 0;
@@ -118,6 +184,7 @@ export function otimizarCartao(jogos: JogoParaOtimizar[], orcamentoReais: number
       const novoDuplos = candidato.para === "duplo" ? duplos + 1 : duplos - 1;
       const novoTriplos = candidato.para === "triplo" ? triplos + 1 : triplos;
       if (combinacoes(novoDuplos, novoTriplos) > maxCombinacoes) continue;
+      if (!combinacoesValidas(novoDuplos, novoTriplos)) continue;
 
       const score = candidato.ganho / Math.log2(candidato.fatorIncremento);
       if (score > melhorScore) {

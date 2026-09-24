@@ -89,11 +89,29 @@ confirmado), dá pra aproximar melhor:
   por jogo, mas dá pra inferir se um concurso inteiro foi "fácil" (favoritos
   óbvios) e ajustar a confiança geral da heurística naquela semana.
 
-## P5 — Teto real de duplos/triplos no otimizador
+**Parcialmente feito em 2026-09-23:** o usuário trouxe o histórico
+completo de resultados da Loteca (2002-2026, `src/data/historico-loteca.json`).
+Não é dado de popularidade (continua sem existir publicamente), mas é
+frequência REAL de 1/X/2 — usada como âncora fraca em `popularidade.ts`
+(`fatorHistorico`, `INFLUENCIA_HISTORICO = 0.5`). Ainda um chute quanto à
+força da âncora, mas pelo menos o valor histórico em si (47.25/26.20/26.55%)
+é dado real, não estimativa. Ver README item 7.
 
-Ainda pendente (documentado no README). Se em algum momento você confirmar
-o limite real olhando o app/site da Caixa na hora de apostar, dá pra travar
-isso no otimizador em vez de deixar sem limite.
+## P5 — Teto real de duplos/triplos no otimizador ✅ feito em 2026-09-23
+
+Resolvido: o usuário mandou a tabela de preços oficial completa. O
+otimizador respeita o teto exato (`MAX_DUPLOS_POR_TRIPLOS` em
+`src/analysis/otimizador.ts`) e classifica cada jogo por rótulo de
+prioridade de upgrade (ranking relativo por posição — os 4 primeiros
+"Prioridade Alta", os próximos 4 "Prioridade Média", resto "Não vale
+upgrade"). Esse rótulo continua sendo a base do Fechamento (abaixo).
+
+**Atualização 2026-09-23 (mesmo dia):** o relatório de múltiplos cenários
+de orçamento (`ORCAMENTOS_REAIS`, `otimizarCartao`, `simularCartao`) foi
+removido do relatório a pedido do usuário — o Fechamento cobre mais
+cenários e ele decidiu apostar só nele. O código ficou no repositório
+(não foi deletado), só parou de ser chamado por `src/index.ts`. Ver
+README, itens 8-9 dos "Pontos de atenção".
 
 ## P6 — Testes automatizados
 
@@ -102,10 +120,44 @@ Ainda não existem. Prioridade: os módulos de cálculo puro e determinístico
 são os que vão ser mexidos ao calibrar fatores (P0/P4), e testes evitam
 regressão silenciosa nessa calibração.
 
+## Modelo quantitativo de terceiros (avaliado em 2026-09-23)
+
+O usuário trouxe um "modelo quantitativo" com 9 pilares gerado por outra
+IA (Poisson+Elo, entropia de Shannon com limiar fixo, filtragem
+combinatória, fechamento por covering design, Kelly Criterion etc.),
+código TypeScript incluído. Avaliação (detalhada no README, item 10):
+
+- Tinha um bug real e confirmado (`self.rawOdds = ...`, não compila —
+  `self` não existe no Node.js) — sinal de que o código nunca rodou.
+- Vários pilares já fazíamos (de-vigging, EV vs. popularidade) ou já
+  tínhamos decidido evitar por bom motivo (entropia com limiar fixo é
+  pior que o ranking relativo por posição que já implementamos).
+- Poisson+Elo ficou fora de escopo — precisa de fonte de dados históricos
+  que não temos.
+- O que sobreviveu e foi implementado: **simulação de Monte Carlo**
+  (`src/analysis/monteCarlo.ts`) — estima a chance de acerto do cartão
+  sugerido simulando N rodadas com a probabilidade que o próprio modelo
+  calculou. Não é validação externa (não substitui o P0), é uma leitura
+  estatística do que o modelo já acha.
+- **"Fechamento combinatório"** também foi implementado
+  (`src/analysis/fechamento.ts`), mas corrigindo um erro sério do exemplo
+  original: a outra IA alegava "100% de chance de 13 acertos", que na
+  verdade é uma garantia combinatória CONDICIONAL (só vale se os jogos
+  "secos" acertarem) sendo apresentada como se fosse a probabilidade real
+  de ganhar — não é a mesma coisa, e a diferença importa muito num
+  contexto de dinheiro real. Nossa versão cobre pares de jogos de
+  "Prioridade Alta/Média" desviando ao mesmo tempo (2 duplos por bilhete)
+  — no concurso 1272 deu 28 bilhetes (C(8,2)) por R$224, escala parecida
+  com o exemplo original (29 bilhetes, R$116). Mostra a chance real via
+  `simularFechamento` (Monte Carlo do conjunto de bilhetes, pegando o
+  melhor bilhete por rodada simulada) — mesmo cobrindo pares de desvios
+  simultâneos, essa chance real ficou abaixo de 1%, bem longe do "100%"
+  original.
+
 ## Por onde eu começaria
 
-**P0 primeiro, sem dúvida.** Todo o resto (P1, P4) depende de ter dado real
-pra calibrar em vez de mais um chute. P2 e P3 são incrementais e podem vir
-em paralelo, sem depender de P0. P5 depende só de você confirmar um número
-num app. P6 vale ir fazendo conforme mexer em cada módulo, não como um
-projeto à parte.
+**P0 continua a prioridade.** Todo o resto (P1, P4) depende de ter dado
+real pra calibrar em vez de mais um chute. P2 e P3 são incrementais e
+podem vir em paralelo, sem depender de P0. P5 e a simulação de Monte
+Carlo já estão feitos. P6 vale ir fazendo conforme mexer em cada módulo,
+não como um projeto à parte.

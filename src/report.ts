@@ -1,6 +1,7 @@
 import { ajustarProbabilidade } from "./analysis/ajuste.js";
 import { estimarPopularidade } from "./analysis/popularidade.js";
-import type { Resultado } from "./analysis/otimizador.js";
+import { classificarPrioridade } from "./analysis/otimizador.js";
+import type { PrioridadeUpgrade, Resultado } from "./analysis/otimizador.js";
 import { probabilidadesImplicitas } from "./probability.js";
 import type {
   DesfalqueAnalise,
@@ -22,6 +23,8 @@ export interface JogoRelatorio {
   desfalques: [DesfalqueAnalise, DesfalqueAnalise] | null;
   popularidade: PopularidadeEstimada | null;
   melhorValor: { resultado: Resultado; valor: number } | null;
+  /** Prioridade de upgrade (duplo/triplo) relativa aos outros jogos da semana — ver `classificarPrioridade`. */
+  prioridade: PrioridadeUpgrade | null;
 }
 
 /**
@@ -33,8 +36,8 @@ export function construirRelatorio(
   jogosComOdds: JogoComOdds[],
   desfalquesPorSequencial: Map<number, DesfalqueAnalise[]>
 ): JogoRelatorio[] {
-  return jogosComOdds.map((item) => {
-    const base: JogoRelatorio = {
+  const semPrioridade = jogosComOdds.map((item) => {
+    const base: Omit<JogoRelatorio, "prioridade"> = {
       sequencial: item.jogo.sequencial,
       equipeCasa: item.jogo.equipeCasa,
       equipeVisitante: item.jogo.equipeVisitante,
@@ -68,6 +71,21 @@ export function construirRelatorio(
 
     return { ...base, probabilidadePura, probabilidadeFinal, desfalques, popularidade, melhorValor };
   });
+
+  // Prioridade é relativa entre todos os jogos com probabilidade calculada,
+  // então só dá pra classificar depois de ter o probabilidadeFinal de todos.
+  const prioridades = classificarPrioridade(
+    semPrioridade
+      .filter((j): j is typeof j & { probabilidadeFinal: ProbabilidadePura } => Boolean(j.probabilidadeFinal))
+      .map((j) => ({
+        sequencial: j.sequencial,
+        equipeCasa: j.equipeCasa,
+        equipeVisitante: j.equipeVisitante,
+        probabilidade: j.probabilidadeFinal,
+      }))
+  );
+
+  return semPrioridade.map((j) => ({ ...j, prioridade: prioridades.get(j.sequencial) ?? null }));
 }
 
 function calcularMelhorValor(
