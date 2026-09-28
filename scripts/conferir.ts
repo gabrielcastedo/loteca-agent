@@ -109,8 +109,13 @@ function imprimirComparacaoPorJogo(numero: number, linhas: LinhaConferencia[]): 
     if (pickAcertou) pickAcertos++;
     if (valorAcertou) melhorValorAcertos++;
 
+    const linhaOdds = l.odds
+      ? `    odds  (${l.odds.bookmaker}): 1=${l.odds.casa.toFixed(2)}  X=${l.odds.empate.toFixed(2)}  2=${l.odds.visitante.toFixed(2)}\n`
+      : "";
+
     console.log(
       `${label}\n` +
+        linhaOdds +
         `    prob. final:  1=${(l.probFinal.casa * 100).toFixed(1)}%  X=${(l.probFinal.empate * 100).toFixed(1)}%  2=${(l.probFinal.visitante * 100).toFixed(1)}%\n` +
         `    pick principal: ${LABEL_RESULTADO[pick]}  ${pickAcertou ? "✅ acertou" : "❌ errou"}\n` +
         `    melhor valor:   ${LABEL_RESULTADO[l.melhorValorResultado]} (${l.melhorValorNumero?.toFixed(2)}x)  ${valorAcertou ? "✅ acertou" : "❌ errou"}\n` +

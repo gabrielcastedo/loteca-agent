@@ -91,14 +91,58 @@ export function construirRelatorio(
   return semPrioridade.map((j) => ({ ...j, prioridade: prioridades.get(j.sequencial) ?? null }));
 }
 
-function calcularMelhorValor(
+const RESULTADOS: Resultado[] = ["casa", "empate", "visitante"];
+
+/** Ordena os 3 resultados por probabilidade decrescente e devolve o rank de cada um (0 = mais provável). */
+function rankPorResultado(dist: ProbabilidadePura): Record<Resultado, number> {
+  const ordenado = [...RESULTADOS].sort((a, b) => dist[b] - dist[a]);
+  const rank = {} as Record<Resultado, number>;
+  ordenado.forEach((resultado, indice) => {
+    rank[resultado] = indice;
+  });
+  return rank;
+}
+
+/**
+ * "Melhor valor" = o resultado que a probabilidade REAL considera mais
+ * provável do que a popularidade estimada sugere — ou seja, o resultado
+ * que sobe de posição (rank) saindo da popularidade pra probabilidade.
+ *
+ * IMPORTANTE: isso não pode ser feito comparando a razão bruta
+ * `probabilidade / popularidade` (versão anterior, com bug confirmado
+ * contra dado real em 2026-09-28 — ver README). Como
+ * `popularidade.X = probabilidade.X × fatorX / soma` (ver popularidade.ts),
+ * a razão sempre se simplifica pra `soma / fatorX`: o `probabilidade.X` do
+ * numerador CANCELA com o do denominador, sobrando só os fatores fixos
+ * (torcida grande, âncora histórica, sub-aposta de empate). Como o fator
+ * do empate é sempre o menor de todos os três, `soma / fatorEmpate` é
+ * sempre o maior — ou seja, a razão bruta sempre escolhia "empate",
+ * ignorando completamente o jogo real. Comparar por RANK evita isso: o
+ * rank de cada resultado dentro de uma distribuição não é afetado pela
+ * escala dos fatores, só pela ordem — então o resultado escolhido varia
+ * de verdade conforme o jogo.
+ */
+export function calcularMelhorValor(
   probabilidade: ProbabilidadePura,
   popularidade: ProbabilidadePura
 ): { resultado: Resultado; valor: number } {
-  const opcoes: Array<{ resultado: Resultado; valor: number }> = [
-    { resultado: "casa", valor: probabilidade.casa / popularidade.casa },
-    { resultado: "empate", valor: probabilidade.empate / popularidade.empate },
-    { resultado: "visitante", valor: probabilidade.visitante / popularidade.visitante },
-  ];
-  return opcoes.reduce((a, b) => (b.valor > a.valor ? b : a));
+  const rankProbabilidade = rankPorResultado(probabilidade);
+  const rankPopularidade = rankPorResultado(popularidade);
+
+  const candidatos = RESULTADOS.map((resultado) => ({
+    resultado,
+    // positivo = a probabilidade real acha esse resultado mais provável do que a popularidade estimada sugere
+    ganhoDeRank: rankPopularidade[resultado] - rankProbabilidade[resultado],
+    valor: probabilidade[resultado] / popularidade[resultado],
+  }));
+
+  return candidatos.reduce((melhor, atual) => {
+    if (atual.ganhoDeRank > melhor.ganhoDeRank) return atual;
+    // Empate no ganho de rank (comum: nenhum resultado "subiu de posição") —
+    // desempata pelo favorito real, não pela razão bruta (isso reintroduziria o bug).
+    if (atual.ganhoDeRank === melhor.ganhoDeRank && probabilidade[atual.resultado] > probabilidade[melhor.resultado]) {
+      return atual;
+    }
+    return melhor;
+  });
 }

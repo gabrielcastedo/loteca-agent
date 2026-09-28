@@ -206,13 +206,29 @@ export function salvarDesfalques(
  * melhor valor, prioridade) pra cada jogo do relatório — snapshot fixo no
  * tempo, ver comentário na criação da tabela `sugestoes`. Só salva jogos
  * com probabilidade calculada (com odds); jogos sem odds não têm sugestão.
+ *
+ * TRAVA: se o jogo já tem resultado real conferido (`resultados_reais`),
+ * a sugestão NÃO é sobrescrita — o jogo já aconteceu, rodar `npm run dev`
+ * de novo pra ele (ex: testando uma mudança de código) buscaria odds
+ * novas/obsoletas e corromperia o snapshot histórico que já foi usado numa
+ * comparação real. Descoberto na prática em 2026-09-28: um teste de
+ * verificação rodou `npm run dev` pro concurso 1272 depois de já apurado,
+ * e sobrescreveu silenciosamente a sugestão que já tinha sido conferida
+ * (pick principal foi de 6/14 pra 7/14 só por causa da odd diferente, sem
+ * nenhuma mudança de modelo). Retorna os sequenciais pulados, pro chamador
+ * avisar.
  */
 export function salvarSugestoes(
   db: Database.Database,
   idsPorSequencial: Map<number, number>,
   relatorio: JogoRelatorio[]
-): void {
+): { sequenciaisPulados: number[] } {
   const agora = new Date().toISOString();
+
+  const jogoIdsComResultado = new Set(
+    (db.prepare(`SELECT jogo_id FROM resultados_reais`).all() as Array<{ jogo_id: number }>).map((r) => r.jogo_id)
+  );
+  const sequenciaisPulados: number[] = [];
 
   const upsertSugestao = db.prepare(`
     INSERT INTO sugestoes (
@@ -249,6 +265,11 @@ export function salvarSugestoes(
       const jogoId = idsPorSequencial.get(j.sequencial);
       if (!jogoId) continue;
 
+      if (jogoIdsComResultado.has(jogoId)) {
+        sequenciaisPulados.push(j.sequencial);
+        continue;
+      }
+
       upsertSugestao.run({
         jogoId,
         probPuraCasa: j.probabilidadePura.casa,
@@ -269,6 +290,7 @@ export function salvarSugestoes(
   });
 
   transacao();
+  return { sequenciaisPulados };
 }
 
 /** P0: persiste o resultado real (apurado) de cada jogo de um concurso. */
@@ -314,11 +336,12 @@ export function buscarIdsDosJogos(db: Database.Database, concursoNumero: number)
   return new Map(linhas.map((l) => [l.sequencial, l.id]));
 }
 
-/** Linha combinada de jogo + sugestão salva + resultado real (quando existirem), pra conferência (P0). */
+/** Linha combinada de jogo + odds + sugestão salva + resultado real (quando existirem), pra conferência (P0). */
 export interface LinhaConferencia {
   sequencial: number;
   equipeCasa: string;
   equipeVisitante: string;
+  odds: { bookmaker: string; casa: number; empate: number; visitante: number } | null;
   probFinal: { casa: number; empate: number; visitante: number } | null;
   melhorValorResultado: Resultado | null;
   melhorValorNumero: number | null;
@@ -328,17 +351,25 @@ export interface LinhaConferencia {
   golsVisitante: number | null;
 }
 
-/** Busca tudo que `npm run conferir` precisa pra um concurso, já casado por jogo. */
+/**
+ * Busca tudo que `npm run conferir` precisa pra um concurso, já casado por
+ * jogo. `npm run dev` insere uma linha nova em `odds` a cada execução (sem
+ * upsert — várias execuções na mesma semana são esperadas, odds mudam até
+ * o fechamento), então pega só a mais recente por jogo (`MAX(id)`), que é
+ * a que corresponde à sugestão salva (também sempre a mais recente).
+ */
 export function buscarDadosParaConferencia(db: Database.Database, concursoNumero: number): LinhaConferencia[] {
   const linhas = db
     .prepare(
       `
       SELECT
         j.sequencial, j.equipe_casa, j.equipe_visitante,
+        o.bookmaker, o.odd_casa, o.odd_empate, o.odd_visitante,
         s.prob_final_casa, s.prob_final_empate, s.prob_final_visitante,
         s.melhor_valor_resultado, s.melhor_valor_numero, s.prioridade,
         r.resultado, r.gols_casa, r.gols_visitante
       FROM jogos j
+      LEFT JOIN odds o ON o.id = (SELECT o2.id FROM odds o2 WHERE o2.jogo_id = j.id ORDER BY o2.id DESC LIMIT 1)
       LEFT JOIN sugestoes s ON s.jogo_id = j.id
       LEFT JOIN resultados_reais r ON r.jogo_id = j.id
       WHERE j.concurso_numero = ?
@@ -349,6 +380,10 @@ export function buscarDadosParaConferencia(db: Database.Database, concursoNumero
     sequencial: number;
     equipe_casa: string;
     equipe_visitante: string;
+    bookmaker: string | null;
+    odd_casa: number | null;
+    odd_empate: number | null;
+    odd_visitante: number | null;
     prob_final_casa: number | null;
     prob_final_empate: number | null;
     prob_final_visitante: number | null;
@@ -364,6 +399,10 @@ export function buscarDadosParaConferencia(db: Database.Database, concursoNumero
     sequencial: l.sequencial,
     equipeCasa: l.equipe_casa,
     equipeVisitante: l.equipe_visitante,
+    odds:
+      l.bookmaker != null && l.odd_casa != null && l.odd_empate != null && l.odd_visitante != null
+        ? { bookmaker: l.bookmaker, casa: l.odd_casa, empate: l.odd_empate, visitante: l.odd_visitante }
+        : null,
     probFinal:
       l.prob_final_casa != null && l.prob_final_empate != null && l.prob_final_visitante != null
         ? { casa: l.prob_final_casa, empate: l.prob_final_empate, visitante: l.prob_final_visitante }

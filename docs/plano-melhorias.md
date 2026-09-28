@@ -73,6 +73,19 @@ certos pra duplo/triplo, etc.
   usado pras odds. Testado ao vivo: concurso 1272 (não decidido) deu HTTP
   404 na nova fonte vs. HTTP 500 ambíguo na Caixa; concurso 1271 (decidido)
   bateu os 14 placares certinho nas duas fontes. Ver README item 14.
+- **Bug encontrado e corrigido em 2026-09-28, graças ao P0 em uso real:**
+  o P0 é exatamente pra isso — expôs que "melhor valor" (usado por P1
+  abaixo) estava quebrado desde que foi criado, sempre recomendando
+  empate em todo jogo. Ver README item 15 pro detalhe matemático (a razão
+  bruta `probabilidade/popularidade` cancelava a probabilidade real do
+  jogo, sobrando só o fator fixo de sub-aposta de empate — que é sempre o
+  menor dos três). Corrigido comparando posição relativa (rank) em vez de
+  razão. Esse mesmo teste também expôs um bug operacional sério: rodar
+  `npm run dev` de novo pra um concurso já conferido sobrescrevia a
+  sugestão salva com odds obsoletas — corrigido com uma trava em
+  `salvarSugestoes` (ver README item 16). **Isso é o P0 funcionando como
+  deveria** — sem comparar contra resultado real, esse bug de "melhor
+  valor" continuaria invisível indefinidamente.
 
 ## P1 — Usar o "melhor valor" de verdade na escolha do pick
 
@@ -81,6 +94,13 @@ probabilidade pura pra cada jogo simples, e o "melhor valor" da Fase 3 fica
 só como informação no relatório — não influencia a escolha. Isso é
 proposital (documentado em `otimizador.ts`), mas vale revisitar agora que
 a cobertura de odds está completa.
+
+**Atualização 2026-09-28:** o "melhor valor" que esse item usaria tinha
+um bug sério (sempre recomendava empate — ver P0 acima e README item 15),
+agora corrigido. Isso não muda a prioridade deste item (ainda depende de
+P0 acumular dado real pra calibrar X/Y abaixo), mas era um bloqueador
+oculto — implementar P1 em cima do "melhor valor" quebrado teria herdado
+o mesmo problema.
 
 **Por quê:** é a estratégia clássica de bolão — quando dois resultados têm
 probabilidade parecida, mas um é bem menos popular, vale trocar pra ele

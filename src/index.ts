@@ -106,9 +106,19 @@ async function main() {
     }
   }
   // P0: snapshot da sugestão exibida agora, pra "npm run conferir" comparar
-  // contra o resultado real depois que o concurso for apurado.
-  salvarSugestoes(db, idsPorSequencial, relatorio);
+  // contra o resultado real depois que o concurso for apurado. Jogos que já
+  // têm resultado real conferido NÃO são sobrescritos (ver trava em
+  // salvarSugestoes) — evita corromper um snapshot histórico já usado numa
+  // comparação real só porque o pipeline rodou de novo pra esse concurso.
+  const { sequenciaisPulados } = salvarSugestoes(db, idsPorSequencial, relatorio);
   db.close();
+
+  if (sequenciaisPulados.length > 0) {
+    console.warn(
+      `     Aviso: ${sequenciaisPulados.length} jogo(s) já têm resultado real conferido — sugestão NÃO ` +
+        `sobrescrita pra manter o snapshot histórico (sequenciais: ${sequenciaisPulados.join(", ")}).`
+    );
+  }
 
   const probabilidadesPorSequencial = new Map(
     relatorio

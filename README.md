@@ -126,9 +126,11 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
 
 - Testes automatizados (`npm test`, `node:test`) cobrem os módulos de
   cálculo puro (`probability.ts`, `historico.ts`, `popularidade.ts`,
-  `otimizador.ts`, `fechamento.ts`, `numerosMegaSena.ts`, e as funções
-  puras usadas pelo P0 em `fixtures.ts`/`otimizador.ts` — 43 casos, ver
-  pasta `tests/`) — `ajuste.ts` (Fase 2) ainda depende de validação manual
+  `otimizador.ts`, `fechamento.ts`, `numerosMegaSena.ts`, `report.ts`,
+  as funções puras usadas pelo P0 em `fixtures.ts`/`otimizador.ts`, e a
+  trava de `schema.ts` contra sobrescrever sugestão já conferida — 51
+  casos, ver pasta `tests/`) — `ajuste.ts` (Fase 2) ainda depende de
+  validação manual
 - Não há agendamento automático (rodar toda semana sozinho) — é preciso
   rodar `npm run dev` manualmente
 - **O loop de validação (P0) existe (`npm run conferir`) mas ainda sem
@@ -387,3 +389,38 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
     fallback se falhar por qualquer motivo, e reporta os dois erros se as
     duas falharem. Validado ao vivo com o concurso 1271 (já apurado): os
     14 placares bateram exatamente com o que a Caixa publicou.
+
+15. **"Melhor valor" tinha um bug real, confirmado contra dado real do
+    concurso 1272 em 2026-09-28: sempre recomendava empate, em TODOS os
+    jogos, sempre.** A fórmula antiga comparava a razão bruta
+    `probabilidade ÷ popularidade`. Como `popularidade.X = probabilidade.X
+    × fatorX ÷ soma` (ver `popularidade.ts`), essa razão se simplifica
+    algebricamente pra `soma ÷ fatorX` — o `probabilidade.X` do numerador
+    CANCELA com o do denominador, sobrando só o fator fixo (torcida
+    grande, âncora histórica, sub-aposta de empate). Como o fator do
+    empate é sempre o menor dos três, a razão sempre dava empate, não
+    importa o jogo. Confirmado nos 14 jogos do concurso 1272: "melhor
+    valor" recomendou "X" nas 14 vezes, e acertou exatamente os 4 jogos
+    que realmente empataram (a assinatura exata de "sempre aposta na mesma
+    coisa"). Conserto (`calcularMelhorValor` em `report.ts`, agora
+    exportada e testada em `tests/report.test.ts`): compara a POSIÇÃO
+    relativa (rank 1º/2º/3º) entre probabilidade real e popularidade
+    estimada, não a razão bruta — o resultado que "sobe de posição" saindo
+    da popularidade pra probabilidade é o que tem valor de verdade,
+    porque isso não é afetado pela escala dos fatores fixos, só pela
+    ordem. Validado ao vivo: rodando de novo, "melhor valor" passou a
+    variar entre 1/X/2 dependendo do jogo, não é mais sempre "X".
+
+16. **Incidente de 2026-09-28: rodar `npm run dev` de novo pra um
+    concurso já apurado corrompeu o snapshot histórico da sugestão.**
+    Rodei o pipeline de novo pro concurso 1272 (já decidido e já
+    conferido) só pra testar o conserto do item 15 — isso buscou odds
+    novas (o jogo já tinha acabado, então essas odds já não eram as de
+    antes do jogo) e sobrescreveu a sugestão salva, mudando os números já
+    reportados (pick principal foi de 6/14 pra 7/14 só pela odd diferente,
+    sem nenhuma melhoria de modelo real). Não dá pra recuperar os números
+    exatos de antes (sem versionamento). Conserto: `salvarSugestoes`
+    (`src/db/schema.ts`) agora recusa sobrescrever a sugestão de um jogo
+    que já tem `resultados_reais` — `npm run dev` avisa e pula esses
+    jogos em vez de sobrescrever silenciosamente. Testado com um banco
+    SQLite em memória (`tests/schema.test.ts`) e validado ao vivo.
