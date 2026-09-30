@@ -18,6 +18,67 @@ com a chance **real** de 13/14 acertos, calculada por simulação — não
 uma garantia combinatória maquiada de probabilidade. Salva tudo em
 SQLite local.
 
+## Relatório — estado atual do projeto (2026-09-30)
+
+Resumo de onde o projeto está depois de ~1 semana de trabalho ativo,
+pensado pra ler de cima a baixo sem precisar vasculhar os 17 itens de
+"Pontos de atenção" abaixo (que continuam sendo a referência detalhada).
+
+### O que já validamos com dado real
+
+- **P0 (loop de validação)**: implementado e funcionando (`npm run dev`
+  salva a sugestão, `npm run conferir -- <numero>` compara com o
+  resultado real). Só **1 concurso real conferido até agora** (1272) —
+  pick principal acertou 6-7/14 dependendo da rodada, ainda é ruído
+  estatístico puro, não dá pra tirar conclusão de 1 amostra.
+- **Backteste histórico** (`npm run backtest`, 50 concursos reais,
+  546 jogos, ago/2024-mai/2026, odds reais do football-data.co.uk): dá um
+  número bem mais confiável, mas só pra **jogos de clube** (sem seleção —
+  ver limitação abaixo). Pick principal acerta **~55-57%** dos jogos, e a
+  calibração é saudável (jogos com probabilidade 60%+ acertam 70%+ na
+  prática — o modelo não está "otimista demais").
+
+### Principais achados
+
+1. **Um bug real foi encontrado e corrigido**: "melhor valor" sempre
+   recomendava empate, em todo jogo, sem exceção — só descobrimos
+   comparando contra resultado real (é exatamente pra isso que o P0
+   existe). Ver item 15.
+2. **Chegar em 13 ou 14 acertos é extremamente raro, não importa o
+   quanto se gaste.** Testamos 6 estratégias de fechamento diferentes e
+   um orçamento de R$4 até R$444 nos 50 concursos do backteste — **nunca
+   bateu 13/14 nem uma vez**. Com ~56% de acerto por jogo, a chance
+   matemática de acertar os 14 juntos é `0.566^14 ≈ 0.03%` (1 em ~2.800).
+   Não é falha do modelo, é a natureza combinatória do problema.
+3. **Cobertura em pares (fechamento atual) tem retorno decrescente
+   forte**: dobrar o orçamento de R$224 pra R$444 rendeu só +2.5 pontos
+   percentuais de acerto médio.
+4. **O modelo parece pior em jogos de seleção/eliminatória do que em
+   clube** — o único concurso real conferido (1272, que tinha bastante
+   seleção) teve resultado bem abaixo da média do backteste (42.9-50%
+   vs. 55-57%). Ainda não é confirmado com mais dado, mas é consistente.
+
+### Limitações honestas
+
+- O backteste **não cobre seleção/eliminatória nem ligas menores** — a
+  única fonte de odds históricas gratuita que achamos é de futebol de
+  clube. Não dá pra generalizar os 55-57% pra Loteca inteira.
+- **P0 ainda tem 1 amostra real** — o número confiável (backteste) é
+  histórico, não é validação do modelo *ao vivo* rodando hoje. Só o uso
+  contínuo (`npm run dev` + `npm run conferir` toda semana) fecha essa
+  lacuna com o tempo.
+- **Fase 2 (desfalques via notícia)** não tem cobertura de teste nem foi
+  testada em escala — é o único módulo de cálculo sem teste automatizado.
+- Nenhum fator de ajuste (`FATOR_SUBAPOSTA_EMPATE`, `FATOR_REDUCAO`, etc.)
+  foi recalibrado com dado real ainda — 1 concurso não é suficiente.
+
+### Próximos passos
+
+Continuar rodando `npm run dev` toda semana e `npm run conferir` depois
+de cada apuração — é o único jeito de sair de "1 concurso real" pra
+"histórico real o suficiente pra recalibrar com confiança" (P1/P4 no
+`docs/plano-melhorias.md`).
+
 ## Setup
 
 ```bash
