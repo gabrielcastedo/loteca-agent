@@ -67,6 +67,21 @@ pra saber se os fatores de `ajuste.ts`/`popularidade.ts`/`otimizador.ts`
 estão calibrados — é só chute em cima de chute (ver P0 em
 `docs/plano-melhorias.md`).
 
+## Backteste de estratégias
+
+```bash
+npm run backtest
+```
+
+Testa várias formas de montar o fechamento (favorito puro, cobertura em
+pares por diferentes critérios, cobertura de desvio único) contra
+`backtest/concursos-2026-sem-selecao.json` — 50 concursos reais já
+decididos, com odds históricas reais (não as sugestões salvas pelo P0,
+que ainda tem pouco histórico acumulado). Mede custo e acerto do melhor
+bilhete por estratégia. **Só cobre jogos de clube** (sem seleção/
+eliminatória) — ver item 17 dos "Pontos de atenção" pra limitação e
+metodologia completa antes de generalizar qualquer número daqui.
+
 ## O que este código faz (e o que não faz ainda)
 
 Faz:
@@ -424,3 +439,32 @@ Próximos passos em aberto (não fazem parte do escopo original das 4 fases):
     que já tem `resultados_reais` — `npm run dev` avisa e pula esses
     jogos em vez de sobrescrever silenciosamente. Testado com um banco
     SQLite em memória (`tests/schema.test.ts`) e validado ao vivo.
+
+17. **Backteste (`npm run backtest`) existe, mas cobre só jogos de clube —
+    não é representativo da Loteca inteira.** O `historico-loteca.json`
+    (2002-2026) só tem resultado (1/X/2), não as odds da época — pra
+    montar um backteste de verdade, precisava também de odds históricas
+    reais. Achamos uma fonte gratuita (`football-data.co.uk`, Brasil Série
+    A + principais ligas europeias) e cruzamos com a grade oficial de cada
+    concurso antigo (`fetchConcursoPorNumero`). Duas limitações
+    estruturais, não acidentais:
+    - **Só cobre jogos de clube.** Jogos de seleção (eliminatórias, Copa)
+      foram excluídos de propósito (`scripts/lab-estrategias.ts` filtra
+      contra uma lista de nomes de país) porque essa fonte não tem odds de
+      seleção nenhuma. O concurso 1272 real (que tinha seleção e time de
+      Série C/D) teve pick principal de 42.9-50% — bem abaixo dos ~55-57%
+      que o backteste mostra pra jogos de clube. **Não dá pra generalizar
+      o número do backteste pra Loteca inteira.**
+    - **Matching de nomes é aproximado** (nomes abreviados tipo "Nott'm
+      Forest" vs. "NOTTINGHAM FOREST" — tolerância por token compartilhado,
+      não é garantia). Concursos ficam no dataset só com ≥9 dos 14 jogos
+      casados — 14/14 estrito só apareceu em 5 dos ~90 concursos testados.
+    - Dataset atual: `backtest/concursos-2026-sem-selecao.json` (50
+      concursos, 546 jogos, ago/2024-mai/2026). `npm run backtest` testa
+      várias estratégias de fechamento contra esse dataset (não só "qual é
+      o melhor palpite" — ver `scripts/lab-estrategias.ts` pros critérios).
+      Achado principal até agora: cobertura em pares tem retorno
+      decrescente forte (dobrar o orçamento de R$224 pra R$444 rendeu só
+      +2.5 pontos percentuais) e **nenhuma estratégia testada chegou a
+      13/14 em nenhum dos 50 concursos** — reforça que isso é limite
+      estrutural do formato de cobertura, não falta de dinheiro.

@@ -9,7 +9,8 @@
     "dev": "ts-node --esm src/index.ts",
     "test": "node --loader ts-node/esm --test tests/probability.test.ts tests/historico.test.ts tests/popularidade.test.ts tests/otimizador.test.ts tests/fechamento.test.ts tests/oddsShow.test.ts tests/fixtures.test.ts tests/numerosMegaSena.test.ts tests/report.test.ts tests/schema.test.ts",
     "test-matcher": "ts-node --esm scripts/test-matcher.ts",
-    "conferir": "ts-node --esm scripts/conferir.ts"
+    "conferir": "ts-node --esm scripts/conferir.ts",
+    "backtest": "ts-node --esm scripts/lab-estrategias.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",

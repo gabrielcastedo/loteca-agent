@@ -114,6 +114,43 @@ ganho de valor for maior que Y". Os valores de X/Y são outro chute inicial
 — por isso esse item deveria vir depois que P0 já tiver alguns concursos de
 histórico pra calibrar com dado real, não only vibes.
 
+## Backteste de estratégias de fechamento (2026-09-30)
+
+O usuário perguntou se dava pra ter mudado algo no modelo pra chegar em
+13-14 acertos no concurso 1272. Resposta matemática: não, de forma
+confiável — com ~56-57% de acerto por jogo (o que o backteste confirmou),
+a chance de acertar os 14 ao mesmo tempo é `0.566^14 ≈ 0.03%`. Isso levou
+a uma pergunta melhor: em vez de "qual é o melhor palpite", qual
+**estrutura de bilhetes** rende mais, dado o mesmo orçamento?
+
+**Dataset:** sem odds históricas pra Loteca, cruzamos `fetchConcursoPorNumero`
+(grade oficial de concursos antigos) com odds reais do `football-data.co.uk`
+(Brasil Série A + principais ligas europeias, gratuito). Excluímos
+concursos com qualquer jogo de seleção (essa fonte não cobre seleção) —
+**limitação real, não cosmética**: o concurso 1272 de verdade (que tinha
+seleção) teve resultado bem pior (42.9-50%) que a média do backteste
+(55-57%), então os números abaixo não generalizam pra Loteca inteira, só
+pra semanas dominadas por futebol de clube. Dataset final: 50 concursos,
+546 jogos, `backtest/concursos-2026-sem-selecao.json`.
+
+**Estratégias testadas** (`npm run backtest`, `scripts/lab-estrategias.ts`):
+favorito puro sem duplo; fechamento atual (pares por ganho marginal);
+duplo único (mesmos jogos, sem parear, 7x mais barato); pares por entropia;
+pares por diferença P1-P2; pares por "melhor valor". Resultado: 70.0%
+(atual) até 71.4% (melhor valor) de acerto médio do melhor bilhete —
+diferenças pequenas o bastante (0.3-1.4pp em 50 amostras) pra não trocar o
+critério de produção ainda, mas valorável acompanhar com mais dado do P0.
+
+**Achado mais importante — retorno decrescente forte:** testamos cobrir
+de 4 até os 14 jogos em pares. Dobrar o orçamento de R$224 (8 jogos) pra
+R$444 (14 jogos, o máximo possível nessa estrutura) rendeu só +2.5 pontos
+percentuais (70%→72.5%), e **nenhuma configuração, em nenhum orçamento
+testado, chegou a 13/14 em nenhum dos 50 concursos**. Cobertura em pares
+tem um teto estrutural (nunca cobre o 3º colocado, só cobre até 2 desvios
+simultâneos) que dinheiro sozinho não resolve — trocar de formato
+(triplos, cobrir 3+ desvios) escalaria exponencialmente em custo pro
+mesmo tipo de limitação de fundo (incerteza real do futebol).
+
 ## P2 — Odds por casa de apostas, não só "melhor de cada mercado" ✅ feito em 2026-09-23
 
 **O quê:** hoje pegamos a melhor odd de 1, a melhor de X e a melhor de 2 do

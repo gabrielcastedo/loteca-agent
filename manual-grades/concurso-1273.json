@@ -1,0 +1,22 @@
+{
+  "numero": 1273,
+  "encerramentoApostas": "2026-10-03T15:00:00",
+  "consultadoEm": "2026-09-29T02:30:00Z",
+  "fonte": "odds.show (grade oficial + numeração de jogo extraída do widget, servicebus2 ainda não tinha a grade). Jogos 10, 11 e 14 ainda sem odds em nenhuma casa no momento da consulta — mercado não abriu ainda.",
+  "jogos": [
+    { "sequencial": 1, "equipeCasa": "PORTUGAL", "equipeVisitante": "NORUEGA" },
+    { "sequencial": 2, "equipeCasa": "ATLETICO", "ufCasa": "GO", "equipeVisitante": "AMERICA", "ufVisitante": "MG" },
+    { "sequencial": 3, "equipeCasa": "CUIABA", "ufCasa": "MT", "equipeVisitante": "PONTE PRETA", "ufVisitante": "SP" },
+    { "sequencial": 4, "equipeCasa": "FLORESTA", "ufCasa": "CE", "equipeVisitante": "BOTAFOGO", "ufVisitante": "PB" },
+    { "sequencial": 5, "equipeCasa": "SANTA CRUZ", "ufCasa": "PE", "equipeVisitante": "MARINGA", "ufVisitante": "PR" },
+    { "sequencial": 6, "equipeCasa": "BOTAFOGO", "ufCasa": "SP", "equipeVisitante": "VILA NOVA", "ufVisitante": "GO" },
+    { "sequencial": 7, "equipeCasa": "ATLETICO", "ufCasa": "MG", "equipeVisitante": "BRAGANTINO", "ufVisitante": "SP" },
+    { "sequencial": 8, "equipeCasa": "INTER LIMEIRA", "ufCasa": "SP", "equipeVisitante": "BRUSQUE", "ufVisitante": "SC" },
+    { "sequencial": 9, "equipeCasa": "PAYSANDU", "ufCasa": "PA", "equipeVisitante": "FERROVIARIA", "ufVisitante": "SP" },
+    { "sequencial": 10, "equipeCasa": "ESPANHA", "equipeVisitante": "REPUBLICA TCHECA" },
+    { "sequencial": 11, "equipeCasa": "SUICA", "equipeVisitante": "ESLOVENIA" },
+    { "sequencial": 12, "equipeCasa": "GRECIA", "equipeVisitante": "ALEMANHA" },
+    { "sequencial": 13, "equipeCasa": "PAIS DE GALES", "equipeVisitante": "DINAMARCA" },
+    { "sequencial": 14, "equipeCasa": "HOLANDA", "equipeVisitante": "SERVIA" }
+  ]
+}

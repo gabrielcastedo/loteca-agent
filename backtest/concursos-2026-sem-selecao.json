@@ -1,0 +1,6312 @@
+{
+  "geradoEm": "2026-09-30T03:16:34.038Z",
+  "metodologia": "Odds de football-data.co.uk (média entre casas quando disponível, senão Bet365). Resultado real da própria grade apurada pela Caixa. Concursos com qualquer jogo de seleção nacional foram excluídos.",
+  "concursos": [
+    {
+      "numero": 1250,
+      "dataApuracao": "11/05/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "BARCELONA",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 1.64,
+          "oddEmpate": 4.6,
+          "oddVisitante": 4.18,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "CORITIBA",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.66,
+          "oddEmpate": 3.06,
+          "oddVisitante": 2.66,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.49,
+          "oddEmpate": 4.1,
+          "oddVisitante": 6.22,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 1.93,
+          "oddEmpate": 3.45,
+          "oddVisitante": 3.69,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-09",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "REAL SOCIEDAD",
+          "equipeVisitante": "REAL BETIS",
+          "oddCasa": 2.5,
+          "oddEmpate": 3.49,
+          "oddVisitante": 2.64,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2026-05-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "REMO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.9,
+          "oddEmpate": 3.38,
+          "oddVisitante": 1.9,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.15,
+          "oddEmpate": 3.29,
+          "oddVisitante": 3.22,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "WEST HAM",
+          "equipeVisitante": "ARSENAL",
+          "oddCasa": 5.83,
+          "oddEmpate": 4.14,
+          "oddVisitante": 1.54,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "PARMA",
+          "equipeVisitante": "ROMA",
+          "oddCasa": 8.47,
+          "oddEmpate": 4.46,
+          "oddVisitante": 1.38,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.11,
+          "oddEmpate": 3.3,
+          "oddVisitante": 3.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.04,
+          "oddEmpate": 3.08,
+          "oddVisitante": 3.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 3.9,
+          "oddEmpate": 3.3,
+          "oddVisitante": 1.91,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 1.79,
+          "oddEmpate": 3.34,
+          "oddVisitante": 4.48,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "MILAN",
+          "equipeVisitante": "ATALANTA BERGAMAS",
+          "oddCasa": 2.23,
+          "oddEmpate": 3.28,
+          "oddVisitante": 3.19,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-05-10",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1248,
+      "dataApuracao": "04/05/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.43,
+          "oddEmpate": 4.22,
+          "oddVisitante": 7.05,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "REMO",
+          "oddCasa": 1.53,
+          "oddEmpate": 3.98,
+          "oddVisitante": 5.69,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-02",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.55,
+          "oddEmpate": 3.79,
+          "oddVisitante": 6.06,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-02",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "CORITIBA",
+          "oddCasa": 2.16,
+          "oddEmpate": 3.01,
+          "oddVisitante": 3.52,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-02",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.36,
+          "oddVisitante": 4.98,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-02",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.82,
+          "oddEmpate": 3.29,
+          "oddVisitante": 4.45,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-02",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BOURNEMOUTH",
+          "equipeVisitante": "CRYSTAL PALACE",
+          "oddCasa": 1.56,
+          "oddEmpate": 4.23,
+          "oddVisitante": 5.36,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "MANCHESTER UNITED",
+          "equipeVisitante": "LIVERPOOL",
+          "oddCasa": 2.35,
+          "oddEmpate": 3.71,
+          "oddVisitante": 2.74,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 1.98,
+          "oddEmpate": 3.38,
+          "oddVisitante": 3.6,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.17,
+          "oddEmpate": 3.16,
+          "oddVisitante": 3.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CHAPECOENSE",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 4.04,
+          "oddEmpate": 3.36,
+          "oddVisitante": 1.87,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "ASTON VILLA",
+          "equipeVisitante": "TOTTENHAM",
+          "oddCasa": 2.24,
+          "oddEmpate": 3.54,
+          "oddVisitante": 2.99,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.56,
+          "oddEmpate": 2.91,
+          "oddVisitante": 2.88,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-05-03",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1246,
+      "dataApuracao": "27/04/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 4.6,
+          "oddEmpate": 3.47,
+          "oddVisitante": 1.74,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.86,
+          "oddVisitante": 5.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-25",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.48,
+          "oddEmpate": 3.18,
+          "oddVisitante": 2.75,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-25",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "REMO",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.82,
+          "oddEmpate": 3.28,
+          "oddVisitante": 2.38,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 1.95,
+          "oddEmpate": 3.29,
+          "oddVisitante": 3.83,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.14,
+          "oddEmpate": 3.21,
+          "oddVisitante": 3.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "CORITIBA",
+          "oddCasa": 1.87,
+          "oddEmpate": 3.27,
+          "oddVisitante": 4.16,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "OSASUNA",
+          "equipeVisitante": "SEVILLA",
+          "oddCasa": 1.9,
+          "oddEmpate": 3.33,
+          "oddVisitante": 4.18,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.64,
+          "oddVisitante": 5.79,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 2.8,
+          "oddEmpate": 3.13,
+          "oddVisitante": 2.48,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "MILAN",
+          "equipeVisitante": "JUVENTUS",
+          "oddCasa": 2.68,
+          "oddEmpate": 3.07,
+          "oddVisitante": 2.71,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "CHAPECOENSE",
+          "oddCasa": 1.28,
+          "oddEmpate": 5.27,
+          "oddVisitante": 9.42,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-26",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1244,
+      "dataApuracao": "20/04/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 1.43,
+          "oddEmpate": 4.46,
+          "oddVisitante": 6.67,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.12,
+          "oddEmpate": 3.19,
+          "oddVisitante": 3.44,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "CHAPECOENSE",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 3.49,
+          "oddEmpate": 3.41,
+          "oddVisitante": 2.02,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-18",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.6,
+          "oddEmpate": 2.96,
+          "oddVisitante": 2.84,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-18",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.66,
+          "oddEmpate": 3.65,
+          "oddVisitante": 5.03,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 1.88,
+          "oddEmpate": 3.4,
+          "oddVisitante": 4.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-19",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "CORITIBA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.23,
+          "oddEmpate": 3.1,
+          "oddVisitante": 3.29,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.18,
+          "oddVisitante": 3.22,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-19",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 1.56,
+          "oddEmpate": 3.78,
+          "oddVisitante": 5.93,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "REMO",
+          "oddCasa": 1.49,
+          "oddEmpate": 4.05,
+          "oddVisitante": 6.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-19",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1242,
+      "dataApuracao": "13/04/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 3.07,
+          "oddEmpate": 3.01,
+          "oddVisitante": 2.38,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-11",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "REMO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.86,
+          "oddEmpate": 3.2,
+          "oddVisitante": 2.41,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-11",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.95,
+          "oddEmpate": 3,
+          "oddVisitante": 2.47,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-11",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.17,
+          "oddEmpate": 3.3,
+          "oddVisitante": 3.18,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-11",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.18,
+          "oddEmpate": 3.15,
+          "oddVisitante": 3.31,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-11",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.76,
+          "oddEmpate": 3.49,
+          "oddVisitante": 4.51,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-11",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "CHAPECOENSE",
+          "oddCasa": 1.46,
+          "oddEmpate": 4.14,
+          "oddVisitante": 6.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-12",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "CORITIBA",
+          "oddCasa": 1.83,
+          "oddEmpate": 3.35,
+          "oddVisitante": 4.3,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-12",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 2.69,
+          "oddEmpate": 2.91,
+          "oddVisitante": 2.78,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-12",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.93,
+          "oddEmpate": 3.32,
+          "oddVisitante": 3.89,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-12",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1240,
+      "dataApuracao": "06/04/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 1.93,
+          "oddEmpate": 3.34,
+          "oddVisitante": 3.82,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-04",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.21,
+          "oddEmpate": 3.08,
+          "oddVisitante": 3.35,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "CORITIBA",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 3.04,
+          "oddEmpate": 2.95,
+          "oddVisitante": 2.44,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-04",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CHAPECOENSE",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 2.53,
+          "oddEmpate": 3.16,
+          "oddVisitante": 2.72,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-05",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 2.16,
+          "oddEmpate": 3.17,
+          "oddVisitante": 3.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-05",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.33,
+          "oddEmpate": 4.64,
+          "oddVisitante": 8.96,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-05",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 2.53,
+          "oddEmpate": 3.08,
+          "oddVisitante": 2.78,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-05",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.14,
+          "oddEmpate": 3.03,
+          "oddVisitante": 3.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-05",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.1,
+          "oddEmpate": 3.26,
+          "oddVisitante": 3.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-05",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "REMO",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.74,
+          "oddVisitante": 4.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-04-05",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1238,
+      "dataApuracao": "23/03/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 3.28,
+          "oddEmpate": 3.03,
+          "oddVisitante": 2.26,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-22",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 1.89,
+          "oddEmpate": 3.37,
+          "oddVisitante": 3.98,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.63,
+          "oddEmpate": 3.5,
+          "oddVisitante": 5.62,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 2.62,
+          "oddEmpate": 2.97,
+          "oddVisitante": 2.78,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "CORITIBA",
+          "oddCasa": 1.93,
+          "oddEmpate": 3.14,
+          "oddVisitante": 4.16,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-22",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.57,
+          "oddVisitante": 5.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-22",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.85,
+          "oddEmpate": 3.45,
+          "oddVisitante": 4.03,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-22",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "CHAPECOENSE",
+          "oddCasa": 1.37,
+          "oddEmpate": 4.72,
+          "oddVisitante": 7.48,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-22",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 2.51,
+          "oddEmpate": 3.07,
+          "oddVisitante": 2.82,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-22",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1237,
+      "dataApuracao": "16/03/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 1.63,
+          "oddEmpate": 3.76,
+          "oddVisitante": 5.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.33,
+          "oddEmpate": 3.01,
+          "oddVisitante": 3.15,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "WEST HAM",
+          "equipeVisitante": "MANCHESTER CITY",
+          "oddCasa": 4.81,
+          "oddEmpate": 4.16,
+          "oddVisitante": 1.63,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-03-14",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 3.97,
+          "oddEmpate": 3.25,
+          "oddVisitante": 1.93,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 1.78,
+          "oddEmpate": 3.39,
+          "oddVisitante": 4.53,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 1.8,
+          "oddEmpate": 3.62,
+          "oddVisitante": 4.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.48,
+          "oddEmpate": 3.02,
+          "oddVisitante": 2.92,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "LIVERPOOL",
+          "equipeVisitante": "TOTTENHAM",
+          "oddCasa": 1.3,
+          "oddEmpate": 5.87,
+          "oddVisitante": 8.24,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CORITIBA",
+          "equipeVisitante": "REMO",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.56,
+          "oddVisitante": 4.63,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.88,
+          "oddEmpate": 3.27,
+          "oddVisitante": 4.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.36,
+          "oddEmpate": 3.08,
+          "oddVisitante": 3.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2026-03-15",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1227,
+      "dataApuracao": "05/01/2026",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "MANCHESTER CITY",
+          "equipeVisitante": "CHELSEA",
+          "oddCasa": 1.47,
+          "oddEmpate": 4.9,
+          "oddVisitante": 5.88,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "ATALANTA BERGAMAS",
+          "equipeVisitante": "ROMA",
+          "oddCasa": 2.28,
+          "oddEmpate": 3.05,
+          "oddVisitante": 3.37,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-01-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "LEEDS UNITED",
+          "equipeVisitante": "MANCHESTER UNITED",
+          "oddCasa": 2.73,
+          "oddEmpate": 3.3,
+          "oddVisitante": 2.59,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "LAZIO",
+          "equipeVisitante": "NAPOLI",
+          "oddCasa": 3.79,
+          "oddEmpate": 2.98,
+          "oddVisitante": 2.16,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "EVERTON",
+          "equipeVisitante": "BRENTFORD",
+          "oddCasa": 2.46,
+          "oddEmpate": 3.16,
+          "oddVisitante": 3.01,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FULHAM",
+          "equipeVisitante": "LIVERPOOL",
+          "oddCasa": 4.07,
+          "oddEmpate": 3.61,
+          "oddVisitante": 1.88,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "TOTTENHAM",
+          "equipeVisitante": "SUNDERLAND",
+          "oddCasa": 1.97,
+          "oddEmpate": 3.39,
+          "oddVisitante": 3.95,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "FIORENTINA",
+          "equipeVisitante": "CREMONESE",
+          "oddCasa": 1.71,
+          "oddEmpate": 3.7,
+          "oddVisitante": 4.8,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "REAL MADRID",
+          "equipeVisitante": "REAL BETIS",
+          "oddCasa": 1.48,
+          "oddEmpate": 4.59,
+          "oddVisitante": 6.05,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "VERONA",
+          "equipeVisitante": "TORINO",
+          "oddCasa": 2.66,
+          "oddEmpate": 2.85,
+          "oddVisitante": 2.96,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "INTER DE MILAO",
+          "equipeVisitante": "BOLOGNA",
+          "oddCasa": 1.39,
+          "oddEmpate": 4.77,
+          "oddVisitante": 7.55,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "REAL SOCIEDAD",
+          "equipeVisitante": "ATLETICO MADRID",
+          "oddCasa": 3.91,
+          "oddEmpate": 3.65,
+          "oddVisitante": 1.88,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2026-01-04",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1225,
+      "dataApuracao": "22/12/2025",
+      "jogos": [
+        {
+          "sequencial": 2,
+          "equipeCasa": "EVERTON",
+          "equipeVisitante": "ARSENAL",
+          "oddCasa": 6.26,
+          "oddEmpate": 4.02,
+          "oddVisitante": 1.54,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-20",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "JUVENTUS",
+          "equipeVisitante": "ROMA",
+          "oddCasa": 2,
+          "oddEmpate": 3.09,
+          "oddVisitante": 4.21,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "REAL MADRID",
+          "equipeVisitante": "SEVILLA",
+          "oddCasa": 1.19,
+          "oddEmpate": 7.14,
+          "oddVisitante": 12.64,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "GIRONA",
+          "equipeVisitante": "ATLETICO MADRID",
+          "oddCasa": 4.76,
+          "oddEmpate": 3.76,
+          "oddVisitante": 1.71,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "SASSUOLO",
+          "equipeVisitante": "TORINO",
+          "oddCasa": 2.32,
+          "oddEmpate": 3.1,
+          "oddVisitante": 3.24,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "VILLARREAL",
+          "equipeVisitante": "BARCELONA",
+          "oddCasa": 3.92,
+          "oddEmpate": 4.36,
+          "oddVisitante": 1.73,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "ASTON VILLA",
+          "equipeVisitante": "MANCHESTER UNITED",
+          "oddCasa": 2.01,
+          "oddEmpate": 3.67,
+          "oddVisitante": 3.53,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "FIORENTINA",
+          "equipeVisitante": "UDINESE",
+          "oddCasa": 2.07,
+          "oddEmpate": 3.2,
+          "oddVisitante": 3.77,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "ELCHE FC",
+          "equipeVisitante": "RAYO VALLECANO",
+          "oddCasa": 2.48,
+          "oddEmpate": 2.94,
+          "oddVisitante": 3.15,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "GENOA",
+          "equipeVisitante": "ATALANTA BERGAMAS",
+          "oddCasa": 3.8,
+          "oddEmpate": 3.19,
+          "oddVisitante": 2.06,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "REAL BETIS",
+          "equipeVisitante": "GETAFE",
+          "oddCasa": 1.73,
+          "oddEmpate": 3.31,
+          "oddVisitante": 5.5,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-21",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1224,
+      "dataApuracao": "15/12/2025",
+      "jogos": [
+        {
+          "sequencial": 2,
+          "equipeCasa": "ARSENAL",
+          "equipeVisitante": "WOLVES",
+          "oddCasa": 1.12,
+          "oddEmpate": 8.9,
+          "oddVisitante": 22.31,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-13",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "ATALANTA BERGAMAS",
+          "equipeVisitante": "CAGLIARI CALCIO",
+          "oddCasa": 1.33,
+          "oddEmpate": 5.07,
+          "oddVisitante": 9.09,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-13",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "CRYSTAL PALACE",
+          "equipeVisitante": "MANCHESTER CITY",
+          "oddCasa": 4.01,
+          "oddEmpate": 3.73,
+          "oddVisitante": 1.85,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "NOTTINGHAM FOREST",
+          "equipeVisitante": "TOTTENHAM",
+          "oddCasa": 2.62,
+          "oddEmpate": 3.31,
+          "oddVisitante": 2.7,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "WEST HAM",
+          "equipeVisitante": "ASTON VILLA",
+          "oddCasa": 3.31,
+          "oddEmpate": 3.42,
+          "oddVisitante": 2.18,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "FIORENTINA",
+          "equipeVisitante": "VERONA",
+          "oddCasa": 1.98,
+          "oddEmpate": 3.18,
+          "oddVisitante": 4.15,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "UDINESE",
+          "equipeVisitante": "NAPOLI",
+          "oddCasa": 4.47,
+          "oddEmpate": 3.29,
+          "oddVisitante": 1.87,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "CELTA DE VIGO",
+          "equipeVisitante": "ATHLETIC BILBAO",
+          "oddCasa": 2.86,
+          "oddEmpate": 3.11,
+          "oddVisitante": 2.58,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "GENOA",
+          "equipeVisitante": "INTER DE MILAO",
+          "oddCasa": 7.15,
+          "oddEmpate": 4.11,
+          "oddVisitante": 1.47,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "BOLOGNA",
+          "equipeVisitante": "JUVENTUS",
+          "oddCasa": 3.27,
+          "oddEmpate": 3.17,
+          "oddVisitante": 2.27,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "DEPORTIVO ALAVES",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 5.73,
+          "oddEmpate": 4.05,
+          "oddVisitante": 1.56,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-14",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1223,
+      "dataApuracao": "08/12/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 1.32,
+          "oddEmpate": 5.08,
+          "oddVisitante": 8.62,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "BRIGHTON",
+          "equipeVisitante": "WEST HAM",
+          "oddCasa": 1.6,
+          "oddEmpate": 4.24,
+          "oddVisitante": 5.16,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.5,
+          "oddEmpate": 4.11,
+          "oddVisitante": 6.31,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.75,
+          "oddEmpate": 3.79,
+          "oddVisitante": 4.25,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 2.01,
+          "oddEmpate": 3.27,
+          "oddVisitante": 3.75,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.75,
+          "oddEmpate": 3.47,
+          "oddVisitante": 4.82,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 1.76,
+          "oddEmpate": 3.6,
+          "oddVisitante": 4.47,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.98,
+          "oddVisitante": 5.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "VALENCIA CLUB",
+          "equipeVisitante": "SEVILLA",
+          "oddCasa": 1.99,
+          "oddEmpate": 3.32,
+          "oddVisitante": 3.91,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 1.35,
+          "oddEmpate": 4.68,
+          "oddVisitante": 8.88,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 3.82,
+          "oddEmpate": 3.64,
+          "oddVisitante": 1.88,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.47,
+          "oddEmpate": 3.12,
+          "oddVisitante": 2.9,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "FULHAM",
+          "equipeVisitante": "CRYSTAL PALACE",
+          "oddCasa": 2.49,
+          "oddEmpate": 3.32,
+          "oddVisitante": 2.85,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-12-07",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1222,
+      "dataApuracao": "01/12/2025",
+      "jogos": [
+        {
+          "sequencial": 2,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 2.4,
+          "oddEmpate": 3.09,
+          "oddVisitante": 3.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "TOTTENHAM",
+          "equipeVisitante": "FULHAM",
+          "oddCasa": 2.34,
+          "oddEmpate": 3.35,
+          "oddVisitante": 3.04,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-29",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.68,
+          "oddEmpate": 3.04,
+          "oddVisitante": 2.73,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-29",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "CRYSTAL PALACE",
+          "equipeVisitante": "MANCHESTER UNITED",
+          "oddCasa": 2.07,
+          "oddEmpate": 3.6,
+          "oddVisitante": 3.4,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "REAL SOCIEDAD",
+          "equipeVisitante": "VILLARREAL",
+          "oddCasa": 2.82,
+          "oddEmpate": 3.28,
+          "oddVisitante": 2.5,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "ASTON VILLA",
+          "equipeVisitante": "WOLVES",
+          "oddCasa": 1.46,
+          "oddEmpate": 4.46,
+          "oddVisitante": 6.83,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "NOTTINGHAM FOREST",
+          "equipeVisitante": "BRIGHTON",
+          "oddCasa": 2.85,
+          "oddEmpate": 3.29,
+          "oddVisitante": 2.51,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "WEST HAM",
+          "equipeVisitante": "LIVERPOOL",
+          "oddCasa": 5.07,
+          "oddEmpate": 4.49,
+          "oddVisitante": 1.58,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.1,
+          "oddEmpate": 3.21,
+          "oddVisitante": 3.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "SEVILLA",
+          "equipeVisitante": "REAL BETIS",
+          "oddCasa": 2.69,
+          "oddEmpate": 3.22,
+          "oddVisitante": 2.66,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "ARSENAL",
+          "oddCasa": 3.01,
+          "oddEmpate": 3.14,
+          "oddVisitante": 2.46,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.24,
+          "oddEmpate": 3.17,
+          "oddVisitante": 3.24,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "GIRONA",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 7.19,
+          "oddEmpate": 5.42,
+          "oddVisitante": 1.36,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-11-30",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1219,
+      "dataApuracao": "10/11/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.77,
+          "oddEmpate": 3.28,
+          "oddVisitante": 2,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 3.08,
+          "oddEmpate": 3.11,
+          "oddVisitante": 2.36,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.5,
+          "oddEmpate": 4.13,
+          "oddVisitante": 6.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.26,
+          "oddEmpate": 3.14,
+          "oddVisitante": 3.24,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-08",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.54,
+          "oddVisitante": 5.39,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "WOLVES",
+          "oddCasa": 1.36,
+          "oddEmpate": 5.1,
+          "oddVisitante": 8.12,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "PARMA",
+          "equipeVisitante": "MILAN",
+          "oddCasa": 6.93,
+          "oddEmpate": 3.99,
+          "oddVisitante": 1.5,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-11-08",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 1.76,
+          "oddEmpate": 3.31,
+          "oddVisitante": 5.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 3.09,
+          "oddEmpate": 3.13,
+          "oddVisitante": 2.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 1.93,
+          "oddEmpate": 3.21,
+          "oddVisitante": 4.19,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "MANCHESTER CITY",
+          "equipeVisitante": "LIVERPOOL",
+          "oddCasa": 1.89,
+          "oddEmpate": 3.94,
+          "oddVisitante": 3.69,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.34,
+          "oddEmpate": 4.78,
+          "oddVisitante": 9.03,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "VALENCIA CLUB",
+          "equipeVisitante": "REAL BETIS",
+          "oddCasa": 3.4,
+          "oddEmpate": 3.42,
+          "oddVisitante": 2.12,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.98,
+          "oddEmpate": 3.36,
+          "oddVisitante": 3.74,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-09",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1218,
+      "dataApuracao": "03/11/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.63,
+          "oddEmpate": 3.73,
+          "oddVisitante": 5.36,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-02",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.76,
+          "oddVisitante": 4.94,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-01",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.4,
+          "oddEmpate": 4.41,
+          "oddVisitante": 7.94,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.31,
+          "oddEmpate": 3.3,
+          "oddVisitante": 3.02,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-01",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.21,
+          "oddEmpate": 6.23,
+          "oddVisitante": 12.84,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.64,
+          "oddEmpate": 3.73,
+          "oddVisitante": 5.3,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-02",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 3,
+          "oddEmpate": 2.9,
+          "oddVisitante": 2.56,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-02",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 6.03,
+          "oddEmpate": 3.67,
+          "oddVisitante": 1.59,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-02",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.01,
+          "oddEmpate": 3.15,
+          "oddVisitante": 3.93,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-02",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.23,
+          "oddEmpate": 3.04,
+          "oddVisitante": 3.44,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-11-02",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1217,
+      "dataApuracao": "27/10/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 1.65,
+          "oddEmpate": 3.72,
+          "oddVisitante": 5.18,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 1.85,
+          "oddEmpate": 3.31,
+          "oddVisitante": 4.45,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.67,
+          "oddEmpate": 3.02,
+          "oddVisitante": 2.76,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 1.68,
+          "oddEmpate": 3.53,
+          "oddVisitante": 5.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 2.73,
+          "oddEmpate": 3.25,
+          "oddVisitante": 2.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 5.26,
+          "oddEmpate": 3.71,
+          "oddVisitante": 1.64,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 1.77,
+          "oddEmpate": 3.6,
+          "oddVisitante": 4.06,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "ASTON VILLA",
+          "equipeVisitante": "MANCHESTER CITY",
+          "oddCasa": 4.16,
+          "oddEmpate": 3.77,
+          "oddVisitante": 1.82,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-10-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.65,
+          "oddEmpate": 3.71,
+          "oddVisitante": 5.23,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.75,
+          "oddEmpate": 3.54,
+          "oddVisitante": 4.61,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.08,
+          "oddEmpate": 3.42,
+          "oddVisitante": 3.41,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-26",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1216,
+      "dataApuracao": "20/10/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 1.86,
+          "oddEmpate": 3.33,
+          "oddVisitante": 4.31,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.61,
+          "oddEmpate": 3.84,
+          "oddVisitante": 5.33,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.91,
+          "oddEmpate": 3.17,
+          "oddVisitante": 4.37,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "ROMA",
+          "equipeVisitante": "INTER DE MILAO",
+          "oddCasa": 3.51,
+          "oddEmpate": 3.22,
+          "oddVisitante": 2.15,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-10-18",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "ATLETICO MADRID",
+          "equipeVisitante": "OSASUNA",
+          "oddCasa": 1.33,
+          "oddEmpate": 4.98,
+          "oddVisitante": 9.3,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-10-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.56,
+          "oddEmpate": 4.08,
+          "oddVisitante": 5.46,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "TOTTENHAM",
+          "equipeVisitante": "ASTON VILLA",
+          "oddCasa": 2.24,
+          "oddEmpate": 3.36,
+          "oddVisitante": 3.21,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.53,
+          "oddEmpate": 3.04,
+          "oddVisitante": 2.92,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.42,
+          "oddEmpate": 2.97,
+          "oddVisitante": 3.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "LIVERPOOL",
+          "equipeVisitante": "MANCHESTER UNITED",
+          "oddCasa": 1.67,
+          "oddEmpate": 4.3,
+          "oddVisitante": 4.55,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "ATALANTA BERGAMAS",
+          "equipeVisitante": "LAZIO",
+          "oddCasa": 1.82,
+          "oddEmpate": 3.67,
+          "oddVisitante": 4.21,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.73,
+          "oddEmpate": 3.62,
+          "oddVisitante": 4.65,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "MILAN",
+          "equipeVisitante": "FIORENTINA",
+          "oddCasa": 1.68,
+          "oddEmpate": 3.63,
+          "oddVisitante": 5.27,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "GETAFE",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 7.14,
+          "oddEmpate": 4.42,
+          "oddVisitante": 1.44,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-10-19",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1214,
+      "dataApuracao": "06/10/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.42,
+          "oddEmpate": 2.89,
+          "oddVisitante": 2.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-05",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.9,
+          "oddEmpate": 3.4,
+          "oddVisitante": 4.03,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.92,
+          "oddEmpate": 3.11,
+          "oddVisitante": 4.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.29,
+          "oddEmpate": 3.18,
+          "oddVisitante": 3.15,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 2.01,
+          "oddEmpate": 3.21,
+          "oddVisitante": 3.86,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.65,
+          "oddEmpate": 3.73,
+          "oddVisitante": 5.19,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-05",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.67,
+          "oddEmpate": 3.1,
+          "oddVisitante": 2.7,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-05",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 5.37,
+          "oddEmpate": 3.63,
+          "oddVisitante": 1.65,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-05",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.52,
+          "oddEmpate": 4,
+          "oddVisitante": 6.23,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-05",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.43,
+          "oddEmpate": 2.93,
+          "oddVisitante": 3.16,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-10-05",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1213,
+      "dataApuracao": "29/09/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 4.63,
+          "oddEmpate": 3.12,
+          "oddVisitante": 1.87,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-28",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.79,
+          "oddEmpate": 3.5,
+          "oddVisitante": 4.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 3.27,
+          "oddEmpate": 3.15,
+          "oddVisitante": 2.24,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-27",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.84,
+          "oddEmpate": 3.07,
+          "oddVisitante": 2.55,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 2.15,
+          "oddEmpate": 3.11,
+          "oddVisitante": 3.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.85,
+          "oddEmpate": 3.38,
+          "oddVisitante": 4.26,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-28",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "ASTON VILLA",
+          "equipeVisitante": "FULHAM",
+          "oddCasa": 2.25,
+          "oddEmpate": 3.24,
+          "oddVisitante": 3.34,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-09-28",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 4.03,
+          "oddEmpate": 3.35,
+          "oddVisitante": 1.92,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-28",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.09,
+          "oddEmpate": 3.09,
+          "oddVisitante": 3.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-28",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.15,
+          "oddVisitante": 3.31,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-28",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "BARCELONA",
+          "equipeVisitante": "REAL SOCIEDAD",
+          "oddCasa": 1.35,
+          "oddEmpate": 5.33,
+          "oddVisitante": 7.7,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-09-28",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1212,
+      "dataApuracao": "22/09/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.32,
+          "oddEmpate": 4.88,
+          "oddVisitante": 9.29,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-21",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.6,
+          "oddEmpate": 2.99,
+          "oddVisitante": 2.86,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-20",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.71,
+          "oddEmpate": 2.93,
+          "oddVisitante": 2.77,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-20",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.73,
+          "oddEmpate": 3.38,
+          "oddVisitante": 5.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.4,
+          "oddEmpate": 4.44,
+          "oddVisitante": 7.9,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.52,
+          "oddEmpate": 4,
+          "oddVisitante": 6.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.84,
+          "oddEmpate": 3.43,
+          "oddVisitante": 4.29,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.95,
+          "oddEmpate": 2.97,
+          "oddVisitante": 2.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.04,
+          "oddVisitante": 3.43,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.48,
+          "oddEmpate": 4.14,
+          "oddVisitante": 6.71,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-21",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1211,
+      "dataApuracao": "15/09/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.17,
+          "oddEmpate": 2.95,
+          "oddVisitante": 3.71,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.83,
+          "oddEmpate": 3.42,
+          "oddVisitante": 4.39,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-13",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 2.28,
+          "oddEmpate": 3.1,
+          "oddVisitante": 3.25,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-13",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 1.44,
+          "oddEmpate": 4.14,
+          "oddVisitante": 7.46,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-13",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "ATLETICO MADRID",
+          "equipeVisitante": "VILLARREAL",
+          "oddCasa": 1.77,
+          "oddEmpate": 3.68,
+          "oddVisitante": 4.51,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-09-13",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.34,
+          "oddEmpate": 2.87,
+          "oddVisitante": 3.41,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-13",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.7,
+          "oddEmpate": 3.63,
+          "oddVisitante": 4.96,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.9,
+          "oddEmpate": 3.38,
+          "oddVisitante": 4.07,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 8.67,
+          "oddEmpate": 4.63,
+          "oddVisitante": 1.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "MANCHESTER CITY",
+          "equipeVisitante": "MANCHESTER UNITED",
+          "oddCasa": 1.65,
+          "oddEmpate": 4.14,
+          "oddVisitante": 4.83,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 1.94,
+          "oddEmpate": 3.23,
+          "oddVisitante": 4.08,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "MILAN",
+          "equipeVisitante": "BOLOGNA",
+          "oddCasa": 1.77,
+          "oddEmpate": 3.53,
+          "oddVisitante": 4.73,
+          "fonteOdds": "I1 2526",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "BARCELONA",
+          "equipeVisitante": "VALENCIA CLUB",
+          "oddCasa": 1.36,
+          "oddEmpate": 5.36,
+          "oddVisitante": 7.33,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-09-14",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1209,
+      "dataApuracao": "01/09/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.62,
+          "oddEmpate": 3.04,
+          "oddVisitante": 2.16,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-31",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.51,
+          "oddVisitante": 5,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.78,
+          "oddVisitante": 4.93,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-30",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 1.91,
+          "oddEmpate": 3.19,
+          "oddVisitante": 4.37,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-30",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.22,
+          "oddEmpate": 5.81,
+          "oddVisitante": 13.13,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-31",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "LIVERPOOL",
+          "equipeVisitante": "ARSENAL",
+          "oddCasa": 2.37,
+          "oddEmpate": 3.33,
+          "oddVisitante": 3.01,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-08-31",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.26,
+          "oddEmpate": 3.22,
+          "oddVisitante": 3.16,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-31",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 3.25,
+          "oddEmpate": 3.01,
+          "oddVisitante": 2.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-31",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "ASTON VILLA",
+          "equipeVisitante": "CRYSTAL PALACE",
+          "oddCasa": 2.09,
+          "oddEmpate": 3.51,
+          "oddVisitante": 3.44,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-08-31",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.41,
+          "oddEmpate": 3.22,
+          "oddVisitante": 2.92,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-31",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1208,
+      "dataApuracao": "25/08/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.48,
+          "oddEmpate": 3.03,
+          "oddVisitante": 2.95,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-23",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 1.78,
+          "oddEmpate": 3.37,
+          "oddVisitante": 4.75,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-23",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 2.03,
+          "oddEmpate": 3.06,
+          "oddVisitante": 3.97,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-23",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.04,
+          "oddEmpate": 3.15,
+          "oddVisitante": 3.82,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-24",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.62,
+          "oddEmpate": 3.83,
+          "oddVisitante": 5.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-24",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "FULHAM",
+          "equipeVisitante": "MANCHESTER UNITED",
+          "oddCasa": 3.45,
+          "oddEmpate": 3.51,
+          "oddVisitante": 2.08,
+          "fonteOdds": "E0 2526",
+          "dataJogo": "2025-08-24",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "OSASUNA",
+          "equipeVisitante": "VALENCIA CLUB",
+          "oddCasa": 2.23,
+          "oddEmpate": 3.16,
+          "oddVisitante": 3.38,
+          "fonteOdds": "SP1 2526",
+          "dataJogo": "2025-08-24",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 3.74,
+          "oddEmpate": 3.27,
+          "oddVisitante": 2.02,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-24",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 2.49,
+          "oddEmpate": 3.14,
+          "oddVisitante": 2.85,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-24",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.74,
+          "oddEmpate": 3.31,
+          "oddVisitante": 5.15,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-24",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1207,
+      "dataApuracao": "18/08/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 2.88,
+          "oddEmpate": 2.93,
+          "oddVisitante": 2.64,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-17",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.15,
+          "oddEmpate": 3.05,
+          "oddVisitante": 3.59,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-16",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.73,
+          "oddEmpate": 3.51,
+          "oddVisitante": 4.81,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-16",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.53,
+          "oddVisitante": 4.93,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-16",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.02,
+          "oddEmpate": 3.18,
+          "oddVisitante": 3.85,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-16",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.56,
+          "oddEmpate": 2.99,
+          "oddVisitante": 2.91,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-16",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.82,
+          "oddEmpate": 3.57,
+          "oddVisitante": 4.18,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-17",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.65,
+          "oddEmpate": 3.63,
+          "oddVisitante": 5.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-17",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 4.55,
+          "oddEmpate": 3.3,
+          "oddVisitante": 1.83,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-17",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1206,
+      "dataApuracao": "11/08/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 1.3,
+          "oddEmpate": 5.06,
+          "oddVisitante": 9.94,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.71,
+          "oddEmpate": 3.32,
+          "oddVisitante": 5.43,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.85,
+          "oddEmpate": 3.05,
+          "oddVisitante": 2.56,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-09",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.52,
+          "oddEmpate": 3.04,
+          "oddVisitante": 2.91,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-09",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 1.64,
+          "oddEmpate": 3.56,
+          "oddVisitante": 5.63,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 1.38,
+          "oddEmpate": 4.32,
+          "oddVisitante": 8.82,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.73,
+          "oddEmpate": 2.94,
+          "oddVisitante": 2.76,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-10",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.52,
+          "oddEmpate": 4.08,
+          "oddVisitante": 5.98,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-10",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.81,
+          "oddEmpate": 3.38,
+          "oddVisitante": 4.49,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-10",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1205,
+      "dataApuracao": "04/08/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 5.22,
+          "oddEmpate": 3.38,
+          "oddVisitante": 1.72,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-03",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 3.16,
+          "oddEmpate": 3.1,
+          "oddVisitante": 2.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-02",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.85,
+          "oddEmpate": 3.25,
+          "oddVisitante": 4.55,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-02",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.87,
+          "oddEmpate": 3.18,
+          "oddVisitante": 4.51,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-02",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.03,
+          "oddEmpate": 3.08,
+          "oddVisitante": 3.98,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-03",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.05,
+          "oddVisitante": 3.44,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-03",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.91,
+          "oddEmpate": 3.37,
+          "oddVisitante": 3.99,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.08,
+          "oddEmpate": 2.84,
+          "oddVisitante": 2.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-03",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.45,
+          "oddEmpate": 2.94,
+          "oddVisitante": 3.11,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-08-03",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1204,
+      "dataApuracao": "28/07/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.41,
+          "oddEmpate": 4.16,
+          "oddVisitante": 8.25,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.81,
+          "oddEmpate": 3.66,
+          "oddVisitante": 4.15,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.6,
+          "oddEmpate": 3.11,
+          "oddVisitante": 2.76,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.5,
+          "oddVisitante": 6.46,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.69,
+          "oddEmpate": 3.43,
+          "oddVisitante": 5.42,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.4,
+          "oddEmpate": 4.42,
+          "oddVisitante": 7.96,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 1.46,
+          "oddEmpate": 4,
+          "oddVisitante": 7.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-27",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.05,
+          "oddEmpate": 2.97,
+          "oddVisitante": 4.08,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.26,
+          "oddEmpate": 5.44,
+          "oddVisitante": 10.64,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.53,
+          "oddEmpate": 3.94,
+          "oddVisitante": 6.13,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-27",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1203,
+      "dataApuracao": "21/07/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 1.73,
+          "oddEmpate": 3.27,
+          "oddVisitante": 5.38,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.9,
+          "oddEmpate": 3.11,
+          "oddVisitante": 2.5,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-19",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 2.1,
+          "oddEmpate": 3.1,
+          "oddVisitante": 3.7,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-19",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.66,
+          "oddEmpate": 3.01,
+          "oddVisitante": 2.78,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.17,
+          "oddEmpate": 2.8,
+          "oddVisitante": 3.96,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.63,
+          "oddVisitante": 6.11,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.45,
+          "oddEmpate": 2.94,
+          "oddVisitante": 3.13,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.31,
+          "oddEmpate": 4.97,
+          "oddVisitante": 9.77,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 3.71,
+          "oddEmpate": 3.03,
+          "oddVisitante": 2.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-20",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.69,
+          "oddEmpate": 3.36,
+          "oddVisitante": 5.65,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-07-20",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1191,
+      "dataApuracao": "26/05/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 2.23,
+          "oddEmpate": 3.04,
+          "oddVisitante": 3.59,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 1.71,
+          "oddEmpate": 3.51,
+          "oddVisitante": 5.39,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-24",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.81,
+          "oddEmpate": 3.35,
+          "oddVisitante": 4.92,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-24",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.47,
+          "oddVisitante": 5.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-24",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.46,
+          "oddEmpate": 3.14,
+          "oddVisitante": 3.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.56,
+          "oddEmpate": 3.05,
+          "oddVisitante": 2.98,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "LIVERPOOL",
+          "equipeVisitante": "CRYSTAL PALACE",
+          "oddCasa": 1.37,
+          "oddEmpate": 5.95,
+          "oddVisitante": 6.99,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "NOTTINGHAM FOREST",
+          "equipeVisitante": "CHELSEA",
+          "oddCasa": 3.44,
+          "oddEmpate": 3.78,
+          "oddVisitante": 2.06,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "FULHAM",
+          "equipeVisitante": "MANCHESTER CITY",
+          "oddCasa": 6.06,
+          "oddEmpate": 4.53,
+          "oddVisitante": 1.52,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "MANCHESTER UNITED",
+          "equipeVisitante": "ASTON VILLA",
+          "oddCasa": 4.74,
+          "oddEmpate": 4.29,
+          "oddVisitante": 1.67,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ATHLETIC BILBAO",
+          "equipeVisitante": "BARCELONA",
+          "oddCasa": 3.21,
+          "oddEmpate": 3.88,
+          "oddVisitante": 2.08,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.27,
+          "oddEmpate": 3.1,
+          "oddVisitante": 3.43,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.23,
+          "oddEmpate": 3.06,
+          "oddVisitante": 3.56,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-25",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1189,
+      "dataApuracao": "19/05/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.64,
+          "oddEmpate": 3.69,
+          "oddVisitante": 5.84,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-17",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.92,
+          "oddEmpate": 3.26,
+          "oddVisitante": 4.46,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-17",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.48,
+          "oddEmpate": 2.98,
+          "oddVisitante": 3.19,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-17",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.48,
+          "oddVisitante": 5.39,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.08,
+          "oddEmpate": 3.08,
+          "oddVisitante": 4.03,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 3.8,
+          "oddEmpate": 3.28,
+          "oddVisitante": 2.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-18",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 1.74,
+          "oddEmpate": 3.48,
+          "oddVisitante": 5.17,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-18",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.54,
+          "oddEmpate": 3.08,
+          "oddVisitante": 2.98,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-18",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.93,
+          "oddEmpate": 3.18,
+          "oddVisitante": 2.07,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-18",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1187,
+      "dataApuracao": "12/05/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "BARCELONA",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 1.88,
+          "oddEmpate": 4.33,
+          "oddVisitante": 3.54,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-05-11",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.58,
+          "oddEmpate": 3.93,
+          "oddVisitante": 5.97,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.64,
+          "oddEmpate": 3.13,
+          "oddVisitante": 2.79,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-10",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.98,
+          "oddEmpate": 3.31,
+          "oddVisitante": 4.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.88,
+          "oddEmpate": 3.02,
+          "oddVisitante": 2.66,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "ATLETICO MADRID",
+          "equipeVisitante": "REAL SOCIEDAD",
+          "oddCasa": 1.79,
+          "oddEmpate": 3.52,
+          "oddVisitante": 4.86,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 1.39,
+          "oddEmpate": 4.54,
+          "oddVisitante": 8.57,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-10",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "MANCHESTER UNITED",
+          "equipeVisitante": "WEST HAM",
+          "oddCasa": 2.01,
+          "oddEmpate": 3.67,
+          "oddVisitante": 3.66,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-05-11",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 1.93,
+          "oddEmpate": 3.22,
+          "oddVisitante": 4.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-11",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 1.76,
+          "oddEmpate": 3.33,
+          "oddVisitante": 5.36,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-11",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.52,
+          "oddVisitante": 5.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-11",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1185,
+      "dataApuracao": "05/05/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 4.67,
+          "oddEmpate": 3.26,
+          "oddVisitante": 1.88,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.62,
+          "oddEmpate": 2.89,
+          "oddVisitante": 3.06,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.75,
+          "oddEmpate": 3.45,
+          "oddVisitante": 5.17,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 2.26,
+          "oddEmpate": 2.86,
+          "oddVisitante": 3.82,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 1.98,
+          "oddEmpate": 3.36,
+          "oddVisitante": 3.94,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-03",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "WEST HAM",
+          "equipeVisitante": "TOTTENHAM",
+          "oddCasa": 1.86,
+          "oddEmpate": 3.93,
+          "oddVisitante": 3.97,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "REAL MADRID",
+          "equipeVisitante": "CELTA DE VIGO",
+          "oddCasa": 1.36,
+          "oddEmpate": 5.66,
+          "oddVisitante": 7.25,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 6.42,
+          "oddEmpate": 3.64,
+          "oddVisitante": 1.6,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.27,
+          "oddEmpate": 3.1,
+          "oddVisitante": 3.43,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "LIVERPOOL",
+          "oddCasa": 2.35,
+          "oddEmpate": 3.71,
+          "oddVisitante": 2.86,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ROMA",
+          "equipeVisitante": "FIORENTINA",
+          "oddCasa": 1.76,
+          "oddEmpate": 3.59,
+          "oddVisitante": 4.94,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "REAL SOCIEDAD",
+          "equipeVisitante": "ATHLETIC BILBAO",
+          "oddCasa": 2.55,
+          "oddEmpate": 2.89,
+          "oddVisitante": 3.21,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-05-04",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1183,
+      "dataApuracao": "28/04/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 1.48,
+          "oddEmpate": 4.11,
+          "oddVisitante": 7.29,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.4,
+          "oddEmpate": 4.6,
+          "oddVisitante": 8.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.35,
+          "oddEmpate": 2.82,
+          "oddVisitante": 3.64,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 3.24,
+          "oddEmpate": 3.04,
+          "oddVisitante": 2.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.05,
+          "oddEmpate": 3.28,
+          "oddVisitante": 3.82,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.14,
+          "oddEmpate": 3.02,
+          "oddVisitante": 3.87,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.23,
+          "oddEmpate": 3.01,
+          "oddVisitante": 3.63,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-27",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 2.37,
+          "oddEmpate": 3.07,
+          "oddVisitante": 3.26,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-27",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 1.55,
+          "oddEmpate": 4.04,
+          "oddVisitante": 6.22,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-27",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.17,
+          "oddEmpate": 3.18,
+          "oddVisitante": 3.58,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-27",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "NAPOLI",
+          "equipeVisitante": "TORINO",
+          "oddCasa": 1.36,
+          "oddEmpate": 4.74,
+          "oddVisitante": 9.43,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-04-27",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1181,
+      "dataApuracao": "22/04/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 8.45,
+          "oddEmpate": 4.31,
+          "oddVisitante": 1.41,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-19",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.73,
+          "oddEmpate": 3.47,
+          "oddVisitante": 5.27,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-19",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.27,
+          "oddVisitante": 3.35,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.34,
+          "oddEmpate": 2.93,
+          "oddVisitante": 3.52,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.47,
+          "oddVisitante": 5.99,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-20",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 4.13,
+          "oddEmpate": 3.18,
+          "oddVisitante": 2.01,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-20",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.18,
+          "oddEmpate": 3.23,
+          "oddVisitante": 3.5,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-20",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 1.79,
+          "oddEmpate": 3.63,
+          "oddVisitante": 4.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 3.38,
+          "oddEmpate": 2.93,
+          "oddVisitante": 2.39,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-21",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1180,
+      "dataApuracao": "17/04/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 1.83,
+          "oddEmpate": 3.28,
+          "oddVisitante": 4.9,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.16,
+          "oddVisitante": 3.48,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.37,
+          "oddEmpate": 3.18,
+          "oddVisitante": 3.17,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 2.97,
+          "oddEmpate": 2.99,
+          "oddVisitante": 2.6,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 2.75,
+          "oddEmpate": 2.94,
+          "oddVisitante": 2.85,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.19,
+          "oddEmpate": 3.01,
+          "oddVisitante": 3.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.44,
+          "oddEmpate": 3.13,
+          "oddVisitante": 3.08,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.35,
+          "oddEmpate": 3.04,
+          "oddVisitante": 3.32,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.21,
+          "oddEmpate": 6.39,
+          "oddVisitante": 14.52,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-16",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1179,
+      "dataApuracao": "14/04/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 1.76,
+          "oddEmpate": 3.44,
+          "oddVisitante": 5.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-12",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.97,
+          "oddEmpate": 3.06,
+          "oddVisitante": 2.56,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-12",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "CEARA",
+          "oddCasa": 2.27,
+          "oddEmpate": 3.09,
+          "oddVisitante": 3.44,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-12",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.94,
+          "oddEmpate": 3.35,
+          "oddVisitante": 4.16,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-12",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 1.5,
+          "oddEmpate": 4.05,
+          "oddVisitante": 7.06,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-13",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 4.47,
+          "oddEmpate": 3.43,
+          "oddVisitante": 1.85,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-13",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 1.88,
+          "oddEmpate": 3.14,
+          "oddVisitante": 4.87,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-13",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 1.79,
+          "oddEmpate": 3.27,
+          "oddVisitante": 5.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-13",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 3,
+          "oddEmpate": 3.09,
+          "oddVisitante": 2.52,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-13",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.56,
+          "oddEmpate": 3.81,
+          "oddVisitante": 6.64,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-13",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1177,
+      "dataApuracao": "07/04/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.58,
+          "oddEmpate": 3.89,
+          "oddVisitante": 6.16,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-05",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "CEARA",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 2.1,
+          "oddEmpate": 3.18,
+          "oddVisitante": 3.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-05",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "MILAN",
+          "equipeVisitante": "FIORENTINA",
+          "oddCasa": 1.79,
+          "oddEmpate": 3.65,
+          "oddVisitante": 4.64,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-04-05",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "BARCELONA",
+          "equipeVisitante": "REAL BETIS",
+          "oddCasa": 1.36,
+          "oddEmpate": 5.57,
+          "oddVisitante": 7.66,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-04-05",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.4,
+          "oddEmpate": 4.52,
+          "oddVisitante": 8.59,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-05",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2,
+          "oddEmpate": 3.05,
+          "oddVisitante": 4.42,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.83,
+          "oddEmpate": 3.36,
+          "oddVisitante": 4.78,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "MANCHESTER UNITED",
+          "equipeVisitante": "MANCHESTER CITY",
+          "oddCasa": 3.39,
+          "oddEmpate": 3.67,
+          "oddVisitante": 2.11,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "SPORT",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.15,
+          "oddEmpate": 2.98,
+          "oddVisitante": 2.49,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 1.62,
+          "oddEmpate": 3.66,
+          "oddVisitante": 6.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 5.15,
+          "oddEmpate": 3.32,
+          "oddVisitante": 1.79,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "MIRASSOL",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.34,
+          "oddEmpate": 2.99,
+          "oddVisitante": 3.43,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "SANTOS",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.1,
+          "oddEmpate": 3.13,
+          "oddVisitante": 3.86,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "ROMA",
+          "equipeVisitante": "JUVENTUS",
+          "oddCasa": 2.47,
+          "oddEmpate": 3.09,
+          "oddVisitante": 3.13,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-04-06",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1175,
+      "dataApuracao": "31/03/2025",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.68,
+          "oddEmpate": 3.02,
+          "oddVisitante": 2.85,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.46,
+          "oddEmpate": 2.98,
+          "oddVisitante": 3.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 2.19,
+          "oddEmpate": 3.13,
+          "oddVisitante": 3.58,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "MIRASSOL",
+          "oddCasa": 1.58,
+          "oddEmpate": 3.66,
+          "oddVisitante": 6.75,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "SPORT",
+          "oddCasa": 1.75,
+          "oddEmpate": 3.37,
+          "oddVisitante": 5.38,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-29",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 1.79,
+          "oddEmpate": 3.47,
+          "oddVisitante": 4.79,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-29",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.6,
+          "oddVisitante": 5.7,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-30",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "SANTOS",
+          "oddCasa": 2.33,
+          "oddEmpate": 3.07,
+          "oddVisitante": 3.34,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-30",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 1.82,
+          "oddEmpate": 3.48,
+          "oddVisitante": 4.61,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2025-03-30",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1172,
+      "dataApuracao": "10/03/2025",
+      "jogos": [
+        {
+          "sequencial": 3,
+          "equipeCasa": "INTER DE MILAO",
+          "equipeVisitante": "MONZA",
+          "oddCasa": 1.14,
+          "oddEmpate": 8.29,
+          "oddVisitante": 19.97,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-03-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "VERONA",
+          "equipeVisitante": "BOLOGNA",
+          "oddCasa": 5.45,
+          "oddEmpate": 3.49,
+          "oddVisitante": 1.74,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "LEICESTER",
+          "oddCasa": 1.23,
+          "oddEmpate": 6.96,
+          "oddVisitante": 12.22,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "NAPOLI",
+          "equipeVisitante": "FIORENTINA",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.81,
+          "oddVisitante": 6.58,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "REAL MADRID",
+          "equipeVisitante": "RAYO VALLECANO",
+          "oddCasa": 1.29,
+          "oddEmpate": 5.9,
+          "oddVisitante": 10.26,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "MANCHESTER UNITED",
+          "equipeVisitante": "ARSENAL",
+          "oddCasa": 5.1,
+          "oddEmpate": 3.55,
+          "oddVisitante": 1.78,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "REAL BETIS",
+          "equipeVisitante": "LAS PALMAS",
+          "oddCasa": 1.33,
+          "oddEmpate": 5.28,
+          "oddVisitante": 9.73,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ATHLETIC BILBAO",
+          "equipeVisitante": "MALLORCA",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.5,
+          "oddVisitante": 5.66,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "JUVENTUS",
+          "equipeVisitante": "ATALANTA BERGAMAS",
+          "oddCasa": 2.71,
+          "oddEmpate": 3.08,
+          "oddVisitante": 2.87,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "REAL SOCIEDAD",
+          "equipeVisitante": "SEVILLA",
+          "oddCasa": 2.47,
+          "oddEmpate": 3.02,
+          "oddVisitante": 3.25,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2025-03-09",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1163,
+      "dataApuracao": "16/12/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "MANCHESTER CITY",
+          "equipeVisitante": "MANCHESTER UNITED",
+          "oddCasa": 1.54,
+          "oddEmpate": 4.79,
+          "oddVisitante": 5.5,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "RAYO VALLECANO",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 6.27,
+          "oddEmpate": 4.2,
+          "oddVisitante": 1.53,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-12-14",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "LECCE",
+          "equipeVisitante": "MONZA",
+          "oddCasa": 2.69,
+          "oddEmpate": 3.01,
+          "oddVisitante": 2.89,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "PARMA",
+          "equipeVisitante": "VERONA",
+          "oddCasa": 2.06,
+          "oddEmpate": 3.39,
+          "oddVisitante": 3.72,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "ATLETICO MADRID",
+          "equipeVisitante": "GETAFE",
+          "oddCasa": 1.32,
+          "oddEmpate": 4.94,
+          "oddVisitante": 11.21,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "BRIGHTON",
+          "equipeVisitante": "CRYSTAL PALACE",
+          "oddCasa": 1.9,
+          "oddEmpate": 3.69,
+          "oddVisitante": 4.05,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BOLOGNA",
+          "equipeVisitante": "FIORENTINA",
+          "oddCasa": 2.73,
+          "oddEmpate": 3.04,
+          "oddVisitante": 2.82,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "MILAN",
+          "equipeVisitante": "GENOA",
+          "oddCasa": 1.52,
+          "oddEmpate": 4.16,
+          "oddVisitante": 6.6,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "DEPORTIVO ALAVES",
+          "equipeVisitante": "ATHLETIC BILBAO",
+          "oddCasa": 4,
+          "oddEmpate": 3.06,
+          "oddVisitante": 2.12,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "VILLARREAL",
+          "equipeVisitante": "REAL BETIS",
+          "oddCasa": 1.94,
+          "oddEmpate": 3.72,
+          "oddVisitante": 3.79,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "SOUTHAMPTON",
+          "equipeVisitante": "TOTTENHAM",
+          "oddCasa": 3.98,
+          "oddEmpate": 4.42,
+          "oddVisitante": 1.77,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "BRENTFORD",
+          "oddCasa": 1.35,
+          "oddEmpate": 5.84,
+          "oddVisitante": 7.68,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "RB LEIPZIG",
+          "equipeVisitante": "FRANKFURT",
+          "oddCasa": 2.26,
+          "oddEmpate": 3.74,
+          "oddVisitante": 2.97,
+          "fonteOdds": "D1 2425",
+          "dataJogo": "2024-12-15",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1162,
+      "dataApuracao": "09/12/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.37,
+          "oddEmpate": 5.02,
+          "oddVisitante": 7.66,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "GIRONA",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 4.27,
+          "oddEmpate": 3.97,
+          "oddVisitante": 1.79,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-12-07",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "FIORENTINA",
+          "equipeVisitante": "CAGLIARI CALCIO",
+          "oddCasa": 1.55,
+          "oddEmpate": 4.19,
+          "oddVisitante": 6.04,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "TOTTENHAM",
+          "equipeVisitante": "CHELSEA",
+          "oddCasa": 2.9,
+          "oddEmpate": 3.98,
+          "oddVisitante": 2.24,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "CRICIUMA",
+          "oddCasa": 1.38,
+          "oddEmpate": 4.81,
+          "oddVisitante": 7.85,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "CUIABA",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 3.52,
+          "oddEmpate": 3.16,
+          "oddVisitante": 2.19,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.42,
+          "oddEmpate": 4.72,
+          "oddVisitante": 7.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.67,
+          "oddEmpate": 3.34,
+          "oddVisitante": 2.61,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.59,
+          "oddEmpate": 3.18,
+          "oddVisitante": 2.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.13,
+          "oddEmpate": 3.37,
+          "oddVisitante": 3.44,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 1.46,
+          "oddEmpate": 4.41,
+          "oddVisitante": 6.74,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 2.07,
+          "oddEmpate": 3.09,
+          "oddVisitante": 3.99,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 1.26,
+          "oddEmpate": 5.24,
+          "oddVisitante": 13.76,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "ATLETICO MADRID",
+          "equipeVisitante": "SEVILLA",
+          "oddCasa": 1.38,
+          "oddEmpate": 4.77,
+          "oddVisitante": 8.99,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-12-08",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1161,
+      "dataApuracao": "02/12/2024",
+      "jogos": [
+        {
+          "sequencial": 2,
+          "equipeCasa": "CUIABA",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 4.21,
+          "oddEmpate": 3.42,
+          "oddVisitante": 1.9,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CRICIUMA",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 3.4,
+          "oddEmpate": 3.27,
+          "oddVisitante": 2.19,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-30",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.9,
+          "oddEmpate": 3.4,
+          "oddVisitante": 4.23,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-30",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "ASTON VILLA",
+          "oddCasa": 1.72,
+          "oddEmpate": 4.08,
+          "oddVisitante": 4.66,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "TORINO",
+          "equipeVisitante": "NAPOLI",
+          "oddCasa": 5.63,
+          "oddEmpate": 3.48,
+          "oddVisitante": 1.72,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "LIVERPOOL",
+          "equipeVisitante": "MANCHESTER CITY",
+          "oddCasa": 2.04,
+          "oddEmpate": 3.76,
+          "oddVisitante": 3.5,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 1.91,
+          "oddEmpate": 3.39,
+          "oddVisitante": 4.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.33,
+          "oddEmpate": 3.15,
+          "oddVisitante": 3.2,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.28,
+          "oddEmpate": 2.95,
+          "oddVisitante": 3.58,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.24,
+          "oddEmpate": 3.13,
+          "oddVisitante": 3.42,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2,
+          "oddEmpate": 3.32,
+          "oddVisitante": 3.91,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-12-01",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1158,
+      "dataApuracao": "11/11/2024",
+      "jogos": [
+        {
+          "sequencial": 2,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 3.12,
+          "oddEmpate": 3.03,
+          "oddVisitante": 2.47,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-09",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "CUIABA",
+          "oddCasa": 1.22,
+          "oddEmpate": 6,
+          "oddVisitante": 13.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.47,
+          "oddEmpate": 3.4,
+          "oddVisitante": 2.79,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "CRICIUMA",
+          "oddCasa": 1.63,
+          "oddEmpate": 3.78,
+          "oddVisitante": 5.6,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.71,
+          "oddEmpate": 3.69,
+          "oddVisitante": 4.97,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.61,
+          "oddEmpate": 3.35,
+          "oddVisitante": 2.67,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-09",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 1.56,
+          "oddEmpate": 3.89,
+          "oddVisitante": 6.31,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-11-09",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "ARSENAL",
+          "oddCasa": 3.01,
+          "oddEmpate": 3.41,
+          "oddVisitante": 2.41,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-11-10",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "INTER DE MILAO",
+          "equipeVisitante": "NAPOLI",
+          "oddCasa": 1.81,
+          "oddEmpate": 3.72,
+          "oddVisitante": 4.5,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-11-10",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1156,
+      "dataApuracao": "28/10/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.36,
+          "oddEmpate": 5.02,
+          "oddVisitante": 8.24,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.43,
+          "oddEmpate": 2.91,
+          "oddVisitante": 3.33,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.56,
+          "oddEmpate": 4.1,
+          "oddVisitante": 5.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 1.83,
+          "oddEmpate": 3.46,
+          "oddVisitante": 4.49,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.34,
+          "oddEmpate": 5.03,
+          "oddVisitante": 9.13,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 3.57,
+          "oddEmpate": 3.37,
+          "oddVisitante": 2.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 3.49,
+          "oddEmpate": 3.09,
+          "oddVisitante": 2.24,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "CRICIUMA",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 3.17,
+          "oddEmpate": 3.03,
+          "oddVisitante": 2.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "REAL MADRID",
+          "equipeVisitante": "BARCELONA",
+          "oddCasa": 1.97,
+          "oddEmpate": 4.14,
+          "oddVisitante": 3.44,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-10-26",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "ARSENAL",
+          "equipeVisitante": "LIVERPOOL",
+          "oddCasa": 2.26,
+          "oddEmpate": 3.38,
+          "oddVisitante": 3.32,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-10-27",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "INTER DE MILAO",
+          "equipeVisitante": "JUVENTUS",
+          "oddCasa": 1.81,
+          "oddEmpate": 3.54,
+          "oddVisitante": 4.81,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-10-27",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "FIORENTINA",
+          "equipeVisitante": "ROMA",
+          "oddCasa": 2.5,
+          "oddEmpate": 3.23,
+          "oddVisitante": 2.96,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-10-27",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1152,
+      "dataApuracao": "30/09/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.59,
+          "oddEmpate": 2.9,
+          "oddVisitante": 3.08,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.7,
+          "oddEmpate": 3.65,
+          "oddVisitante": 5.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-28",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.89,
+          "oddVisitante": 4.89,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-28",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.58,
+          "oddEmpate": 3.15,
+          "oddVisitante": 2.83,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "ATLETICO MADRID",
+          "equipeVisitante": "REAL MADRID",
+          "oddCasa": 2.86,
+          "oddEmpate": 3.2,
+          "oddVisitante": 2.62,
+          "fonteOdds": "SP1 2425",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "CUIABA",
+          "oddCasa": 1.72,
+          "oddEmpate": 3.54,
+          "oddVisitante": 5.2,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.49,
+          "oddEmpate": 3.11,
+          "oddVisitante": 2.99,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.38,
+          "oddEmpate": 4.74,
+          "oddVisitante": 8.25,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.78,
+          "oddEmpate": 3.51,
+          "oddVisitante": 4.69,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "CRICIUMA",
+          "oddCasa": 1.61,
+          "oddEmpate": 4.02,
+          "oddVisitante": 5.26,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 1.67,
+          "oddEmpate": 3.76,
+          "oddVisitante": 5.14,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-29",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1151,
+      "dataApuracao": "23/09/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 3.41,
+          "oddEmpate": 3.13,
+          "oddVisitante": 2.25,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-21",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 2.01,
+          "oddEmpate": 3.25,
+          "oddVisitante": 3.97,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.58,
+          "oddEmpate": 3.83,
+          "oddVisitante": 6.13,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.59,
+          "oddEmpate": 3.2,
+          "oddVisitante": 2.79,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-21",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 2.18,
+          "oddEmpate": 3.28,
+          "oddVisitante": 3.42,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-22",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "VASCO DA GAMA",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 4.23,
+          "oddEmpate": 3.78,
+          "oddVisitante": 1.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-22",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 1.81,
+          "oddEmpate": 3.57,
+          "oddVisitante": 4.4,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-22",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 2.84,
+          "oddEmpate": 2.87,
+          "oddVisitante": 2.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-22",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "CUIABA",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2.8,
+          "oddEmpate": 2.87,
+          "oddVisitante": 2.84,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-22",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "CRICIUMA",
+          "equipeVisitante": "ATHLETICO",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.31,
+          "oddVisitante": 3.28,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-22",
+          "resultadoReal": "empate"
+        }
+      ]
+    },
+    {
+      "numero": 1150,
+      "dataApuracao": "16/09/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 1.71,
+          "oddEmpate": 3.64,
+          "oddVisitante": 5,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-15",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.96,
+          "oddEmpate": 3.3,
+          "oddVisitante": 4.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-14",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.9,
+          "oddEmpate": 3.58,
+          "oddVisitante": 3.99,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-14",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.86,
+          "oddVisitante": 5.89,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-14",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "CRICIUMA",
+          "oddCasa": 1.28,
+          "oddEmpate": 5.56,
+          "oddVisitante": 10.48,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 2.43,
+          "oddEmpate": 3.34,
+          "oddVisitante": 2.88,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-15",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 2.95,
+          "oddEmpate": 3.2,
+          "oddVisitante": 2.46,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-15",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 1.84,
+          "oddEmpate": 3.22,
+          "oddVisitante": 4.94,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-15",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.93,
+          "oddEmpate": 3.46,
+          "oddVisitante": 3.99,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-15",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1148,
+      "dataApuracao": "02/09/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "CORINTHIANS",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 2.52,
+          "oddEmpate": 2.96,
+          "oddVisitante": 3.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 3,
+          "equipeCasa": "CUIABA",
+          "equipeVisitante": "CRICIUMA",
+          "oddCasa": 2,
+          "oddEmpate": 3.25,
+          "oddVisitante": 4.02,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-31",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 4,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 1.59,
+          "oddEmpate": 3.97,
+          "oddVisitante": 5.71,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-31",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "CRUZEIRO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 1.64,
+          "oddEmpate": 3.58,
+          "oddVisitante": 6.05,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "MANCHESTER UNITED",
+          "equipeVisitante": "LIVERPOOL",
+          "oddCasa": 3.56,
+          "oddEmpate": 4.04,
+          "oddVisitante": 1.95,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "JUVENTUS",
+          "equipeVisitante": "ROMA",
+          "oddCasa": 1.76,
+          "oddEmpate": 3.62,
+          "oddVisitante": 4.92,
+          "fonteOdds": "I1 2425",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "PALMEIRAS",
+          "oddCasa": 3.59,
+          "oddEmpate": 3.47,
+          "oddVisitante": 2.04,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "ATLETICO",
+          "oddCasa": 2.17,
+          "oddEmpate": 3.01,
+          "oddVisitante": 3.8,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 2.36,
+          "oddEmpate": 2.88,
+          "oddVisitante": 3.5,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "JUVENTUDE",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 3.43,
+          "oddEmpate": 3.21,
+          "oddVisitante": 2.2,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.3,
+          "oddEmpate": 3.35,
+          "oddVisitante": 3.08,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "VITORIA",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.3,
+          "oddEmpate": 3.13,
+          "oddVisitante": 3.28,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-09-01",
+          "resultadoReal": "visitante"
+        }
+      ]
+    },
+    {
+      "numero": 1146,
+      "dataApuracao": "26/08/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "FORTALEZA",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 1.97,
+          "oddEmpate": 3.22,
+          "oddVisitante": 4.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.82,
+          "oddEmpate": 3.49,
+          "oddVisitante": 4.54,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-24",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "CUIABA",
+          "oddCasa": 1.44,
+          "oddEmpate": 4.31,
+          "oddVisitante": 7.7,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-24",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "FLUMINENSE",
+          "oddCasa": 1.92,
+          "oddEmpate": 3.16,
+          "oddVisitante": 4.55,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-24",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "BAHIA",
+          "equipeVisitante": "BOTAFOGO",
+          "oddCasa": 2.22,
+          "oddEmpate": 3.4,
+          "oddVisitante": 3.21,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-25",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CRICIUMA",
+          "equipeVisitante": "GREMIO",
+          "oddCasa": 2.75,
+          "oddEmpate": 3.21,
+          "oddVisitante": 2.64,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-25",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "SAO PAULO",
+          "equipeVisitante": "VITORIA",
+          "oddCasa": 1.73,
+          "oddEmpate": 3.53,
+          "oddVisitante": 5.09,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 13,
+          "equipeCasa": "INTERNACIONAL",
+          "equipeVisitante": "CRUZEIRO",
+          "oddCasa": 2,
+          "oddEmpate": 3.15,
+          "oddVisitante": 4.18,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-25",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 14,
+          "equipeCasa": "FLAMENGO",
+          "equipeVisitante": "BRAGANTINO",
+          "oddCasa": 1.61,
+          "oddEmpate": 3.76,
+          "oddVisitante": 5.87,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-25",
+          "resultadoReal": "casa"
+        }
+      ]
+    },
+    {
+      "numero": 1144,
+      "dataApuracao": "19/08/2024",
+      "jogos": [
+        {
+          "sequencial": 1,
+          "equipeCasa": "BOTAFOGO",
+          "equipeVisitante": "FLAMENGO",
+          "oddCasa": 2.38,
+          "oddEmpate": 3.11,
+          "oddVisitante": 3.19,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 2,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "CUIABA",
+          "oddCasa": 1.85,
+          "oddEmpate": 3.21,
+          "oddVisitante": 4.93,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-17",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 5,
+          "equipeCasa": "GREMIO",
+          "equipeVisitante": "BAHIA",
+          "oddCasa": 2.71,
+          "oddEmpate": 3.18,
+          "oddVisitante": 2.69,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-17",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 6,
+          "equipeCasa": "BRAGANTINO",
+          "equipeVisitante": "FORTALEZA",
+          "oddCasa": 2.55,
+          "oddEmpate": 3.17,
+          "oddVisitante": 2.87,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-17",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 7,
+          "equipeCasa": "FLUMINENSE",
+          "equipeVisitante": "CORINTHIANS",
+          "oddCasa": 2.53,
+          "oddEmpate": 2.88,
+          "oddVisitante": 3.17,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-17",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 8,
+          "equipeCasa": "CHELSEA",
+          "equipeVisitante": "MANCHESTER CITY",
+          "oddCasa": 3.64,
+          "oddEmpate": 3.83,
+          "oddVisitante": 1.98,
+          "fonteOdds": "E0 2425",
+          "dataJogo": "2024-08-18",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 9,
+          "equipeCasa": "ATHLETICO",
+          "equipeVisitante": "JUVENTUDE",
+          "oddCasa": 1.68,
+          "oddEmpate": 3.92,
+          "oddVisitante": 4.87,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-18",
+          "resultadoReal": "visitante"
+        },
+        {
+          "sequencial": 10,
+          "equipeCasa": "ATLETICO",
+          "equipeVisitante": "INTERNACIONAL",
+          "oddCasa": 3,
+          "oddEmpate": 3.1,
+          "oddVisitante": 2.49,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-18",
+          "resultadoReal": "casa"
+        },
+        {
+          "sequencial": 11,
+          "equipeCasa": "CRICIUMA",
+          "equipeVisitante": "VASCO DA GAMA",
+          "oddCasa": 2.06,
+          "oddEmpate": 3.25,
+          "oddVisitante": 3.77,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-18",
+          "resultadoReal": "empate"
+        },
+        {
+          "sequencial": 12,
+          "equipeCasa": "PALMEIRAS",
+          "equipeVisitante": "SAO PAULO",
+          "oddCasa": 1.7,
+          "oddEmpate": 3.45,
+          "oddVisitante": 5.58,
+          "fonteOdds": "Brasil",
+          "dataJogo": "2024-08-18",
+          "resultadoReal": "casa"
+        }
+      ]
+    }
+  ]
+}
